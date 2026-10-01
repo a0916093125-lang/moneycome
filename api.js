@@ -1,7 +1,3 @@
-// ==========================================
-// 天天樂 API 網路通訊模組 (api.js)
-// ==========================================
-
 const API_URL = "https://script.google.com/macros/s/AKfycbx9m5XcTshUv_oeMdQkNV4RB64wgbe1kMrUOB4HP6HhM114H7iGjohZySBh9KWsEEmW/exec"; 
 
 let LOTTERY_DATA = {};
