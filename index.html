@@ -108,6 +108,8 @@
       .tab-btn { padding: 10px 4px; }
       .tab-title-text { font-size: 15px; }
       .tab-time-badge { font-size: 11px; }
+      .range-title-text { display: none; }
+      .range-control-wrap { width: 100%; display: flex; justify-content: center; margin-top: 6px; }
     }
 
     .hero-pine-card { background: linear-gradient(135deg, var(--primary-pine) 0%, var(--primary-pine-dark) 100%); color: #ffffff; border-radius: 16px; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 250px; box-shadow: 0 8px 24px -4px rgba(15, 76, 58, 0.25); position: relative; }
@@ -284,8 +286,8 @@
       <!-- 🌟 下一期號碼參考 與 TOP 6 最佳模型分析範圍 (維持同列垂直置中) -->
       <div class="section-header-row">
         <div><div class="tracker-tag">NUMBER INSIGHTS</div><h2 class="section-headline">下一期號碼參考</h2></div>
-        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-          <span style="font-size:16px; font-weight:900; color:var(--text-secondary);">TOP 6 最佳模型</span>
+        <div class="range-control-wrap" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <span style="font-size:16px; font-weight:900; color:var(--text-secondary);" class="range-title-text">TOP 6 最佳模型</span>
           <div class="range-btn-group" id="range-btn-group">
             <button class="range-btn" data-range="5" onclick="setAnalysisRange(5)">近 5 期</button>
             <button class="range-btn" data-range="10" onclick="setAnalysisRange(10)">近 10 期</button>
@@ -445,6 +447,7 @@
       const qrEl = document.getElementById('jko-qr-img');
       if (qrEl) qrEl.src = QR_CODES[168];
       initTabs(); 
+      initMobileAutoScroll();
       await fetchLatestData(); 
       setInterval(fetchLatestData, 5 * 60 * 1000); 
     });
@@ -499,6 +502,46 @@
         top: targetPosition,
         behavior: 'smooth'
       });
+    }
+
+    // 🌟 手機瀏覽時：往下滑動自動平滑置頂 (如圖效果，免手動點選)
+    let isAutoScrolling = false;
+    let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    function initMobileAutoScroll() {
+      window.addEventListener('scroll', () => {
+        // 只在手機寬度 (<= 860px) 且未在自動滾動動畫中時運作
+        if (window.innerWidth > 860 || isAutoScrolling) return;
+
+        const currentY = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollingDown = currentY > lastScrollY;
+        lastScrollY = currentY;
+
+        // 計算置頂目標位置 (對齊到 range-btn-group 區塊)
+        const target = document.getElementById('range-btn-group');
+        if (!target) return;
+
+        const header = document.querySelector('header');
+        const tabsCard = document.getElementById('main-tabs-card');
+        const headerHeight = header ? header.offsetHeight : 70;
+        const tabsHeight = tabsCard ? tabsCard.offsetHeight : 70;
+        const totalOffset = headerHeight + tabsHeight + 10;
+
+        const elementPosition = target.getBoundingClientRect().top + currentY;
+        const targetPosition = Math.max(0, elementPosition - totalOffset);
+
+        // 當使用者在上方開獎看板區域 (Y > 50 且尚未到達目標位置) 手指往下滑動時，自動平滑吸附置頂
+        if (scrollingDown && currentY > 50 && currentY < targetPosition - 30) {
+          isAutoScrolling = true;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          setTimeout(() => {
+            isAutoScrolling = false;
+          }, 800);
+        }
+      }, { passive: true });
     }
 
     // 🌟 點選彩種時切換狀態，並自動平滑滑動回頂端
@@ -589,7 +632,7 @@
       if (pageRowsEl) pageRowsEl.innerText = data.length.toString();
     }
 
-    // 🌟 點擊近 5 期、近 10 期、近 30 期按鈕：切換期數並平滑捲動讓「下一期號碼參考」區塊固定在頂端
+    // 🌟 點擊近 5 期、近 10 期、近 30 期按鈕：切換期數並平滑捲動讓期數區塊固定在頂端
     function setAnalysisRange(val) {
       analysisRange = parseInt(val, 10);
       document.querySelectorAll('#range-btn-group .range-btn').forEach(btn => {
@@ -601,7 +644,7 @@
         renderModels();
       }
       setTimeout(() => {
-        smoothScrollTo('insights');
+        smoothScrollTo('range-btn-group');
       }, 30);
     }
 
