@@ -242,7 +242,7 @@
         position: sticky;
         top: 130px; /* 70(Header) + 60(Level 1) */
         z-index: 94;
-        background: rgba(248, 250, 252, 0.95); /* 與背景融合的半透明白 */
+        background: rgba(248, 250, 252, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         padding: 8px 20px;
@@ -538,6 +538,28 @@
       setTimeout(() => { t.style.display = 'none'; }, 2800);
     }
 
+    // 🌟 自定義高級平滑捲動引擎 (取代瀏覽器預設過快的 smooth，實現緩入緩出絲滑感)
+    function customSmoothScrollTo(targetY, duration = 750) {
+      const startY = window.pageYOffset || document.documentElement.scrollTop;
+      const difference = targetY - startY;
+      const startTime = performance.now();
+
+      function step(currentTime) {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        // easeInOutCubic (緩入緩出，前段與後段極度絲滑)
+        const ease = progress < 0.5 
+          ? 4 * progress * progress * progress 
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        
+        window.scrollTo(0, startY + difference * ease);
+        
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
     // 🌟 平滑滾動置頂核心效果 (包含動態計算吸附高度)
     function smoothScrollTo(elementId) {
       const target = document.getElementById(elementId);
@@ -560,10 +582,8 @@
       const elementPosition = target.getBoundingClientRect().top + currentScrollY;
       const targetPosition = Math.max(0, elementPosition - totalOffset);
 
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
+      // 調用我們自定義的慢速絲滑捲動，設定時間為 750ms
+      customSmoothScrollTo(targetPosition, 750);
     }
 
     // 🌟 手機瀏覽時：往下滑動自動平滑置頂 (精準對齊 Insights 區塊，展示完整的三級吸附)
@@ -588,13 +608,11 @@
 
         if (scrollingDown && currentY > 50 && currentY < targetPosition - 30) {
           isAutoScrolling = true;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
+          // 動畫時間放慢至 800ms，讓使用者明確感受到「吸附就位」的高級感
+          customSmoothScrollTo(targetPosition, 800);
           setTimeout(() => {
             isAutoScrolling = false;
-          }, 800);
+          }, 850); 
         }
       }, { passive: true });
     }
@@ -607,7 +625,8 @@
           tab.classList.add('active');
           activeLottery = tab.getAttribute('data-lottery');
           renderAll();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          // 切換彩種時，以中等速度絲滑回到頂端
+          customSmoothScrollTo(0, 600);
         });
       });
     }
