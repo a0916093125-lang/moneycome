@@ -160,7 +160,7 @@
     
     /* 🌟 金流收銀台視窗樣式優化 (手機版防超出螢幕與正確顯示修復) */
     .modal-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 16px; }
-    .modal-backdrop.active { display: flex; } /* 👈 修正：這行確保彈出視窗可以正常顯示 */
+    .modal-backdrop.active { display: flex; }
     .modal-box { background: #ffffff; border-radius: 16px; max-width: 500px; width: 100%; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; max-height: 90vh; overflow-y: auto; }
     .modal-close-btn { position: absolute; top: 16px; right: 16px; border: none; background: #f1f5f9; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; color: var(--text-secondary); transition: background 0.2s ease; z-index: 10; }
     .modal-close-btn:hover { background: #e2e8f0; }
@@ -327,45 +327,17 @@
   </div>
   <div class="toast-box" id="toast-box"></div>
 
-  <script>
-    // ==========================================
-    // ⚠️ 替換為你的最新 Web App URL
-    // ==========================================
-    const API_URL = "https://script.google.com/macros/s/AKfycbx9m5XcTshUv_oeMdQkNV4RB64wgbe1kMrUOB4HP6HhM114H7iGjohZySBh9KWsEEmW/exec"; 
+  <!-- 🌟 自動接軌：依序引入 API 通訊模組 與 分析邏輯模組 -->
+  <script src="api.js"></script>
+  <script src="logic.js"></script>
 
-    // ==========================================
-    // 🌟 ImgBB 圖床直連網址 (.jpg 結尾)
-    // ==========================================
+  <!-- 🌟 UI 控制與事件處理 -->
+  <script>
     const QR_CODES = {
       88: "https://i.ibb.co/4wwWjz93/88.jpg",
       168: "https://i.ibb.co/Cps3mwWg/168.jpg",
       888: "https://i.ibb.co/5gMy1q38/888.jpg"
     };
-
-    let LOTTERY_DATA = {};
-    let SHEETS_META = {};
-
-    const LUCKY_MODELS = [
-      { id: 'cloud-hot-core', name: '雲端熱門聚變', subtitle: '全歷史真實熱碼', logic: '調用後端運算引擎，擷取萬筆資料中全歷史開出頻率最高的絕對熱門號碼進行重組。' },
-      { id: 'cloud-cold-revert', name: '深淵冷碼回歸', subtitle: '全歷史極限回歸', logic: '由後端統計全歷史極度冰凍冷門號，抓取物極必反、即將強力彈升的潛力碼。' },
-      { id: 'prime-golden', name: '質數黃金矩陣', subtitle: '數學質數收斂', logic: '排除可被整除的常規號碼，專注鎖定具備特殊獨立機率特徵的純質數群組。' },
-      { id: 'fibonacci-spiral', name: '費氏數列共振', subtitle: '螺旋時空排列', logic: '套用自然界黃金比例費波那契數列 (1,2,3,5,8,13...)，尋找符合螺旋序列的神秘交集點。' },
-      { id: 'jinyu-flow', name: '金玉滿堂', subtitle: '趨勢金流模型', logic: '鎖定近期動能最強、大單聚焦的高頻突破波段。' },
-      { id: 'ziqi-cycle', name: '紫氣東來', subtitle: '週期定盤模型', logic: '依據波段週期回歸規律，捕捉即將反彈之強勢號。' },
-      { id: 'fugui-revert', name: '富貴吉祥', subtitle: '均值回歸模型', logic: '鎖定偏離均值後強力拉回之黃金號。' },
-      { id: 'hongyun-streak', name: '鴻運當頭', subtitle: '連珠連莊模型', logic: '追蹤連莊號與斜連跳格軌跡，精選連發焦點。' }
-    ];
-
-    const UNLUCKY_MODELS = [
-      { id: 'shuaishen-freeze', name: '衰神附體', subtitle: '極寒冰封號', logic: '深陷統計極度冰凍冷卻區，動能徹底死絕。' },
-      { id: 'mingdeng-exhaust', name: '冥燈高照', subtitle: '熱退冷進號', logic: '連續超頻開出後出現頂部背離警訊，能量衰竭。' },
-      { id: 'qiongkun-flatline', name: '窮困潦倒', subtitle: '心電死線號', logic: '連續數十期標準差趨近於零，振幅徹底歸零休克。' },
-      { id: 'eyun-clash', name: '厄運纏身', subtitle: '相剋絕殺號', logic: '與近期強勢群組產生極端相位排斥，極難開出。' },
-      { id: 'wuyun-abyss', name: '烏雲罩頂', subtitle: '遺漏黑洞號', logic: '陷入多重遺漏奇異點，統計重力場陷阱無力掙脫。' },
-      { id: 'baimu-blind', name: '白目瞎衝', subtitle: '盲目送死號', logic: '完全背離大盤趨勢，在極度不合理的逆風位置試圖突破。' },
-      { id: 'daomei-crash', name: '倒楣透頂', subtitle: '斷崖跳水號', logic: '跌破所有統計防線，出現斷崖式下跌走勢。' },
-      { id: 'heshui-drown', name: '喝水塞牙', subtitle: '絕對冷門號', logic: '存在於多重模型都無法覆蓋的機率真空區。' }
-    ];
 
     let activeLottery = 'lottery_539';
     let analysisRange = 30; 
@@ -395,219 +367,207 @@
       }
     }
 
-    async function fetchWithRetry(url, maxRetries = 3) {
-      for (let i = 0; i < maxRetries; i++) {
-        try {
-          const response = await fetch(url);
-          if (!response.ok) throw new Error(`HTTP 異常: ${response.status}`);
-          return await response.json(); 
-        } catch (error) {
-          console.warn(`第 ${i + 1} 次連線失敗，準備重試...`, error);
-          if (i === maxRetries - 1) throw error; 
-          await new Promise(res => setTimeout(res, Math.pow(2, i) * 1000));
-        }
-      }
-    }
-
-    async function fetchLatestData() {
-      try {
-        const fetchUrl = `${API_URL}?limit=30&t=${Date.now()}`;
-        const json = await fetchWithRetry(fetchUrl, 3);
-        if (json.status === "success") {
-          LOTTERY_DATA = json.data;
-          SHEETS_META = json.meta;
-          renderAll();
-        } else {
-          showErrorUI(json.message);
-        }
-      } catch (error) {
-        showErrorUI("連線異常，無法取得數據，請稍後再試。");
-      }
-    }
-
     function showErrorUI(msg) {
-      if (Object.keys(LOTTERY_DATA).length === 0) document.getElementById('hero-main-display').innerHTML = `<h2 style="font-size:22px; font-weight:900; color:#dc2626;">${msg}</h2>`;
+      if (Object.keys(LOTTERY_DATA).length === 0) {
+        document.getElementById('hero-main-display').innerHTML = `<h2 style="font-size:22px; font-weight:900; color:#dc2626;">${msg}</h2>`;
+      }
     }
+
     function showToast(msg) {
-      const t = document.getElementById('toast-box'); t.innerText = msg; t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 2800);
+      const t = document.getElementById('toast-box');
+      t.innerText = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2800);
     }
+
     function initTabs() {
       const tabs = document.querySelectorAll('.tab-btn');
       tabs.forEach(tab => {
-        tab.addEventListener('click', () => { tabs.forEach(t => t.classList.remove('active')); tab.classList.add('active'); activeLottery = tab.getAttribute('data-lottery'); renderAll(); });
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeLottery = tab.getAttribute('data-lottery');
+          renderAll();
+        });
       });
     }
 
     function renderAll() {
-      if(Object.keys(LOTTERY_DATA).length === 0) return;
+      if (Object.keys(LOTTERY_DATA).length === 0) return;
       setTimeout(() => {
-        renderHero(); renderOverview();
-        if (currentModelCategory === 'tails') renderTailsAnalysis(); else renderModels();
+        renderHero();
+        renderOverview();
+        if (currentModelCategory === 'tails') {
+          renderTailsAnalysis();
+        } else {
+          renderModels();
+        }
         renderSavedList();
       }, 0);
     }
 
-    function getActiveDataset() { return LOTTERY_DATA[activeLottery] || []; }
+    function getActiveDataset() {
+      return LOTTERY_DATA[activeLottery] || [];
+    }
 
     function renderHero() {
-      const data = getActiveDataset(); const meta = SHEETS_META[activeLottery];
-      if(!meta) return;
+      const data = getActiveDataset();
+      const meta = SHEETS_META[activeLottery];
+      if (!meta) return;
       document.getElementById('hero-badge-name').innerText = meta.name;
       const container = document.getElementById('hero-main-display');
-      if (!data || data.length === 0) { container.innerHTML = `<h2>尚未取得資料</h2>`; return; }
+      if (!data || data.length === 0) {
+        container.innerHTML = `<h2>尚未取得資料</h2>`;
+        return;
+      }
 
       const latest = data[0];
       document.getElementById('hero-local-date').innerText = `當地日期 · ${latest.date}`;
       let ballsHtml = '<div class="pine-balls-stage">';
-      latest.numbers.forEach(num => { ballsHtml += `<div class="white-ball">${String(num).padStart(2,'0')}</div>`; });
-      if (activeLottery === 'lottery_marksix' && latest.special !== null) { ballsHtml += `<span style="font-size:26px; font-weight:900; color:#fde047;">+</span><div class="white-ball special-ball">${String(latest.special).padStart(2,'0')}</div>`; }
+      latest.numbers.forEach(num => {
+        ballsHtml += `<div class="white-ball">${String(num).padStart(2,'0')}</div>`;
+      });
+      if (activeLottery === 'lottery_marksix' && latest.special !== null) {
+        ballsHtml += `<span style="font-size:26px; font-weight:900; color:#fde047;">+</span><div class="white-ball special-ball">${String(latest.special).padStart(2,'0')}</div>`;
+      }
       ballsHtml += '</div>';
 
-      const sum = latest.numbers.reduce((a,b)=>a+b, 0); const maxN = activeLottery === 'lottery_marksix' ? 49 : 39; const med = Math.floor(maxN / 2);
-      let big = 0, small = 0, odd = 0, even = 0; latest.numbers.forEach(n => { if (n > med) big++; else small++; if (n % 2 !== 0) odd++; else even++; });
+      const sum = latest.numbers.reduce((a,b)=>a+b, 0);
+      const maxN = activeLottery === 'lottery_marksix' ? 49 : 39;
+      const med = Math.floor(maxN / 2);
+      let big = 0, small = 0, odd = 0, even = 0;
+      latest.numbers.forEach(n => {
+        if (n > med) big++; else small++;
+        if (n % 2 !== 0) odd++; else even++;
+      });
 
       const periodHtml = latest.period ? `期別 ${latest.period}` : `最新開獎`;
       container.innerHTML = `<div style="font-size:16px; opacity:0.9; font-family:var(--font-mono); font-weight:800; margin-bottom:4px;">${periodHtml}</div>${ballsHtml}<div style="display:flex; gap:16px; font-size:15px; color:rgba(255,255,255,0.9); font-family:var(--font-mono); font-weight:800;"><span>和值: ${sum}</span><span>大小: ${big}大${small}小</span><span>奇偶: ${odd}奇${even}偶</span></div>`;
     }
 
     function renderOverview() {
-      const data = getActiveDataset(); const meta = SHEETS_META[activeLottery]; if(!meta) return;
-      document.getElementById('metric-source-rows').innerText = meta.totalRows.toLocaleString(); document.getElementById('metric-page-rows').innerText = data.length.toString();
+      const data = getActiveDataset();
+      const meta = SHEETS_META[activeLottery];
+      if (!meta) return;
+      document.getElementById('metric-source-rows').innerText = meta.totalRows.toLocaleString();
+      document.getElementById('metric-page-rows').innerText = data.length.toString();
     }
 
     function setAnalysisRange(val) {
       analysisRange = parseInt(val, 10);
-      document.querySelectorAll('#range-btn-group .range-btn').forEach(btn => { btn.classList.toggle('active', parseInt(btn.getAttribute('data-range'), 10) === analysisRange); });
-      if (currentModelCategory === 'tails') renderTailsAnalysis(); else renderModels();
-    }
-
-    const cyrb53 = (str, seed = 0) => {
-      let h1 = 0xdeadbeef ^ seed, h2 = 0x41c64e6d ^ seed;
-      for (let i = 0, ch; i < str.length; i++) { ch = str.charCodeAt(i); h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677); }
-      h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507); h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909); h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507); h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-      return 4294967296 * (2097151 & h2) + (h1 >>> 0);
-    };
-
-    function mulberry32(a) { return function() { let t = a += 0x6D2B79F5; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-
-    function getPseudoRandomFromPool(modelId, lotteryType, period, sourcePool, count) {
-      const seedVal = cyrb53(`${modelId}:${lotteryType}:${period}`);
-      const rng = mulberry32(seedVal >>> 0);
-      const pool = [...sourcePool]; 
-      for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
-      return pool.slice(0, count).sort((a, b) => a - b);
-    }
-
-    function getDeterministicPrediction(modelId, lotteryType, period, maxNum = 39, count = 3) {
-      const meta = SHEETS_META[lotteryType];
-      
-      if (modelId === 'cloud-hot-core' && meta && meta.hotNums) return getPseudoRandomFromPool(modelId, lotteryType, period, meta.hotNums, count);
-      if (modelId === 'cloud-cold-revert' && meta && meta.coldNums) return getPseudoRandomFromPool(modelId, lotteryType, period, meta.coldNums, count);
-      if (modelId === 'prime-golden') {
-        const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47].filter(n => n <= maxNum);
-        return getPseudoRandomFromPool(modelId, lotteryType, period, primes, count);
+      document.querySelectorAll('#range-btn-group .range-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.getAttribute('data-range'), 10) === analysisRange);
+      });
+      if (currentModelCategory === 'tails') {
+        renderTailsAnalysis();
+      } else {
+        renderModels();
       }
-      if (modelId === 'fibonacci-spiral') {
-        const fibs = [1, 2, 3, 5, 8, 13, 21, 34, 47].filter(n => n <= maxNum);
-        const pool = fibs.length >= count ? fibs : [...fibs, 7, 11, 29].filter(n => n <= maxNum);
-        return getPseudoRandomFromPool(modelId, lotteryType, period, pool, count);
-      }
-      return getPseudoRandomFromPool(modelId, lotteryType, period, Array.from({ length: maxNum }, (_, i) => i + 1), count);
     }
 
     function switchModelCategory(cat) {
       currentModelCategory = cat;
-      const luckyBtn = document.getElementById('tab-model-lucky'); const unluckyBtn = document.getElementById('tab-model-unlucky'); const tailsBtn = document.getElementById('tab-model-tails'); const badge = document.getElementById('ranking-metric-badge');
-      luckyBtn.className = 'model-nav-btn lucky'; unluckyBtn.className = 'model-nav-btn unlucky'; tailsBtn.className = 'model-nav-btn tails-btn';
-      if (cat === 'lucky') { luckyBtn.classList.add('active'); if (badge) badge.innerText = '依綜合命中分數排行'; } else if (cat === 'unlucky') { unluckyBtn.classList.add('active'); if (badge) badge.innerText = '依完全避雷防禦率排行'; } else { tailsBtn.classList.add('active'); }
-      if (cat === 'tails') { document.getElementById('models-grid-container').style.display = 'none'; document.getElementById('ranking-title-bar').style.display = 'none'; document.getElementById('tails-wrapper').style.display = 'block'; renderTailsAnalysis(); } else { document.getElementById('models-grid-container').style.display = 'grid'; document.getElementById('ranking-title-bar').style.display = 'flex'; document.getElementById('tails-wrapper').style.display = 'none'; renderModels(); }
+      const luckyBtn = document.getElementById('tab-model-lucky');
+      const unluckyBtn = document.getElementById('tab-model-unlucky');
+      const tailsBtn = document.getElementById('tab-model-tails');
+      const badge = document.getElementById('ranking-metric-badge');
+      luckyBtn.className = 'model-nav-btn lucky';
+      unluckyBtn.className = 'model-nav-btn unlucky';
+      tailsBtn.className = 'model-nav-btn tails-btn';
+      if (cat === 'lucky') {
+        luckyBtn.classList.add('active');
+        if (badge) badge.innerText = '依綜合命中分數排行';
+      } else if (cat === 'unlucky') {
+        unluckyBtn.classList.add('active');
+        if (badge) badge.innerText = '依完全避雷防禦率排行';
+      } else {
+        tailsBtn.classList.add('active');
+      }
+      if (cat === 'tails') {
+        document.getElementById('models-grid-container').style.display = 'none';
+        document.getElementById('ranking-title-bar').style.display = 'none';
+        document.getElementById('tails-wrapper').style.display = 'block';
+        renderTailsAnalysis();
+      } else {
+        document.getElementById('models-grid-container').style.display = 'grid';
+        document.getElementById('ranking-title-bar').style.display = 'flex';
+        document.getElementById('tails-wrapper').style.display = 'none';
+        renderModels();
+      }
     }
 
     function renderModels() {
-      const container = document.getElementById('models-grid-container'); const data = getActiveDataset();
+      const container = document.getElementById('models-grid-container');
+      const data = getActiveDataset();
       if (!data || data.length === 0 || !container) return;
-      const latestDraw = data[0]; const targetPeriod = latestDraw.period || latestDraw.date; const maxN = activeLottery === 'lottery_marksix' ? 49 : 39;
-      const backtestDraws = data.slice(0, Math.min(analysisRange, data.length)); const totalTestDraws = Math.max(backtestDraws.length, 1);
-      const isLucky = (currentModelCategory === 'lucky'); const modelsList = isLucky ? LUCKY_MODELS : UNLUCKY_MODELS;
+      const latestDraw = data[0];
+      const targetPeriod = latestDraw.period || latestDraw.date;
+      const maxN = activeLottery === 'lottery_marksix' ? 49 : 39;
+      const isLucky = (currentModelCategory === 'lucky');
+      const modelsList = isLucky ? LUCKY_MODELS : UNLUCKY_MODELS;
 
-      const evaluatedModels = modelsList.map(m => {
-        const pred = getDeterministicPrediction(m.id, activeLottery, targetPeriod, maxN, 3);
-        let hit1 = 0, hit2 = 0, hit3 = 0, hit0 = 0;
-        backtestDraws.forEach(draw => {
-          const histPred = getDeterministicPrediction(m.id, activeLottery, draw.period || draw.date, maxN, 3);
-          const drawnSet = new Set(draw.numbers); let matchCount = 0; histPred.forEach(n => { if (drawnSet.has(n)) matchCount++; });
-          if (matchCount === 3) hit3++; else if (matchCount === 2) hit2++; else if (matchCount === 1) hit1++; else hit0++;
-        });
-        const score = isLucky ? (hit3 * 100 + hit2 * 10 + hit1 * 1) : (hit0 / totalTestDraws);
-        return { model: m, pred, hit0, hit1, hit2, hit3, score };
-      });
+      const { evaluatedModels, totalTestDraws } = evaluateAndRankModels(
+        modelsList, data, activeLottery, targetPeriod, maxN, analysisRange, isLucky
+      );
 
-      evaluatedModels.sort((a, b) => { if (b.score !== a.score) return b.score - a.score; return isLucky ? (b.hit3 - a.hit3 || b.hit2 - a.hit2 || b.hit1 - a.hit1) : (a.hit3 - b.hit3 || a.hit2 - b.hit2 || a.hit1 - b.hit1); });
-      
       let html = '';
       evaluatedModels.slice(0, 6).forEach((item, idx) => {
-        const {model: m, pred} = item; let ballsHtml = '';
+        const {model: m, pred} = item;
+        let ballsHtml = '';
         pred.forEach(num => {
           const bS = 'width:42px; height:42px; font-size:18px; font-weight:900; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono);';
-          if (isLucky) ballsHtml += `<div class="ball-dot-pine" style="${bS} color:#ffffff; box-shadow:0 3px 8px rgba(15,76,58,0.2);">${String(num).padStart(2,'0')}</div>`; else ballsHtml += `<div style="${bS} background:#ffffff; color:#dc2626; border:2.5px solid #dc2626; box-shadow:0 2px 6px rgba(220,38,38,0.15);">${String(num).padStart(2,'0')}</div>`;
+          if (isLucky) {
+            ballsHtml += `<div class="ball-dot-pine" style="${bS} color:#ffffff; box-shadow:0 3px 8px rgba(15,76,58,0.2);">${String(num).padStart(2,'0')}</div>`;
+          } else {
+            ballsHtml += `<div style="${bS} background:#ffffff; color:#dc2626; border:2.5px solid #dc2626; box-shadow:0 2px 6px rgba(220,38,38,0.15);">${String(num).padStart(2,'0')}</div>`;
+          }
         });
+
         let backtestBox = '';
         if (isLucky) {
-          const p1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1), p2 = ((item.hit2 / totalTestDraws) * 100).toFixed(1), p3 = ((item.hit3 / totalTestDraws) * 100).toFixed(1), winRate = (((item.hit1 + item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
+          const p1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1);
+          const p2 = ((item.hit2 / totalTestDraws) * 100).toFixed(1);
+          const p3 = ((item.hit3 / totalTestDraws) * 100).toFixed(1);
+          const winRate = (((item.hit1 + item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
           backtestBox = `<div class="backtest-box"><div class="backtest-box-header"><span>近 ${totalTestDraws} 期歷史實測</span><span style="color:#047857;">綜合命中率 ${winRate}%</span></div><div class="backtest-pills-row"><div class="backtest-pill"><span>中 1 碼</span><strong>${item.hit1}期 (${p1}%)</strong></div><div class="backtest-pill"><span>中 2 碼</span><strong style="color:#d97706;">${item.hit2}期 (${p2}%)</strong></div><div class="backtest-pill" style="border-color:#bbf7d0; background:#f0fdf4;"><span style="color:#166534;">3碼全中 🔥</span><strong style="color:#0f4c3a;">${item.hit3}期 (${p3}%)</strong></div></div></div>`;
         } else {
-          const avoidPct = ((item.hit0 / totalTestDraws) * 100).toFixed(1), leak1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1), leak2Plus = (((item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
+          const avoidPct = ((item.hit0 / totalTestDraws) * 100).toFixed(1);
+          const leak1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1);
+          const leak2Plus = (((item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
           backtestBox = `<div class="backtest-box"><div class="backtest-box-header"><span>近 ${totalTestDraws} 期避雷防禦實測</span><span style="color:#16a34a;">🛡️ 完全避雷率 ${avoidPct}%</span></div><div class="backtest-pills-row"><div class="backtest-pill" style="border-color:#bbf7d0; background:#f0fdf4;"><span style="color:#166534;">完全避開(0碼)</span><strong style="color:#15803d;">${item.hit0}期 (${avoidPct}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 1 碼</span><strong style="color:#d97706;">${item.hit1}期 (${leak1}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 2 碼+</span><strong style="color:#dc2626;">${item.hit2 + item.hit3}期 (${leak2Plus}%)</strong></div></div></div>`;
         }
-        const cardCls = isLucky ? 'model-card lucky' : 'model-card unlucky', bookmarkBtnLabel = isLucky ? '⭐ 收藏本期推薦 (3碼)' : '🛡️ 收藏避雷指標 (3碼)';
-        let rankBadgeStyle = isLucky ? (idx === 0 ? 'background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff;' : idx === 1 ? 'background:linear-gradient(135deg, #94a3b8, #64748b); color:#ffffff;' : idx === 2 ? 'background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff;' : 'background:#dcfce7; color:#15803d;') : (idx === 0 ? 'background:linear-gradient(135deg, #dc2626, #991b1b); color:#ffffff;' : 'background:#fee2e2; color:#991b1b; border:1px solid #fca5a5;');
+
+        const cardCls = isLucky ? 'model-card lucky' : 'model-card unlucky';
+        const bookmarkBtnLabel = isLucky ? '⭐ 收藏本期推薦 (3碼)' : '🛡️ 收藏避雷指標 (3碼)';
+        let rankBadgeStyle = isLucky 
+          ? (idx === 0 ? 'background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff;' : idx === 1 ? 'background:linear-gradient(135deg, #94a3b8, #64748b); color:#ffffff;' : idx === 2 ? 'background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff;' : 'background:#dcfce7; color:#15803d;') 
+          : (idx === 0 ? 'background:linear-gradient(135deg, #dc2626, #991b1b); color:#ffffff;' : 'background:#fee2e2; color:#991b1b; border:1px solid #fca5a5;');
         
         html += `<div class="${cardCls}"><div><div class="model-header-row"><div><div class="model-name"><span style="display:inline-block; font-size:13px; padding:4px 10px; border-radius:6px; font-weight:900; margin-right:8px; ${rankBadgeStyle}">TOP ${idx+1}</span> ${m.name}</div><div style="font-size:14px; font-weight:800; color:var(--text-muted); margin-top:6px;">${m.subtitle}</div></div><span class="model-tag">${isLucky ? '預測 3 碼' : '避雷 3 碼'}</span></div><div class="model-desc-text">${m.logic}</div><div class="model-balls-stage">${ballsHtml}</div>${backtestBox}</div><button class="btn-save-model" onclick='saveModelPrediction("${m.id}", "${m.name}", "${isLucky ? "lucky" : "unlucky"}", ${JSON.stringify(pred)}, "${targetPeriod}")'>${bookmarkBtnLabel}</button></div>`;
       });
       container.innerHTML = html;
     }
 
-    function setTailScheme(n) { selectedTailCount = n; document.querySelectorAll('#tail-scheme-group .range-btn').forEach(btn => { btn.classList.toggle('active', parseInt(btn.getAttribute('data-tailcount'), 10) === selectedTailCount); }); renderTailsAnalysis(); }
+    function setTailScheme(n) {
+      selectedTailCount = n;
+      document.querySelectorAll('#tail-scheme-group .range-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.getAttribute('data-tailcount'), 10) === selectedTailCount);
+      });
+      renderTailsAnalysis();
+    }
 
     function renderTailsAnalysis() {
-      const container = document.getElementById('tails-wrapper'); const data = getActiveDataset(); if (!data || data.length === 0 || !container) return;
-      const sample = data.slice(0, Math.min(analysisRange, data.length)); let maxN = activeLottery === 'lottery_marksix' ? 49 : 39; const totalDraws = sample.length;
-      
-      const tailCounts = Array(10).fill(0), tailOmission = Array(10).fill(null), pairMap = Array(10).fill(0); let doubleTailMatches = 0;
-      let tailPairs = {}; 
-      
-      sample.forEach((draw, dIdx) => { 
-        const roundTails = Array(10).fill(0); 
-        draw.numbers.forEach(num => { 
-          const t = parseInt(num) % 10; 
-          tailCounts[t]++; 
-          roundTails[t]++; 
-          if (tailOmission[t] === null) tailOmission[t] = dIdx; 
-        }); 
-        
-        let hasDouble = false; 
-        for (let t = 0; t < 10; t++) { 
-          if (roundTails[t] >= 2) { 
-            hasDouble = true; 
-            pairMap[t]++; 
-          } 
-        } 
-        if (hasDouble) doubleTailMatches++; 
+      const container = document.getElementById('tails-wrapper');
+      const data = getActiveDataset();
+      if (!data || data.length === 0 || !container) return;
 
-        let uniqueTails = [...new Set(draw.numbers.map(n => parseInt(n, 10) % 10))].sort((a,b) => a-b);
-        for(let i=0; i<uniqueTails.length; i++){
-          for(let j=i+1; j<uniqueTails.length; j++){
-            let key = `${uniqueTails[i]}-${uniqueTails[j]}`;
-            tailPairs[key] = (tailPairs[key] || 0) + 1;
-          }
-        }
-      });
-      
-      let sortedPairs = Object.keys(tailPairs).map(k => ({
-        t1: k.split('-')[0], 
-        t2: k.split('-')[1], 
-        count: tailPairs[k]
-      })).sort((a,b) => b.count - a.count);
+      const tailsData = calculateTailsData(data, activeLottery, analysisRange, selectedTailCount);
+      const {
+        totalDraws, tailCounts, maxCount, tailOmission, sortedPairs,
+        hotTail, omTail, killTail, schemeTails, schemeBalls,
+        schemeHitTotal, schemeHit2Plus, bestPairTail, bestPairCount,
+        omRank, doubleTailMatches, tailPool
+      } = tailsData;
 
       let topPairsHtml = sortedPairs.slice(0, 3).map((p, idx) => `
         <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:${idx === 0 ? '#f0fdf4' : '#f8fafc'}; border:1px solid ${idx === 0 ? '#bbf7d0' : 'var(--border-card)'}; border-radius:10px; margin-bottom:8px;">
@@ -622,20 +582,6 @@
           </div>
         </div>
       `).join('');
-
-      for (let t = 0; t < 10; t++) { if (tailOmission[t] === null) tailOmission[t] = totalDraws; }
-      const tailPool = (t) => { const res = []; for (let i = 1; i <= maxN; i++) if (i % 10 === t) res.push(i); return res; };
-      const weightedScore = Array(10).fill(0); for (let t = 0; t < 10; t++) weightedScore[t] = ((tailCounts[t] / tailPool(t).length) * 10) + Math.min(tailOmission[t] * 1.5, 10);
-      let hotTail = 0, maxHot = -1, omTail = 0, maxOm = -1, killTail = 0, minScore = 999999;
-      for (let t = 0; t < 10; t++) if (tailCounts[t] > maxHot) { maxHot = tailCounts[t]; hotTail = t; }
-      for (let t = 0; t < 10; t++) if (t !== hotTail && tailOmission[t] > maxOm) { maxOm = tailOmission[t]; omTail = t; }
-      for (let t = 0; t < 10; t++) if (t !== hotTail && t !== omTail) { const score = tailCounts[t] * 2 - tailOmission[t]; if (score < minScore) { minScore = score; killTail = t; } }
-      const sortedTails = Array.from({length: 10}, (_, i) => i).sort((a, b) => weightedScore[b] - weightedScore[a]);
-      const schemeTails = sortedTails.slice(0, selectedTailCount); let schemeBalls = []; schemeTails.forEach(t => { schemeBalls = schemeBalls.concat(tailPool(t)); }); schemeBalls.sort((a, b) => a - b);
-      let schemeHitTotal = 0, schemeHit2Plus = 0;
-      sample.forEach(draw => { const drawnSet = new Set(draw.numbers); let match = 0; schemeBalls.forEach(n => { if (drawnSet.has(n)) match++; }); schemeHitTotal += match; if (match >= 2) schemeHit2Plus++; });
-      let bestPairTail = 0, bestPairCount = -1; for (let t = 0; t < 10; t++) if (pairMap[t] > bestPairCount) { bestPairCount = pairMap[t]; bestPairTail = t; }
-      const omRank = Array.from({length: 10}, (_, i) => i).sort((a, b) => tailOmission[b] - tailOmission[a]).slice(0, 3); const maxCount = Math.max(...tailCounts, 1);
 
       container.innerHTML = `
         <div class="tails-ai-rec"><div class="tail-badge-box hot"><div><div class="tail-badge-title">🔥 本期主推熱尾</div><div class="tail-badge-number">${hotTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">近 ${totalDraws} 期強開 ${tailCounts[hotTail]} 次</div><div class="tail-badge-balls">${tailPool(hotTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="copyTailNumbers([${tailPool(hotTail).join(',')}], '${hotTail}尾')">複製號碼</button></div><div class="tail-badge-box omission"><div><div class="tail-badge-title">⚡ 斷層極限回歸</div><div class="tail-badge-number">${omTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">${tailOmission[omTail] === 0 ? '上期開出' : `已連續 ${tailOmission[omTail]} 期未開`}</div><div class="tail-badge-balls">${tailPool(omTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="copyTailNumbers([${tailPool(omTail).join(',')}], '${omTail}尾')">複製號碼</button></div><div class="tail-badge-box kill"><div><div class="tail-badge-title">🛡️ 本期絕殺避雷</div><div class="tail-badge-number">${killTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">動能冰封 · 建議避開</div><div class="tail-badge-balls">${tailPool(killTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="copyTailNumbers([${tailPool(killTail).join(',')}], '${killTail}尾')">複製號碼</button></div></div>
@@ -672,30 +618,83 @@
 
     function copyTailNumbers(arr, label) {
       const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
-      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(() => { showToast(`已複製 [${label}] 號碼：${text}`); }).catch(() => fallbackCopy(text, label)); } 
-      else { fallbackCopy(text, label); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => { showToast(`已複製 [${label}] 號碼：${text}`); }).catch(() => fallbackCopy(text, label));
+      } else {
+        fallbackCopy(text, label);
+      }
     }
-    function fallbackCopy(text, label) { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); showToast(`已複製 [${label}] 號碼：${text}`); } catch (err) { showToast(`號碼：${text}`); } document.body.removeChild(ta); }
-    function saveModelPrediction(modelId, modelName, type, numbers, period) { savedList.unshift({ id: Date.now(), lottery: activeLottery, lotteryName: SHEETS_META[activeLottery].name, modelName, type, period, numbers, date: new Date().toLocaleDateString('zh-TW') }); localStorage.setItem('tt_saved', JSON.stringify(savedList)); renderSavedList(); showToast(`已成功收藏 [${modelName}] 組合！`); }
+
+    function fallbackCopy(text, label) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast(`已複製 [${label}] 號碼：${text}`);
+      } catch (err) {
+        showToast(`號碼：${text}`);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function saveModelPrediction(modelId, modelName, type, numbers, period) {
+      savedList.unshift({
+        id: Date.now(),
+        lottery: activeLottery,
+        lotteryName: SHEETS_META[activeLottery].name,
+        modelName,
+        type,
+        period,
+        numbers,
+        date: new Date().toLocaleDateString('zh-TW')
+      });
+      localStorage.setItem('tt_saved', JSON.stringify(savedList));
+      renderSavedList();
+      showToast(`已成功收藏 [${modelName}] 組合！`);
+    }
 
     function renderSavedList() {
-      const container = document.getElementById('saved-list-container'); if (!container) return;
-      if (savedList.length === 0) { container.innerHTML = `<div style="font-size:15px; color:var(--text-muted); font-weight:600; padding:20px 0;">還沒有收藏，在上方模型卡片點選「收藏」即可保存。</div>`; return; }
+      const container = document.getElementById('saved-list-container');
+      if (!container) return;
+      if (savedList.length === 0) {
+        container.innerHTML = `<div style="font-size:15px; color:var(--text-muted); font-weight:600; padding:20px 0;">還沒有收藏，在上方模型卡片點選「收藏」即可保存。</div>`;
+        return;
+      }
       container.innerHTML = savedList.map(item => {
-        const isLucky = (item.type === 'lucky'); const matchDraw = (LOTTERY_DATA[item.lottery] || []).find(d => (d.period === item.period || d.date === item.period));
+        const isLucky = (item.type === 'lucky');
+        const matchDraw = (LOTTERY_DATA[item.lottery] || []).find(d => (d.period === item.period || d.date === item.period));
         let matchBadge = `<span style="font-size:13px; background:#fef3c7; color:#b45309; padding:4px 10px; border-radius:6px; font-weight:800;">⏳ 待開獎對獎</span>`;
         if (matchDraw) {
           const matchCount = item.numbers.filter(n => new Set(matchDraw.numbers).has(n)).length;
-          if (isLucky) matchBadge = matchCount > 0 ? `<span style="font-size:13px; background:#dcfce7; color:#15803d; padding:4px 10px; border-radius:6px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` : `<span style="font-size:13px; background:#f1f5f9; color:#64748b; padding:4px 10px; border-radius:6px; font-weight:800;">未中 (0碼)</span>`;
-          else matchBadge = matchCount === 0 ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`;
+          if (isLucky) {
+            matchBadge = matchCount > 0 
+              ? `<span style="font-size:13px; background:#dcfce7; color:#15803d; padding:4px 10px; border-radius:6px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` 
+              : `<span style="font-size:13px; background:#f1f5f9; color:#64748b; padding:4px 10px; border-radius:6px; font-weight:800;">未中 (0碼)</span>`;
+          } else {
+            matchBadge = matchCount === 0 
+              ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` 
+              : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`;
+          }
         }
         return `<div style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;"><div><div style="display:flex; align-items:center; gap:10px;"><strong style="font-size:16px; color:var(--text-main); font-weight:900;">${item.lotteryName} · ${item.modelName}</strong>${matchBadge}</div><div style="font-size:14px; color:var(--text-muted); font-family:var(--font-mono); font-weight:600; margin-top:4px;">${item.period ? `期別 ${item.period}` : `日期 ${item.date}`}</div><div style="display:flex; gap:8px; margin-top:10px;">${item.numbers.map(n => `<div class="ball-dot-pine" style="width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#ffffff; font-size:14px; font-weight:800; font-family:var(--font-mono);">${String(n).padStart(2,'0')}</div>`).join('')}</div></div><button onclick="removeSavedItem(${item.id})" style="background:none; border:none; color:var(--text-light); cursor:pointer; font-size:22px; padding:6px;">✕</button></div>`;
       }).join('');
     }
     
-    function removeSavedItem(id) { savedList = savedList.filter(x => x.id !== id); localStorage.setItem('tt_saved', JSON.stringify(savedList)); renderSavedList(); }
-    function openSupportModal() { document.getElementById('support-modal').classList.add('active'); }
-    function closeSupportModal() { document.getElementById('support-modal').classList.remove('active'); }
+    function removeSavedItem(id) {
+      savedList = savedList.filter(x => x.id !== id);
+      localStorage.setItem('tt_saved', JSON.stringify(savedList));
+      renderSavedList();
+    }
+
+    function openSupportModal() {
+      document.getElementById('support-modal').classList.add('active');
+    }
+
+    function closeSupportModal() {
+      document.getElementById('support-modal').classList.remove('active');
+    }
     
     function selectAmt(amt, btn) { 
       selectedAmount = amt; 
@@ -728,14 +727,8 @@
       btn.disabled = true;
 
       try {
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action: 'sponsor', name: name, amount: selectedAmount, message: msg })
-        });
-
-        const result = await response.json();
-        if(result.status === "success") {
+        const result = await sendSponsorApi(name, selectedAmount, msg);
+        if (result.status === "success") {
           closeSupportModal();
           showToast(`感謝 ${name} 贊助 NT$ ${selectedAmount} 支持創作者！`);
         } else {
