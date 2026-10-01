@@ -29,6 +29,8 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background-color: var(--bg-page); color: var(--text-main); font-family: var(--font-base); line-height: 1.5; -webkit-font-smoothing: antialiased; font-size: 17px; }
     .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    
+    /* 🌟 頂部 Header */
     header { background: #ffffff; border-bottom: 1px solid var(--border-card); position: sticky; top: 0; z-index: 100; }
     .header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
     .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -38,6 +40,7 @@
     .header-nav { display: flex; align-items: center; gap: 24px; }
     .header-nav a { color: var(--text-secondary); text-decoration: none; font-size: 16px; font-weight: 700; transition: color 0.15s ease; }
     .header-nav a:hover { color: var(--primary-pine); }
+    
     main { padding: 36px 0 80px; }
     .intro-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .tracker-tag { font-size: 13px; font-weight: 900; color: var(--primary-pine); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
@@ -45,7 +48,7 @@
     .btn-pill { padding: 12px 24px; border-radius: 999px; font-size: 15px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; text-decoration: none; border: 1.5px solid var(--border-card); background: #ffffff; color: var(--text-secondary); font-family: inherit; }
     .btn-pill:hover { background: #f8fafc; border-color: #cbd5e1; }
     
-    /* 🌟 彩種切換按鈕卡片支援滑動固定置頂 (Level 1) */
+    /* 🌟 彩種切換按鈕卡片支援固定置頂 (Level 1) */
     .tabs-card {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
@@ -62,43 +65,12 @@
       top: 70px;
       z-index: 95;
     }
-    .tab-btn {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: all 0.2s ease;
-      font-family: inherit;
-      text-align: center;
-    }
+    .tab-btn { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 12px 14px; border-radius: 10px; border: none; background: transparent; cursor: pointer; color: var(--text-secondary); transition: all 0.2s ease; font-family: inherit; text-align: center; }
     .tab-btn:hover { background: #f1f5f9; }
-    .tab-btn.active {
-      background: var(--primary-pine);
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(15, 76, 58, 0.25);
-    }
-    .tab-title-text {
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1.2;
-    }
-    .tab-time-badge {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-top: 4px;
-      font-family: var(--font-base);
-      transition: color 0.2s ease;
-    }
-    .tab-btn.active .tab-time-badge {
-      color: rgba(255, 255, 255, 0.9);
-    }
+    .tab-btn.active { background: var(--primary-pine); color: #ffffff; box-shadow: 0 4px 12px rgba(15, 76, 58, 0.25); }
+    .tab-title-text { font-size: 18px; font-weight: 900; line-height: 1.2; }
+    .tab-time-badge { font-size: 13px; font-weight: 700; color: var(--text-muted); margin-top: 4px; font-family: var(--font-base); transition: color 0.2s ease; }
+    .tab-btn.active .tab-time-badge { color: rgba(255, 255, 255, 0.9); }
 
     .dashboard-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 20px; margin-bottom: 48px; }
     .hero-pine-card { background: linear-gradient(135deg, var(--primary-pine) 0%, var(--primary-pine-dark) 100%); color: #ffffff; border-radius: 16px; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 250px; box-shadow: 0 8px 24px -4px rgba(15, 76, 58, 0.25); position: relative; }
@@ -117,6 +89,7 @@
     .metric-item strong { display: block; font-size: 32px; font-weight: 900; color: var(--text-main); font-family: var(--font-mono); line-height: 1.1; }
     .metric-item span { font-size: 14px; color: var(--text-muted); font-weight: 700; margin-top: 4px; display: inline-block; }
     .overview-footer { font-size: 14px; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-card); padding-top: 16px; }
+    
     .section-wrap { margin-bottom: 48px; }
     .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .section-headline { font-size: 28px; font-weight: 900; color: var(--text-main); }
@@ -217,22 +190,22 @@
     .text-search-input:focus { border-color: var(--primary-pine); box-shadow: 0 0 0 3px rgba(15, 76, 58, 0.12); }
     .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1e293b; color: #ffffff; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 700; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: none; }
 
-    /* 🌟 手機版專屬優化與三級吸附 (Sticky) 邏輯 */
+    /* 🌟 手機版專屬優化與三級吸附 (Sticky) 直列滿版版型 */
     @media (max-width: 860px) {
       .dashboard-grid, .bottom-grid, .tails-ai-rec { grid-template-columns: 1fr; }
       
-      /* Level 1: 頂部彩種列 */
-      .tabs-card { top: 70px; padding: 4px; gap: 4px; height: 60px; }
+      /* Level 1: 頂部彩種列 (鎖定高度 60px) */
+      .tabs-card { top: 70px; padding: 4px; gap: 4px; height: 60px; margin-bottom: 20px; }
       .tab-btn { padding: 8px 2px; }
       .tab-title-text { font-size: 14px; }
       .tab-time-badge { font-size: 10px; margin-top: 2px; }
 
-      /* 釋放標題容器束縛，讓內部的期數選擇可以全域吸附 */
+      /* 釋放標題容器束縛 */
       .section-header-row { display: contents; }
       .section-header-row > div:first-child { width: 100%; display: block; margin-bottom: 12px; padding-top: 8px; }
       .range-title-text { display: none; }
       
-      /* Level 2: 期數選擇列 */
+      /* Level 2: 期數選擇列 (鎖定高度 56px) */
       .range-control-wrap { 
         width: calc(100% + 40px); 
         display: flex; 
@@ -252,13 +225,11 @@
       .range-btn-group { width: 100%; display: flex; padding: 4px; border-radius: 10px; background: #eef2f6; }
       .range-btn { flex: 1; padding: 8px 0; font-size: 14px; border-radius: 8px; }
 
-      /* Level 3: 模型分類導覽 (改為橫向滑動) */
+      /* Level 3: 模型分類導覽 (改為直列堆疊 3 個大按鈕，不會消失) */
       .model-nav-pills { 
         display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        flex-direction: column; /* 🌟 確保由上往下排 */
+        gap: 10px;
         
         position: sticky;
         top: 186px; /* 130 + 56(Level 2) */
@@ -266,20 +237,18 @@
         background: rgba(248, 250, 252, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        padding: 10px 20px;
+        padding: 16px 20px;
         margin: 0 -20px 24px -20px;
         width: calc(100% + 40px);
-        border-bottom: 1px solid rgba(0,0,0,0.06);
-        box-shadow: 0 4px 10px -4px rgba(0,0,0,0.05);
-        gap: 10px;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 4px 12px -4px rgba(0,0,0,0.05);
       }
-      .model-nav-pills::-webkit-scrollbar { display: none; }
       .model-nav-btn {
-        flex: 0 0 calc(100% - 32px); /* 預留一點空間暗示可以往右滑 */
-        scroll-snap-align: center;
-        padding: 12px;
-        font-size: 15px;
+        width: 100%; /* 大按鈕滿版 */
+        padding: 14px 20px;
+        font-size: 16px;
         border-radius: 12px;
+        justify-content: center;
       }
     }
   </style>
@@ -350,12 +319,15 @@
         </div>
       </div>
 
-      <!-- 🌟 Level 3: 模型分類導覽 -->
+      <!-- 🌟 Level 3: 模型分類導覽 (直列堆疊) -->
       <div class="model-nav-pills" id="model-nav-pills">
         <button class="model-nav-btn active lucky" id="tab-model-lucky" onclick="switchModelCategory('lucky')">✨ 吉星富貴選號 (TOP 6)</button>
         <button class="model-nav-btn unlucky" id="tab-model-unlucky" onclick="switchModelCategory('unlucky')">🛡️ 冥燈不出牌 (TOP 6)</button>
         <button class="model-nav-btn tails-btn" id="tab-model-tails" onclick="switchModelCategory('tails')">🎯 尾數精準分析 (0~9尾)</button>
       </div>
+
+      <!-- 🌟 隱藏的定位點，保證畫面滑動時能完美對齊到三級選單正下方 -->
+      <div id="scroll-anchor" style="position:relative; top:-20px;"></div>
 
       <div class="model-ranking-title" id="ranking-title-bar">
         <span>🏆 歷史回測表現最佳 TOP 6 模型</span><span class="badge" id="ranking-metric-badge">依綜合命中分數排行</span>
@@ -502,7 +474,6 @@
       const qrEl = document.getElementById('jko-qr-img');
       if (qrEl) qrEl.src = QR_CODES[168];
       initTabs(); 
-      initMobileAutoScroll();
       await fetchLatestData(); 
       setInterval(fetchLatestData, 5 * 60 * 1000); 
     });
@@ -538,83 +509,39 @@
       setTimeout(() => { t.style.display = 'none'; }, 2800);
     }
 
-    // 🌟 自定義高級平滑捲動引擎 (取代瀏覽器預設過快的 smooth，實現緩入緩出絲滑感)
-    function customSmoothScrollTo(targetY, duration = 750) {
-      const startY = window.pageYOffset || document.documentElement.scrollTop;
-      const difference = targetY - startY;
-      const startTime = performance.now();
-
-      function step(currentTime) {
-        const progress = Math.min((currentTime - startTime) / duration, 1);
-        // easeInOutCubic (緩入緩出，前段與後段極度絲滑)
-        const ease = progress < 0.5 
-          ? 4 * progress * progress * progress 
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-        
-        window.scrollTo(0, startY + difference * ease);
-        
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        }
-      }
-      requestAnimationFrame(step);
-    }
-
-    // 🌟 平滑滾動置頂核心效果 (包含動態計算吸附高度)
+    // 🌟 回歸手機原生順暢滑動 API (捨棄自定義 requestAnimationFrame 避免卡頓)
     function smoothScrollTo(elementId) {
       const target = document.getElementById(elementId);
       if (!target) return;
 
       const header = document.querySelector('header');
       const tabsCard = document.getElementById('main-tabs-card');
+      const rangeWrap = document.getElementById('range-control-wrap');
+      const navPills = document.getElementById('model-nav-pills');
       
-      const headerHeight = header ? header.offsetHeight : 70;
-      // 手機版 Level 1 固定高度為 60px，電腦版為動態高度
-      const tabsHeight = tabsCard ? (window.innerWidth <= 860 ? 60 : tabsCard.offsetHeight) : 0; 
+      let totalOffset = 0;
+      if (header) totalOffset += header.offsetHeight;
       
-      let totalOffset = headerHeight + tabsHeight;
-
-      if (window.innerWidth > 860) {
-        totalOffset += 10; // 電腦版預留一點邊距
+      if (window.innerWidth <= 860) {
+        // 手機版：計算所有吸附層 (Level 1 + Level 2 + Level 3) 的總高度
+        if (tabsCard) totalOffset += tabsCard.offsetHeight + parseInt(window.getComputedStyle(tabsCard).marginBottom || 0);
+        if (rangeWrap) totalOffset += rangeWrap.offsetHeight;
+        if (navPills) totalOffset += navPills.offsetHeight + parseInt(window.getComputedStyle(navPills).marginBottom || 0);
+      } else {
+        // 電腦版：只計算 Level 1 與一點間距
+        if (tabsCard) totalOffset += tabsCard.offsetHeight;
+        totalOffset += 10;
       }
 
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
       const elementPosition = target.getBoundingClientRect().top + currentScrollY;
       const targetPosition = Math.max(0, elementPosition - totalOffset);
 
-      // 調用我們自定義的慢速絲滑捲動，設定時間為 750ms
-      customSmoothScrollTo(targetPosition, 750);
-    }
-
-    // 🌟 手機瀏覽時：往下滑動自動平滑置頂 (精準對齊 Insights 區塊，展示完整的三級吸附)
-    let isAutoScrolling = false;
-    let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
-
-    function initMobileAutoScroll() {
-      window.addEventListener('scroll', () => {
-        if (window.innerWidth > 860 || isAutoScrolling) return;
-
-        const currentY = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollingDown = currentY > lastScrollY;
-        lastScrollY = currentY;
-
-        // 手機往下滑動時，直接對齊到整個數據分析區塊 (#insights) 的頂端
-        const target = document.getElementById('insights');
-        if (!target) return;
-
-        const totalOffset = 70 + 60; // Header (70) + Level 1 Tabs (60)
-        const elementPosition = target.getBoundingClientRect().top + currentY;
-        const targetPosition = Math.max(0, elementPosition - totalOffset);
-
-        if (scrollingDown && currentY > 50 && currentY < targetPosition - 30) {
-          isAutoScrolling = true;
-          // 動畫時間放慢至 800ms，讓使用者明確感受到「吸附就位」的高級感
-          customSmoothScrollTo(targetPosition, 800);
-          setTimeout(() => {
-            isAutoScrolling = false;
-          }, 850); 
-        }
-      }, { passive: true });
+      // 呼叫原生平滑捲動引擎 (交由瀏覽器底層硬體加速，絕對順暢)
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
     }
 
     function initTabs() {
@@ -625,8 +552,7 @@
           tab.classList.add('active');
           activeLottery = tab.getAttribute('data-lottery');
           renderAll();
-          // 切換彩種時，以中等速度絲滑回到頂端
-          customSmoothScrollTo(0, 600);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
     }
@@ -704,7 +630,7 @@
       if (pageRowsEl) pageRowsEl.innerText = data.length.toString();
     }
 
-    // 🌟 切換期數，將整個分析區塊 (#insights) 頂部精準滑動到吸附列下方
+    // 🌟 切換期數，將結果內容平滑滑動到「三層吸附選單」正下方
     function setAnalysisRange(val) {
       analysisRange = parseInt(val, 10);
       document.querySelectorAll('#range-btn-group .range-btn').forEach(btn => {
@@ -715,12 +641,14 @@
       } else {
         renderModels();
       }
+      
+      // 延遲一點等待渲染完畢後，執行原生平滑滑動，對齊到我們藏好的錨點
       setTimeout(() => {
-        smoothScrollTo('insights');
-      }, 30);
+        smoothScrollTo('scroll-anchor');
+      }, 50);
     }
 
-    // 🌟 切換分類，將當下按鈕置中 (Level 3 行為)，並確保畫面滑動至頂端對齊
+    // 🌟 切換分類，將結果內容平滑滑動到「三層吸附選單」正下方
     function switchModelCategory(cat) {
       currentModelCategory = cat;
       const luckyBtn = document.getElementById('tab-model-lucky');
@@ -731,24 +659,14 @@
       if (unluckyBtn) unluckyBtn.className = 'model-nav-btn unlucky';
       if (tailsBtn) tailsBtn.className = 'model-nav-btn tails-btn';
       
-      let activeBtn = null;
       if (cat === 'lucky') {
-        if (luckyBtn) { luckyBtn.classList.add('active'); activeBtn = luckyBtn; }
+        if (luckyBtn) luckyBtn.classList.add('active');
         if (badge) badge.innerText = '依綜合命中分數排行';
       } else if (cat === 'unlucky') {
-        if (unluckyBtn) { unluckyBtn.classList.add('active'); activeBtn = unluckyBtn; }
+        if (unluckyBtn) unluckyBtn.classList.add('active');
         if (badge) badge.innerText = '依完全避雷防禦率排行';
       } else {
-        if (tailsBtn) { tailsBtn.classList.add('active'); activeBtn = tailsBtn; }
-      }
-
-      // 手機版：使點擊的按鈕在橫向滑動列中平滑置中
-      if (window.innerWidth <= 860 && activeBtn) {
-        const container = document.getElementById('model-nav-pills');
-        if (container) {
-          const scrollLeft = activeBtn.offsetLeft - (container.offsetWidth / 2) + (activeBtn.offsetWidth / 2);
-          container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-        }
+        if (tailsBtn) tailsBtn.classList.add('active');
       }
 
       const modelsContainer = document.getElementById('models-grid-container');
@@ -767,9 +685,10 @@
         renderModels();
       }
 
+      // 切換完畢後，執行原生平滑滑動
       setTimeout(() => {
-        smoothScrollTo('insights');
-      }, 30);
+        smoothScrollTo('scroll-anchor');
+      }, 50);
     }
 
     function renderModels() {
