@@ -389,8 +389,35 @@
 
   <!-- 🌟 UI 控制與事件處理 -->
   <script>
-    // 🌟 在這裡設定你想要在 LINE 分享中顯示的網址 (可隨時改為 5390857.com)
+    // 🌟 在這裡設定你想要在 LINE 分享中顯示的網址 (未來若要改行銷網，改這一行即可)
     const SHARE_URL = "https://539168.com.tw";
+
+    // 🌟 隨機文案產生器 (結合 A、B、C、D 四種風格)
+    function getRandomShareText(type, data) {
+      const rand = Math.floor(Math.random() * 4); // 產生 0, 1, 2, 3
+      if (type === 'lucky') {
+        return [
+          `📊 【天天樂 AI 報牌】${data.lotteryName} (${data.periodStr})\n🤖 模型：${data.modelName} (吉星推薦)\n🎯 鎖定號碼：[ ${data.nums} ]\n---\n👇 免費看更多 AI 大數據精算：\n${SHARE_URL}`,
+          `🔥 財神爺點名啦！${data.lotteryName} (${data.periodStr})\n✨ 天天樂 AI 大數據水牌推薦：\n👉【 ${data.nums} 】👈\n祝大家今晚順利摘星中大獎！🎉\n---\n🎁 免費好用的 AI 抓牌神器：\n${SHARE_URL}`,
+          `🤫 【天天樂 AI 密碼】${data.lotteryName} (${data.periodStr})\n🎯 演算法剛剛鎖定了這 3 支：\n👉 [ ${data.nums} ]\n---\n你的專屬幸運號碼是什麼？點進來看：\n${SHARE_URL}`,
+          `🔥 【天天樂 AI 抓牌神器】${data.lotteryName} (${data.periodStr})\n📈 獨家大數據抓版路，本期水牌出爐！\n👉 推薦全車/二星參考：[ ${data.nums} ]\n祝大家今晚順利摘星、坐車收錢！💸\n---\n👇 查更多 AI 精算版路：\n${SHARE_URL}`
+        ][rand];
+      } else if (type === 'unlucky') {
+        return [
+          `🚨 【天天樂 避雷警告】${data.lotteryName} (${data.periodStr})\n☠️ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${data.nums} ]\n---\n🛡️ 查查你的號碼安不安全：\n${SHARE_URL}`,
+          `🛑 衰神退散！${data.lotteryName} (${data.periodStr})\n⚠️ 天天樂 AI 提醒，這幾支號碼今天超冷！\n🧊 建議避開：【 ${data.nums} 】\n保住本金就是贏！💪\n---\n🛡️ 買牌前先來測測吉凶：\n${SHARE_URL}`,
+          `😱 【天天樂 警告】${data.lotteryName} (${data.periodStr})\n🛑 系統算出這 3 支今天千萬不能碰：\n👉 [ ${data.nums} ]\n---\n你買的號碼安全嗎？免費幫你算：\n${SHARE_URL}`,
+          `🛑 【天天樂 避雷針】${data.lotteryName} (${data.periodStr})\n⚠️ AI 偵測動能冰封，這幾支超冷千萬別碰！\n🧊 激推五不中/不出牌：[ ${data.nums} ]\n---\n🛡️ 查更多不出牌避雷版路：\n${SHARE_URL}`
+        ][rand];
+      } else if (type === 'tail') {
+        return [
+          `📊 【天天樂 尾數精算】\n🎯 ${data.label}\n👉 鎖定號碼：[ ${data.nums} ]\n---\n👇 免費看更多 AI 大數據精算：\n${SHARE_URL}`,
+          `🔥 尾數抓牌看這裡！\n✨ AI 大數據推薦：${data.label}\n👉【 ${data.nums} 】👈\n祝大家順利中大獎！🎉\n---\n🎁 免費好用的抓牌神器：\n${SHARE_URL}`,
+          `🤫 【天天樂 AI 密碼】\n🎯 演算法剛剛鎖定了這個組合：\n👉 [ ${data.nums} ] (${data.label})\n---\n你的專屬號碼是什麼？點進來看：\n${SHARE_URL}`,
+          `🔥 【天天樂 尾數拖牌】\n📈 獨家大數據共伴版路出爐！\n👉 ${data.label} 推薦：[ ${data.nums} ]\n祝大家今晚坐車收錢！💸\n---\n👇 查更多 AI 精算版路：\n${SHARE_URL}`
+        ][rand];
+      }
+    }
 
     const LOTTERY_SCHEDULES = {
       lottery_539: { name: "今彩539", time: "每週一至六 20:30 開獎", fullSchedule: "每週一至週六 20:30 開獎" },
@@ -713,55 +740,40 @@
       showToast(`已成功收藏 [${modelName}] 組合！`);
     }
 
-    // 🌟 LINE 核心引擎 (直接使用 SHARE_URL)
+    // 🌟 LINE 核心呼叫引擎
     function shareToLine(text) {
       const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text)}`;
       window.open(lineUrl, '_blank');
     }
 
-    // 🌟 尾數小勳章的專屬 LINE 轉傳
+    // 🌟 尾數小勳章的 LINE 轉傳
     function shareTailBadgeToLine(arr, typeLabel) {
-      const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
-      const shareText = `🔥 【天天樂 AI 尾數精算】\n🎯 推薦組合：${typeLabel}\n👉 鎖定號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，馬上點擊：\n${SHARE_URL}`;
-      shareToLine(shareText);
+      const nums = arr.map(n => String(n).padStart(2, '0')).join(', ');
+      shareToLine(getRandomShareText('tail', { label: typeLabel, nums }));
     }
 
-    // 🌟 尾數推薦方案的專屬 LINE 轉傳
+    // 🌟 尾數推薦方案的 LINE 轉傳
     function shareTailsToLine(arr, label) {
-      const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
-      const shareText = `🔥 【天天樂 AI 尾數精算】\n🎯 推薦組合：${label}\n👉 鎖定號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，馬上點擊：\n${SHARE_URL}`;
-      shareToLine(shareText);
+      const nums = arr.map(n => String(n).padStart(2, '0')).join(', ');
+      shareToLine(getRandomShareText('tail', { label: label, nums }));
     }
 
-    // 🌟 模型收藏的 LINE 專屬轉傳 (自動判斷吉星或冥燈套用不同文案)
+    // 🌟 模型收藏的 LINE 專屬隨機轉傳
     function shareSavedItem(id) {
       const item = savedList.find(x => x.id === id);
       if (!item) return;
-      const numStr = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
+      const nums = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
       const periodStr = item.period ? `第 ${item.period} 期` : `${item.date}`;
-      
-      let shareText = '';
-      if (item.type === 'lucky') {
-        shareText = `📊 【天天樂 AI 報牌】${item.lotteryName} (${periodStr})\n🤖 模型：${item.modelName} (吉星推薦)\n🎯 鎖定號碼：[ ${numStr} ]\n\n👇 免費看更多 AI 大數據精算：\n${SHARE_URL}`;
-      } else {
-        shareText = `🚨 【天天樂 避雷警告】${item.lotteryName} (${periodStr})\n☠️ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${numStr} ]\n\n🛡️ 查查你的號碼安不安全：\n${SHARE_URL}`;
-      }
-      shareToLine(shareText);
+      shareToLine(getRandomShareText(item.type, { lotteryName: item.lotteryName, periodStr, modelName: item.modelName, nums }));
     }
 
-    // 🌟 模型收藏的純複製功能
+    // 🌟 模型收藏的純複製功能 (套用隨機文案引擎)
     function copySavedItem(id) {
       const item = savedList.find(x => x.id === id);
       if (!item) return;
-      const numStr = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
+      const nums = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
       const periodStr = item.period ? `第 ${item.period} 期` : `${item.date}`;
-      
-      let shareText = '';
-      if (item.type === 'lucky') {
-        shareText = `📊 【天天樂 AI 報牌】${item.lotteryName} (${periodStr})\n🤖 模型：${item.modelName} (吉星推薦)\n🎯 鎖定號碼：[ ${numStr} ]\n\n👇 免費看更多 AI 大數據精算：\n${SHARE_URL}`;
-      } else {
-        shareText = `🚨 【天天樂 避雷警告】${item.lotteryName} (${periodStr})\n☠️ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${numStr} ]\n\n🛡️ 查查你的號碼安不安全：\n${SHARE_URL}`;
-      }
+      const shareText = getRandomShareText(item.type, { lotteryName: item.lotteryName, periodStr, modelName: item.modelName, nums });
       
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(shareText).then(() => showToast('🎉 已成功複製分享文案！')).catch(() => fallbackCopy(shareText, null));
