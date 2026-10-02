@@ -161,7 +161,6 @@
     .tail-badge-balls { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 10px; z-index: 1; }
     .tail-ball-pill { display: inline-block; padding: 4px 10px; border-radius: 8px; font-size: 15px; font-weight: 800; font-family: var(--font-mono); background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
     
-    /* 🌟 修改了按鈕樣式，加入 LINE 綠色 */
     .btn-copy-tail { margin-top: 14px; background: #06C755; color: #ffffff; border: none; box-shadow: 0 2px 6px rgba(6, 199, 85, 0.25); border-radius: 8px; font-size: 14px; font-weight: 900; padding: 8px 16px; cursor: pointer; opacity: 0.95; transition: all 0.2s ease; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
     .btn-copy-tail:hover { opacity: 1; transform: scale(1.04); box-shadow: 0 4px 10px rgba(6, 199, 85, 0.35); }
     
@@ -390,6 +389,9 @@
 
   <!-- 🌟 UI 控制與事件處理 -->
   <script>
+    // 🌟 在這裡設定你想要在 LINE 分享中顯示的網址 (可隨時改為 5390857.com)
+    const SHARE_URL = "https://539168.com.tw";
+
     const LOTTERY_SCHEDULES = {
       lottery_539: { name: "今彩539", time: "每週一至六 20:30 開獎", fullSchedule: "每週一至週六 20:30 開獎" },
       lottery_f5: { name: "加州天天樂", time: "每日 09:30 開獎", fullSchedule: "每日上午 09:30 開獎" },
@@ -626,7 +628,6 @@
         </div>
       `).join('');
 
-      // 🌟 將尾數推薦區塊的按鈕換成專屬 LINE 按鈕
       container.innerHTML = `
         <div class="tails-ai-rec">
           <div class="tail-badge-box hot">
@@ -690,7 +691,6 @@
       `;
     }
 
-    // 🌟 原本的複製功能保留給電腦版或想純複製的使用者
     function copyTailNumbers(arr, label) {
       const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -713,54 +713,61 @@
       showToast(`已成功收藏 [${modelName}] 組合！`);
     }
 
-    // 🌟 新增：專門喚醒 LINE App 的核心轉傳引擎 (URL Scheme)
+    // 🌟 LINE 核心引擎 (直接使用 SHARE_URL)
     function shareToLine(text) {
-      // 透過 line.me 協議，手機會直接跳轉開啟 LINE 應用程式，並列出可傳送的好友與群組
       const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text)}`;
       window.open(lineUrl, '_blank');
     }
 
-    // 🌟 新增：針對尾數小勳章的專屬 LINE 轉傳
+    // 🌟 尾數小勳章的專屬 LINE 轉傳
     function shareTailBadgeToLine(arr, typeLabel) {
       const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
-      const shareText = `【天天樂 AI 尾數精算】\n${typeLabel}\n👉 推薦號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，免費大數據分析請上 天天樂！`;
+      const shareText = `🔥 【天天樂 AI 尾數精算】\n🎯 推薦組合：${typeLabel}\n👉 鎖定號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，馬上點擊：\n${SHARE_URL}`;
       shareToLine(shareText);
     }
 
-    // 🌟 新增：針對尾數推薦方案的專屬 LINE 轉傳
+    // 🌟 尾數推薦方案的專屬 LINE 轉傳
     function shareTailsToLine(arr, label) {
       const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
-      const shareText = `【天天樂 AI 尾數精算】\n🎯 推薦組合：${label}\n👉 本期鎖定號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，免費大數據分析請上 天天樂！`;
+      const shareText = `🔥 【天天樂 AI 尾數精算】\n🎯 推薦組合：${label}\n👉 鎖定號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，馬上點擊：\n${SHARE_URL}`;
       shareToLine(shareText);
     }
 
-    // 🌟 修改：模型收藏的 LINE 專屬轉傳
+    // 🌟 模型收藏的 LINE 專屬轉傳 (自動判斷吉星或冥燈套用不同文案)
     function shareSavedItem(id) {
       const item = savedList.find(x => x.id === id);
       if (!item) return;
       const numStr = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
-      const typeStr = item.type === 'lucky' ? '✨ 吉星富貴推薦' : '🛡️ 冥燈避雷絕殺';
       const periodStr = item.period ? `第 ${item.period} 期` : `${item.date}`;
       
-      const shareText = `【天天樂 AI 精算】${item.lotteryName} (${periodStr})\n${typeStr}：${item.modelName}\n👉 本期鎖定號碼：[ ${numStr} ]\n\n✅ 免費看更多大數據預測，請上 天天樂！`;
+      let shareText = '';
+      if (item.type === 'lucky') {
+        shareText = `📊 【天天樂 AI 報牌】${item.lotteryName} (${periodStr})\n🤖 模型：${item.modelName} (吉星推薦)\n🎯 鎖定號碼：[ ${numStr} ]\n\n👇 免費看更多 AI 大數據精算：\n${SHARE_URL}`;
+      } else {
+        shareText = `🚨 【天天樂 避雷警告】${item.lotteryName} (${periodStr})\n☠️ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${numStr} ]\n\n🛡️ 查查你的號碼安不安全：\n${SHARE_URL}`;
+      }
       shareToLine(shareText);
     }
 
-    // 🌟 新增：模型收藏的純複製功能 (滿足不想開 LINE 的使用者)
+    // 🌟 模型收藏的純複製功能
     function copySavedItem(id) {
       const item = savedList.find(x => x.id === id);
       if (!item) return;
       const numStr = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
-      const typeStr = item.type === 'lucky' ? '✨ 吉星富貴推薦' : '🛡️ 冥燈避雷絕殺';
       const periodStr = item.period ? `第 ${item.period} 期` : `${item.date}`;
-      const shareText = `【天天樂 AI 精算】${item.lotteryName} (${periodStr})\n${typeStr}：${item.modelName}\n👉 本期鎖定號碼：[ ${numStr} ]\n\n✅ 免費看更多大數據預測，請上 天天樂！`;
+      
+      let shareText = '';
+      if (item.type === 'lucky') {
+        shareText = `📊 【天天樂 AI 報牌】${item.lotteryName} (${periodStr})\n🤖 模型：${item.modelName} (吉星推薦)\n🎯 鎖定號碼：[ ${numStr} ]\n\n👇 免費看更多 AI 大數據精算：\n${SHARE_URL}`;
+      } else {
+        shareText = `🚨 【天天樂 避雷警告】${item.lotteryName} (${periodStr})\n☠️ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${numStr} ]\n\n🛡️ 查查你的號碼安不安全：\n${SHARE_URL}`;
+      }
       
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(shareText).then(() => showToast('🎉 已成功複製分享文案！')).catch(() => fallbackCopy(shareText, null));
       } else { fallbackCopy(shareText, null); }
     }
 
-    // 🌟 修改：在「我的收藏」卡片中加入明顯的 LINE 綠色按鈕 與 獨立的複製按鈕
     function renderSavedList() {
       const container = document.getElementById('saved-list-container');
       if (!container) return;
