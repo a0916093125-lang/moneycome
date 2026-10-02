@@ -5,15 +5,17 @@
  * ========================================================
  */
 
-// 每次您有修改 index.html 想要強迫使用者更新時，把這裡的 v2 改成 v3 即可！
-const CACHE_VERSION = 'tt-pwa-cache-v2';
+// 🌟 已更新至 v4，強迫使用者的手機/瀏覽器抓取你最新修改的排版與 JS 檔案！
+const CACHE_VERSION = 'tt-pwa-cache-v4';
 
-// 核心靜態資源清單 (系統會在第一次打開時，偷偷把這些檔案載進手機記憶體)
+// 核心靜態資源清單 (已加入最新分割出來的 style.css 與 main.js)
 const CORE_ASSETS = [
   './',
   './index.html',
   './api.js',
   './logic.js',
+  './main.js',
+  './style.css',
   './manifest.json'
 ];
 
@@ -22,7 +24,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting(); // 強制新版 Service Worker 立即接管，不等舊版關閉
   event.waitUntil(
     caches.open(CACHE_VERSION).then((cache) => {
-      console.log(`[PWA 引擎] 📦 正在預先快取核心資源...`);
+      console.log(`[PWA 引擎] 📦 正在預先快取核心資源 ${CACHE_VERSION}...`);
       // 使用 Promise.allSettled 確保就算某個檔案找不到，也不會導致整個 PWA 安裝失敗
       return Promise.allSettled(
         CORE_ASSETS.map(url => cache.add(url).catch(err => console.warn(`無法快取: ${url}`, err)))
@@ -60,7 +62,7 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
 
   // 2. 針對 Google API 開獎數據：絕對不要放進 PWA 快取！
-  // 因為前端 index.html 裡面已經有寫了一套更聰明的 localStorage 機制了，這裡直接放行避免打架。
+  // 因為前端有 localStorage 機制了，這裡直接放行避免打架。
   if (url.origin.includes('script.google.com') || url.origin.includes('script.googleusercontent.com')) {
     return;
   }
