@@ -3,7 +3,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbzKEejUwDBid5P9fmM1MmAv
 let LOTTERY_DATA = {};
 let SHEETS_META = {};
 
-// 具備自動重試機制的 Fetch 封裝
+// 具備指數退避重試機制的 Fetch 封裝
 async function fetchWithRetry(url, maxRetries = 3) {
   for (let i = 0; i < maxRetries; i++) {
     try {
@@ -18,20 +18,20 @@ async function fetchWithRetry(url, maxRetries = 3) {
   }
 }
 
-// 自動抓取並處理快取，避免畫面閃爍 (Layout Shift)
+// 自動抓取並處理快取，避免版面閃爍 (Layout Shift)
 async function fetchLatestData() {
   try {
     const cachedDataStr = localStorage.getItem('tt_lottery_cache');
     const cachedMetaStr = localStorage.getItem('tt_meta_cache');
     
-    // 步驟一：瞬間載入本地快取渲染畫面，達成秒開體驗
+    // 步驟一：立即載入本地快取渲染畫面，達成秒開體驗
     if (cachedDataStr && cachedMetaStr) {
       LOTTERY_DATA = JSON.parse(cachedDataStr);
       SHEETS_META = JSON.parse(cachedMetaStr);
       if (typeof renderAll === 'function') renderAll();
     }
 
-    // 步驟二：背景發送非同步請求，加上時間戳避免瀏覽器強快取
+    // 步驟二：背景發送非同步請求，附加時間戳避免瀏覽器強快取
     const fetchUrl = `${API_URL}?limit=30&t=${Date.now()}`;
     const json = await fetchWithRetry(fetchUrl, 3);
     
@@ -39,7 +39,7 @@ async function fetchLatestData() {
       const newDataStr = JSON.stringify(json.data);
       const newMetaStr = JSON.stringify(json.meta);
       
-      // 步驟三：比對新舊資料，只有發現最新開獎時才觸發重繪更新
+      // 步驟三：比對新舊資料，偵測到新開獎時才重繪畫面
       if (newDataStr !== cachedDataStr || newMetaStr !== cachedMetaStr) {
         LOTTERY_DATA = json.data;
         SHEETS_META = json.meta;
@@ -57,35 +57,32 @@ async function fetchLatestData() {
   }
 }
 
-// 發送 POST 贊助表單，處理 CORS
+// 發送 POST 贊助表單，以純文字繞過 OPTIONS 預檢
 async function sendSponsorApi(name, amount, message) {
   const response = await fetch(API_URL, {
     method: 'POST',
-    // 避免觸發複雜的 OPTIONS 預檢請求，統一改用 text/plain 發送 JSON 字串
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify({ action: 'sponsor', name: name, amount: amount, message: message })
   });
   return await response.json();
 }
 
-// 🌟 智慧高頻輪詢 (Smart Polling)
+// 智慧高頻輪詢 (Smart Polling)
 function startSmartPolling() {
   setInterval(async () => {
     const now = new Date();
     const h = now.getHours();
     const m = now.getMinutes();
     
-    // 判斷是否為各彩種開獎熱區 (開獎當下前後 15 分鐘)
     const is539Time = (h === 20 && m >= 30 && m <= 45); 
     const isMarkSixTime = (h === 21 && m >= 30 && m <= 45); 
     const isF5Time = (h === 9 && m >= 30 && m <= 45) || (h === 10 && m >= 30 && m <= 45);
 
     if (is539Time || isMarkSixTime || isF5Time) {
-      console.log("進入開獎熱區，啟動高頻輪詢...");
+      console.log("進入開獎時段，啟動高頻輪詢...");
       await fetchLatestData();
     }
-  }, 15000); // 處於熱區時，每 15 秒向後端拉取一次最新號碼
+  }, 15000); 
 }
 
-// 啟動輪詢機制
 startSmartPolling();
