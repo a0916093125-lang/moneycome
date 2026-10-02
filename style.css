@@ -166,11 +166,10 @@ footer { border-top: 1px solid var(--border-card); background: #ffffff; padding:
 .text-search-input:focus { border-color: var(--primary-pine); box-shadow: 0 0 0 3px rgba(15, 76, 58, 0.12); }
 .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1e293b; color: #ffffff; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 700; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: none; }
 
-/* 開獎時段動畫 */
 @keyframes pulseLive { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes spinBall { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* 🌟 手機版樣式 (保留頂部彩種卡片) */
+/* 🌟 手機版樣式 */
 @media (max-width: 860px) {
   .dashboard-grid, .bottom-grid, .tails-ai-rec { grid-template-columns: 1fr; }
   .tabs-card { top: 70px; padding: 4px; gap: 4px; height: 60px; margin-bottom: 20px; }
@@ -180,19 +179,13 @@ footer { border-top: 1px solid var(--border-card); background: #ffffff; padding:
   .section-header-row { display: contents; }
   .section-header-row > div:first-child { width: 100%; display: block; margin-bottom: 12px; padding-top: 8px; }
   .range-title-text { display: none; }
-  .range-control-wrap { 
-    width: calc(100% + 40px); display: flex; justify-content: center; margin: 0 -20px; 
-    position: sticky; top: 130px; z-index: 94; background: rgba(248, 250, 252, 0.95);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.04); height: 56px;
-  }
+  
+  /* 🌟 移除至頂效果，改回一般的排版 */
+  .range-control-wrap { width: 100%; display: flex; justify-content: center; margin-bottom: 16px; }
   .range-btn-group { width: 100%; display: flex; padding: 4px; border-radius: 10px; background: #eef2f6; }
   .range-btn { flex: 1; padding: 8px 0; font-size: 14px; border-radius: 8px; }
-  .model-nav-pills { 
-    display: flex; flex-direction: column; gap: 10px; position: sticky; top: 186px; z-index: 93;
-    background: rgba(248, 250, 252, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    padding: 16px 20px; margin: 0 -20px 24px -20px; width: calc(100% + 40px);
-    border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 12px -4px rgba(0,0,0,0.05);
-  }
+  
+  /* 🌟 移除至頂效果，改回一般的排版 */
+  .model-nav-pills { display: flex; flex-direction: column; gap: 10px; padding: 0; margin: 0 0 24px 0; width: 100%; }
   .model-nav-btn { width: 100%; padding: 14px 20px; font-size: 16px; border-radius: 12px; justify-content: center; }
 }

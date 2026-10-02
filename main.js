@@ -53,7 +53,6 @@ let savedList = JSON.parse(localStorage.getItem('tt_saved') || '[]');
 let selectedAmount = 168; 
 let selectedTailCount = 3;
 
-// 🌟 保留：微震動觸覺回饋
 function triggerVibration() {
   if (navigator.vibrate) navigator.vibrate(12);
 }
@@ -116,7 +115,8 @@ function smoothScrollTo(elementId) {
   triggerVibration();
   const target = document.getElementById(elementId);
   if (!target) return;
-  const headerOffset = window.innerWidth <= 860 ? 70 : 70;
+  // 🌟 調整偏移量：扣除手機版 Navbar 與彩種卡片的高度，避免滑動後被遮擋
+  const headerOffset = window.innerWidth <= 860 ? 150 : 70;
   const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
   const elementPosition = target.getBoundingClientRect().top + currentScrollY;
   window.scrollTo({ top: Math.max(0, elementPosition - headerOffset - 20), behavior: 'smooth' });
@@ -222,6 +222,7 @@ function setAnalysisRange(val) {
   analysisRange = parseInt(val, 10);
   document.querySelectorAll('#range-btn-group .range-btn').forEach(btn => { btn.classList.toggle('active', parseInt(btn.getAttribute('data-range'), 10) === analysisRange); });
   if (currentModelCategory === 'tails') { renderTailsAnalysis(); } else { renderModels(); }
+  setTimeout(() => { smoothScrollTo('scroll-anchor'); }, 50);
 }
 
 function switchModelCategory(cat) {
@@ -237,6 +238,7 @@ function switchModelCategory(cat) {
   const modelsContainer = document.getElementById('models-grid-container'); const rankingBar = document.getElementById('ranking-title-bar'); const tailsWrapper = document.getElementById('tails-wrapper');
   if (cat === 'tails') { if (modelsContainer) modelsContainer.style.display = 'none'; if (rankingBar) rankingBar.style.display = 'none'; if (tailsWrapper) tailsWrapper.style.display = 'block'; renderTailsAnalysis(); } 
   else { if (modelsContainer) modelsContainer.style.display = 'grid'; if (rankingBar) rankingBar.style.display = 'flex'; if (tailsWrapper) tailsWrapper.style.display = 'none'; renderModels(); }
+  setTimeout(() => { smoothScrollTo('scroll-anchor'); }, 50);
 }
 
 function renderModels() {
@@ -328,7 +330,7 @@ function copyTailNumbers(arr, label) {
 
 function fallbackCopy(text, label) {
   const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
-  try { document.execCommand('copy'); showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製內容！'); } catch (err) { showToast('複製失敗，請手動複製。'); }
+  try { document.execCommand('copy'); showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製內容！'); } catch (err) { showToast('複製失敗，請手手動複製。'); }
   document.body.removeChild(ta);
 }
 
@@ -339,7 +341,6 @@ function saveModelPrediction(modelId, modelName, type, numbers, period) {
   localStorage.setItem('tt_saved', JSON.stringify(savedList)); renderSavedList(); showToast(`已成功收藏 [${modelName}] 組合！`);
 }
 
-// 🌟 保留：行動裝置原生 Web Share API
 function shareContent(text) {
   triggerVibration();
   if (navigator.share) {
