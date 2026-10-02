@@ -160,8 +160,11 @@
     .tail-badge-number { font-size: 38px; font-weight: 900; line-height: 1; z-index: 1; font-family: var(--font-mono); margin-bottom: 6px; }
     .tail-badge-balls { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 10px; z-index: 1; }
     .tail-ball-pill { display: inline-block; padding: 4px 10px; border-radius: 8px; font-size: 15px; font-weight: 800; font-family: var(--font-mono); background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    .btn-copy-tail { margin-top: 14px; background: #ffffff; border: 1.5px solid currentColor; border-radius: 8px; font-size: 14px; font-weight: 800; padding: 8px 16px; cursor: pointer; opacity: 0.9; transition: all 0.2s ease; }
-    .btn-copy-tail:hover { opacity: 1; transform: scale(1.04); }
+    
+    /* 🌟 修改了按鈕樣式，加入 LINE 綠色 */
+    .btn-copy-tail { margin-top: 14px; background: #06C755; color: #ffffff; border: none; box-shadow: 0 2px 6px rgba(6, 199, 85, 0.25); border-radius: 8px; font-size: 14px; font-weight: 900; padding: 8px 16px; cursor: pointer; opacity: 0.95; transition: all 0.2s ease; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
+    .btn-copy-tail:hover { opacity: 1; transform: scale(1.04); box-shadow: 0 4px 10px rgba(6, 199, 85, 0.35); }
+    
     .temp-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 15px; }
     .temp-label { font-weight: 900; font-family: var(--font-mono); width: 38px; color: var(--text-secondary); text-align: right; }
     .temp-bar-bg { flex: 1; height: 14px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
@@ -173,8 +176,8 @@
     .omission-item strong { font-size: 20px; color: #dc2626; font-family: var(--font-mono); font-weight: 900; }
     .double-hit-circle { width: 120px; height: 120px; border-radius: 50%; border: 10px solid #f1f5f9; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--text-main); flex-shrink: 0; }
     .double-hit-circle span { font-size: 30px; font-weight: 900; font-family: var(--font-mono); color: var(--primary-pine); }
-    .btn-pine { background: var(--primary-pine); color: #ffffff; border: none; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; transition: background 0.15s ease; font-family: inherit; }
-    .btn-pine:hover { background: var(--primary-pine-light); }
+    .btn-pine { background: var(--primary-pine); color: #ffffff; border: none; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; transition: background 0.15s ease; font-family: inherit; display: inline-flex; align-items: center; justify-content: center; }
+    .btn-pine:hover { opacity: 0.9; }
     .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
     .space-card { background: #ffffff; border: 1px solid var(--border-card); border-radius: 16px; padding: 28px 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
     .support-card { background: var(--accent-mint); border: 1px solid var(--accent-mint-border); border-radius: 16px; padding: 28px 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
@@ -193,63 +196,28 @@
     /* 🌟 手機版專屬優化與三級吸附 (Sticky) 直列滿版版型 */
     @media (max-width: 860px) {
       .dashboard-grid, .bottom-grid, .tails-ai-rec { grid-template-columns: 1fr; }
-      
-      /* Level 1: 頂部彩種列 (鎖定高度 60px) */
       .tabs-card { top: 70px; padding: 4px; gap: 4px; height: 60px; margin-bottom: 20px; }
       .tab-btn { padding: 8px 2px; }
       .tab-title-text { font-size: 14px; }
       .tab-time-badge { font-size: 10px; margin-top: 2px; }
-
-      /* 釋放標題容器束縛 */
       .section-header-row { display: contents; }
       .section-header-row > div:first-child { width: 100%; display: block; margin-bottom: 12px; padding-top: 8px; }
       .range-title-text { display: none; }
-      
-      /* Level 2: 期數選擇列 (鎖定高度 56px) */
       .range-control-wrap { 
-        width: calc(100% + 40px); 
-        display: flex; 
-        justify-content: center; 
-        margin: 0 -20px; 
-        
-        position: sticky;
-        top: 130px; /* 70(Header) + 60(Level 1) */
-        z-index: 94;
-        background: rgba(248, 250, 252, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 8px 20px;
-        border-bottom: 1px solid rgba(0,0,0,0.04);
-        height: 56px;
+        width: calc(100% + 40px); display: flex; justify-content: center; margin: 0 -20px; 
+        position: sticky; top: 130px; z-index: 94; background: rgba(248, 250, 252, 0.95);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px;
+        border-bottom: 1px solid rgba(0,0,0,0.04); height: 56px;
       }
       .range-btn-group { width: 100%; display: flex; padding: 4px; border-radius: 10px; background: #eef2f6; }
       .range-btn { flex: 1; padding: 8px 0; font-size: 14px; border-radius: 8px; }
-
-      /* Level 3: 模型分類導覽 (改為直列堆疊 3 個大按鈕，不會消失) */
       .model-nav-pills { 
-        display: flex;
-        flex-direction: column; /* 🌟 確保由上往下排 */
-        gap: 10px;
-        
-        position: sticky;
-        top: 186px; /* 130 + 56(Level 2) */
-        z-index: 93;
-        background: rgba(248, 250, 252, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 16px 20px;
-        margin: 0 -20px 24px -20px;
-        width: calc(100% + 40px);
-        border-bottom: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 0 4px 12px -4px rgba(0,0,0,0.05);
+        display: flex; flex-direction: column; gap: 10px; position: sticky; top: 186px; z-index: 93;
+        background: rgba(248, 250, 252, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        padding: 16px 20px; margin: 0 -20px 24px -20px; width: calc(100% + 40px);
+        border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 12px -4px rgba(0,0,0,0.05);
       }
-      .model-nav-btn {
-        width: 100%; /* 大按鈕滿版 */
-        padding: 14px 20px;
-        font-size: 16px;
-        border-radius: 12px;
-        justify-content: center;
-      }
+      .model-nav-btn { width: 100%; padding: 14px 20px; font-size: 16px; border-radius: 12px; justify-content: center; }
     }
   </style>
 </head>
@@ -326,7 +294,6 @@
         <button class="model-nav-btn tails-btn" id="tab-model-tails" onclick="switchModelCategory('tails')">🎯 尾數精準分析 (0~9尾)</button>
       </div>
 
-      <!-- 🌟 隱藏的定位點，保證畫面滑動時能完美對齊到三級選單正下方 -->
       <div id="scroll-anchor" style="position:relative; top:-20px;"></div>
 
       <div class="model-ranking-title" id="ranking-title-bar">
@@ -359,20 +326,11 @@
       <div class="space-card" style="padding: 40px; line-height: 1.8;">
         <div class="tracker-tag">ABOUT OUR ALGORITHM</div>
         <h2 class="section-headline" style="font-size: 24px; margin-bottom: 20px;">關於天天樂：大數據與 AI 演算法的完美結合</h2>
-        
         <div style="font-size: 15px; color: var(--text-muted); font-weight: 600; text-align: justify;">
-          <p style="margin-bottom: 16px;">
-            歡迎來到「天天樂」，這是一個專為彩迷打造的無伺服器 (Serverless) 大數據平台，提供最即時的<strong>今彩539預測</strong>、<strong>天天樂統計</strong>與<strong>六合彩開獎號碼</strong>分析。我們深知在隨機機率的遊戲中，單憑直覺往往難以掌握長期趨勢。因此，本站自主研發了一套純前端邊緣運算的 AI 統計引擎，底層結合了馬可夫鏈 (Markov Chain) 的狀態轉移機率預測，以及蒙地卡羅 (Monte Carlo) 數值模擬技術，將數千筆歷史開獎紀錄轉化為具備極高實戰價值的選號參考。
-          </p>
-          <p style="margin-bottom: 16px;">
-            本站的核心預測功能分為三大版塊。首先是「✨ 吉星富貴選號」，系統會透過雲端熱門聚變、質數黃金矩陣、費氏數列共振等 8 種不同的數學與機率模型，針對歷史軌跡進行多維度回測，精選出綜合命中率最高的 TOP 6 黃金組合。這絕對不是隨機盲猜，而是立基於大數據均值回歸與趨勢動能的科學化精算。
-          </p>
-          <p style="margin-bottom: 16px;">
-            其次，我們首創了「🛡 冥燈不出牌」避雷系統。在彩券統計中，「不買什麼」往往比「買什麼」更為關鍵。系統會嚴格篩選出陷入極寒冰封區、心電死線，或與近期強勢號碼產生極端相位排斥的冷門號。這套獨家避雷模型在長期回測中展現了卓越的防禦率，幫助彩友有效避開動能徹底死絕的號碼，將資源精準集中在更具爆發潛力的標的。
-          </p>
-          <p style="margin-bottom: 0;">
-            最後，「🎯 尾數精準分析」則是利用降維打擊策略，將龐大的選號池極限收斂至 0~9 尾數。我們綜合了冷熱溫度計、極限遺漏警戒以及同尾數雙開雷達，為您動態精算最佳尾數方案。無論您是在追蹤最新的<strong>六合彩開獎號碼</strong>，還是需要高精準度的<strong>今彩539預測</strong>與<strong>天天樂統計</strong>，天天樂的數據倉儲都會在官方攪珠結束後極速同步，為您提供最客觀、最透明的策略輔助。
-          </p>
+          <p style="margin-bottom: 16px;">歡迎來到「天天樂」，這是一個專為彩迷打造的無伺服器 (Serverless) 大數據平台，提供最即時的<strong>今彩539預測</strong>、<strong>天天樂統計</strong>與<strong>六合彩開獎號碼</strong>分析。我們深知在隨機機率的遊戲中，單憑直覺往往難以掌握長期趨勢。因此，本站自主研發了一套純前端邊緣運算的 AI 統計引擎，底層結合了馬可夫鏈 (Markov Chain) 的狀態轉移機率預測，以及蒙地卡羅 (Monte Carlo) 數值模擬技術，將數千筆歷史開獎紀錄轉化為具備極高實戰價值的選號參考。</p>
+          <p style="margin-bottom: 16px;">本站的核心預測功能分為三大版塊。首先是「✨ 吉星富貴選號」，系統會透過雲端熱門聚變、質數黃金矩陣、費氏數列共振等 8 種不同的數學與機率模型，針對歷史軌跡進行多維度回測，精選出綜合命中率最高的 TOP 6 黃金組合。這絕對不是隨機盲猜，而是立基於大數據均值回歸與趨勢動能的科學化精算。</p>
+          <p style="margin-bottom: 16px;">其次，我們首創了「🛡 冥燈不出牌」避雷系統。在彩券統計中，「不買什麼」往往比「買什麼」更為關鍵。系統會嚴格篩選出陷入極寒冰封區、心電死線，或與近期強勢號碼產生極端相位排斥的冷門號。這套獨家避雷模型在長期回測中展現了卓越的防禦率，幫助彩友有效避開動能徹底死絕的號碼，將資源精準集中在更具爆發潛力的標的。</p>
+          <p style="margin-bottom: 0;">最後，「🎯 尾數精準分析」則是利用降維打擊策略，將龐大的選號池極限收斂至 0~9 尾數。我們綜合了冷熱溫度計、極限遺漏警戒以及同尾數雙開雷達，為您動態精算最佳尾數方案。無論您是在追蹤最新的<strong>六合彩開獎號碼</strong>，還是需要高精準度的<strong>今彩539預測</strong>與<strong>天天樂統計</strong>，天天樂的數據倉儲都會在官方攪珠結束後極速同步，為您提供最客觀、最透明的策略輔助。</p>
         </div>
       </div>
     </div>
@@ -391,7 +349,6 @@
       <button class="modal-close-btn" onclick="closeSupportModal()">✕</button>
       <h3 style="font-size:20px; font-weight:900; color:var(--primary-pine); margin-bottom:4px;">支持天天樂創作者</h3>
       <p style="font-size:13px; color:var(--text-muted); font-weight:600; margin-bottom:16px;">贊助全憑個人喜好，您的鼓勵是我們維護伺服器的最大動力！</p>
-
       <div style="background:#f8fafc; padding:12px; border-radius:10px; border:1px solid #e2e8f0; margin-bottom:16px; font-size:13px;">
         <div style="font-weight:800; color:var(--text-main); margin-bottom:6px;">💡 街口支付贊助指南：</div>
         <ul style="color:var(--text-muted); padding-left:20px; line-height:1.5; margin-bottom:0;">
@@ -399,29 +356,24 @@
           <li style="margin-top:4px;"><strong>無街口支付：</strong>可請有街口支付的朋友代為掃碼喔！</li>
         </ul>
       </div>
-      
       <div style="display:flex; gap:16px; margin-bottom:16px; justify-content:center;">
         <div style="text-align:center; background:#ffffff; padding:16px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:inset 0 2px 4px rgba(0,0,0,0.02); width:100%; max-width: 220px;">
           <div style="font-weight:900; color:#df1441; margin-bottom:10px; font-size:16px; display:flex; align-items:center; justify-content:center; gap:8px;">
             <div style="width:20px; height:20px; background:#df1441; color:#fff; border-radius:4px; font-size:12px; display:flex; align-items:center; justify-content:center;">街</div> 街口支付
           </div>
-          
           <img id="jko-qr-img" src="" alt="街口支付 收款條碼" style="width:100%; border-radius:10px; border:2px solid #cbd5e1; padding:4px; background:#fff; transition: opacity 0.2s ease;">
-          
           <div style="margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:8px;">
             <span>帳號：<span style="font-family: var(--font-mono); color: var(--text-secondary);"> (396) 904667745</span></span>
             <button onclick="copyJkoAccount('904667745')" style="width:100%; padding:6px; font-size:12px; font-weight:800; border-radius:6px; border:1px solid #cbd5e1; background:#ffffff; color:var(--text-secondary); cursor:pointer; transition:all 0.2s ease; box-shadow:0 1px 2px rgba(0,0,0,0.05);">一鍵複製街口帳號</button>
           </div>
         </div>
       </div>
-
       <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">1. 選擇贊助金額</div>
       <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-bottom:16px;">
         <button class="btn-pill" style="justify-content:center; padding:10px; font-weight:800;" onclick="selectAmt(88, this)">NT$ 88</button>
         <button class="btn-pill active-amt-btn" style="justify-content:center; padding:10px; font-weight:800; border-color:var(--primary-pine); background:#f0fdf4; color:var(--primary-pine);" onclick="selectAmt(168, this)">NT$ 168</button>
         <button class="btn-pill" style="justify-content:center; padding:10px; font-weight:800;" onclick="selectAmt(888, this)">NT$ 888</button>
       </div>
-      
       <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">2. 完成後，歡迎發送通知給我們！</div>
       <div style="margin-bottom:16px;">
         <input type="text" class="text-search-input" id="sponsor-name" placeholder="您的暱稱 (選填)" style="width:100%; margin-bottom:8px; padding:10px; font-size:14px;">
@@ -438,30 +390,12 @@
 
   <!-- 🌟 UI 控制與事件處理 -->
   <script>
-    // 彩種時段配置表
     const LOTTERY_SCHEDULES = {
-      lottery_539: {
-        name: "今彩539",
-        time: "每週一至六 20:30 開獎",
-        fullSchedule: "每週一至週六 20:30 開獎"
-      },
-      lottery_f5: {
-        name: "加州天天樂",
-        time: "每日 09:30 開獎",
-        fullSchedule: "每日上午 09:30 開獎"
-      },
-      lottery_marksix: {
-        name: "六合彩",
-        time: "每週二四六 21:30 開獎",
-        fullSchedule: "每週二、四、六/日 21:30 開獎"
-      }
+      lottery_539: { name: "今彩539", time: "每週一至六 20:30 開獎", fullSchedule: "每週一至週六 20:30 開獎" },
+      lottery_f5: { name: "加州天天樂", time: "每日 09:30 開獎", fullSchedule: "每日上午 09:30 開獎" },
+      lottery_marksix: { name: "六合彩", time: "每週二四六 21:30 開獎", fullSchedule: "每週二、四、六/日 21:30 開獎" }
     };
-
-    const QR_CODES = {
-      88: "https://i.ibb.co/4wwWjz93/88.jpg",
-      168: "https://i.ibb.co/Cps3mwWg/168.jpg",
-      888: "https://i.ibb.co/5gMy1q38/888.jpg"
-    };
+    const QR_CODES = { 88: "https://i.ibb.co/4wwWjz93/88.jpg", 168: "https://i.ibb.co/Cps3mwWg/168.jpg", 888: "https://i.ibb.co/5gMy1q38/888.jpg" };
 
     let activeLottery = 'lottery_539';
     let analysisRange = 30; 
@@ -483,11 +417,7 @@
         navigator.clipboard.writeText(acc).then(() => showToast(`已複製街口帳號：${acc}`));
       } else {
         const ta = document.createElement('textarea');
-        ta.value = acc;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+        ta.value = acc; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
         showToast(`已複製街口帳號：${acc}`);
       }
     }
@@ -495,25 +425,20 @@
     function showErrorUI(msg) {
       if (Object.keys(LOTTERY_DATA).length === 0) {
         const container = document.getElementById('hero-main-display');
-        if (container) {
-          container.innerHTML = `<h2 style="font-size:22px; font-weight:900; color:#dc2626;">${msg}</h2>`;
-        }
+        if (container) container.innerHTML = `<h2 style="font-size:22px; font-weight:900; color:#dc2626;">${msg}</h2>`;
       }
     }
 
     function showToast(msg) {
       const t = document.getElementById('toast-box');
       if (!t) return;
-      t.innerText = msg;
-      t.style.display = 'block';
+      t.innerText = msg; t.style.display = 'block';
       setTimeout(() => { t.style.display = 'none'; }, 2800);
     }
 
-    // 🌟 回歸手機原生順暢滑動 API (捨棄自定義 requestAnimationFrame 避免卡頓)
     function smoothScrollTo(elementId) {
       const target = document.getElementById(elementId);
       if (!target) return;
-
       const header = document.querySelector('header');
       const tabsCard = document.getElementById('main-tabs-card');
       const rangeWrap = document.getElementById('range-control-wrap');
@@ -521,14 +446,11 @@
       
       let totalOffset = 0;
       if (header) totalOffset += header.offsetHeight;
-      
       if (window.innerWidth <= 860) {
-        // 手機版：計算所有吸附層 (Level 1 + Level 2 + Level 3) 的總高度
         if (tabsCard) totalOffset += tabsCard.offsetHeight + parseInt(window.getComputedStyle(tabsCard).marginBottom || 0);
         if (rangeWrap) totalOffset += rangeWrap.offsetHeight;
         if (navPills) totalOffset += navPills.offsetHeight + parseInt(window.getComputedStyle(navPills).marginBottom || 0);
       } else {
-        // 電腦版：只計算 Level 1 與一點間距
         if (tabsCard) totalOffset += tabsCard.offsetHeight;
         totalOffset += 10;
       }
@@ -536,12 +458,7 @@
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
       const elementPosition = target.getBoundingClientRect().top + currentScrollY;
       const targetPosition = Math.max(0, elementPosition - totalOffset);
-
-      // 呼叫原生平滑捲動引擎 (交由瀏覽器底層硬體加速，絕對順暢)
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }
 
     function initTabs() {
@@ -551,8 +468,7 @@
           tabs.forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
           activeLottery = tab.getAttribute('data-lottery');
-          renderAll();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          renderAll(); window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
     }
@@ -560,46 +476,29 @@
     function renderAll() {
       if (Object.keys(LOTTERY_DATA).length === 0) return;
       setTimeout(() => {
-        renderHero();
-        renderOverview();
-        if (currentModelCategory === 'tails') {
-          renderTailsAnalysis();
-        } else {
-          renderModels();
-        }
+        renderHero(); renderOverview();
+        if (currentModelCategory === 'tails') { renderTailsAnalysis(); } else { renderModels(); }
         renderSavedList();
       }, 0);
     }
 
-    function getActiveDataset() {
-      return LOTTERY_DATA[activeLottery] || [];
-    }
+    function getActiveDataset() { return LOTTERY_DATA[activeLottery] || []; }
 
     function renderHero() {
-      const data = getActiveDataset();
-      const meta = SHEETS_META[activeLottery];
+      const data = getActiveDataset(); const meta = SHEETS_META[activeLottery];
       if (!meta) return;
-
       const sched = LOTTERY_SCHEDULES[activeLottery] || { time: "", fullSchedule: "" };
       const badgeEl = document.getElementById('hero-badge-name');
       if (badgeEl) badgeEl.innerText = `${meta.name} ｜ ⏰ ${sched.time}`;
-
       const container = document.getElementById('hero-main-display');
-      if (!data || data.length === 0) {
-        if (container) container.innerHTML = `<h2>尚未取得資料</h2>`;
-        return;
-      }
+      if (!data || data.length === 0) { if (container) container.innerHTML = `<h2>尚未取得資料</h2>`; return; }
 
       const latest = data[0];
       const localDateEl = document.getElementById('hero-local-date');
-      if (localDateEl) {
-        localDateEl.innerHTML = `<span>當地日期 · ${latest.date}</span><span style="opacity:0.9; font-weight:700;">⏰ 開獎時間：${sched.fullSchedule}</span>`;
-      }
+      if (localDateEl) localDateEl.innerHTML = `<span>當地日期 · ${latest.date}</span><span style="opacity:0.9; font-weight:700;">⏰ 開獎時間：${sched.fullSchedule}</span>`;
       
       let ballsHtml = '<div class="pine-balls-stage">';
-      latest.numbers.forEach(num => {
-        ballsHtml += `<div class="white-ball">${String(num).padStart(2,'0')}</div>`;
-      });
+      latest.numbers.forEach(num => { ballsHtml += `<div class="white-ball">${String(num).padStart(2,'0')}</div>`; });
       if (activeLottery === 'lottery_marksix' && latest.special !== null) {
         ballsHtml += `<span style="font-size:26px; font-weight:900; color:#fde047;">+</span><div class="white-ball special-ball">${String(latest.special).padStart(2,'0')}</div>`;
       }
@@ -609,10 +508,7 @@
       const maxN = activeLottery === 'lottery_marksix' ? 49 : 39;
       const med = Math.floor(maxN / 2);
       let big = 0, small = 0, odd = 0, even = 0;
-      latest.numbers.forEach(n => {
-        if (n > med) big++; else small++;
-        if (n % 2 !== 0) odd++; else even++;
-      });
+      latest.numbers.forEach(n => { if (n > med) big++; else small++; if (n % 2 !== 0) odd++; else even++; });
 
       const periodHtml = latest.period ? `期別 ${latest.period}` : `最新開獎`;
       if (container) {
@@ -621,34 +517,20 @@
     }
 
     function renderOverview() {
-      const data = getActiveDataset();
-      const meta = SHEETS_META[activeLottery];
-      if (!meta) return;
+      const data = getActiveDataset(); const meta = SHEETS_META[activeLottery]; if (!meta) return;
       const srcRowsEl = document.getElementById('metric-source-rows');
       const pageRowsEl = document.getElementById('metric-page-rows');
       if (srcRowsEl) srcRowsEl.innerText = meta.totalRows.toLocaleString();
       if (pageRowsEl) pageRowsEl.innerText = data.length.toString();
     }
 
-    // 🌟 切換期數，將結果內容平滑滑動到「三層吸附選單」正下方
     function setAnalysisRange(val) {
       analysisRange = parseInt(val, 10);
-      document.querySelectorAll('#range-btn-group .range-btn').forEach(btn => {
-        btn.classList.toggle('active', parseInt(btn.getAttribute('data-range'), 10) === analysisRange);
-      });
-      if (currentModelCategory === 'tails') {
-        renderTailsAnalysis();
-      } else {
-        renderModels();
-      }
-      
-      // 延遲一點等待渲染完畢後，執行原生平滑滑動，對齊到我們藏好的錨點
-      setTimeout(() => {
-        smoothScrollTo('scroll-anchor');
-      }, 50);
+      document.querySelectorAll('#range-btn-group .range-btn').forEach(btn => { btn.classList.toggle('active', parseInt(btn.getAttribute('data-range'), 10) === analysisRange); });
+      if (currentModelCategory === 'tails') { renderTailsAnalysis(); } else { renderModels(); }
+      setTimeout(() => { smoothScrollTo('scroll-anchor'); }, 50);
     }
 
-    // 🌟 切換分類，將結果內容平滑滑動到「三層吸附選單」正下方
     function switchModelCategory(cat) {
       currentModelCategory = cat;
       const luckyBtn = document.getElementById('tab-model-lucky');
@@ -660,11 +542,9 @@
       if (tailsBtn) tailsBtn.className = 'model-nav-btn tails-btn';
       
       if (cat === 'lucky') {
-        if (luckyBtn) luckyBtn.classList.add('active');
-        if (badge) badge.innerText = '依綜合命中分數排行';
+        if (luckyBtn) luckyBtn.classList.add('active'); if (badge) badge.innerText = '依綜合命中分數排行';
       } else if (cat === 'unlucky') {
-        if (unluckyBtn) unluckyBtn.classList.add('active');
-        if (badge) badge.innerText = '依完全避雷防禦率排行';
+        if (unluckyBtn) unluckyBtn.classList.add('active'); if (badge) badge.innerText = '依完全避雷防禦率排行';
       } else {
         if (tailsBtn) tailsBtn.classList.add('active');
       }
@@ -674,36 +554,25 @@
       const tailsWrapper = document.getElementById('tails-wrapper');
 
       if (cat === 'tails') {
-        if (modelsContainer) modelsContainer.style.display = 'none';
-        if (rankingBar) rankingBar.style.display = 'none';
-        if (tailsWrapper) tailsWrapper.style.display = 'block';
+        if (modelsContainer) modelsContainer.style.display = 'none'; if (rankingBar) rankingBar.style.display = 'none'; if (tailsWrapper) tailsWrapper.style.display = 'block';
         renderTailsAnalysis();
       } else {
-        if (modelsContainer) modelsContainer.style.display = 'grid';
-        if (rankingBar) rankingBar.style.display = 'flex';
-        if (tailsWrapper) tailsWrapper.style.display = 'none';
+        if (modelsContainer) modelsContainer.style.display = 'grid'; if (rankingBar) rankingBar.style.display = 'flex'; if (tailsWrapper) tailsWrapper.style.display = 'none';
         renderModels();
       }
-
-      // 切換完畢後，執行原生平滑滑動
-      setTimeout(() => {
-        smoothScrollTo('scroll-anchor');
-      }, 50);
+      setTimeout(() => { smoothScrollTo('scroll-anchor'); }, 50);
     }
 
     function renderModels() {
       const container = document.getElementById('models-grid-container');
       const data = getActiveDataset();
       if (!data || data.length === 0 || !container) return;
-      const latestDraw = data[0];
-      const targetPeriod = latestDraw.period || latestDraw.date;
+      const latestDraw = data[0]; const targetPeriod = latestDraw.period || latestDraw.date;
       const maxN = activeLottery === 'lottery_marksix' ? 49 : 39;
       const isLucky = (currentModelCategory === 'lucky');
       const modelsList = isLucky ? LUCKY_MODELS : UNLUCKY_MODELS;
 
-      const { evaluatedModels, totalTestDraws } = evaluateAndRankModels(
-        modelsList, data, activeLottery, targetPeriod, maxN, analysisRange, isLucky
-      );
+      const { evaluatedModels, totalTestDraws } = evaluateAndRankModels(modelsList, data, activeLottery, targetPeriod, maxN, analysisRange, isLucky);
 
       let html = '';
       evaluatedModels.slice(0, 6).forEach((item, idx) => {
@@ -711,29 +580,22 @@
         let ballsHtml = '';
         pred.forEach(num => {
           const bS = 'width:42px; height:42px; font-size:18px; font-weight:900; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono);';
-          if (isLucky) {
-            ballsHtml += `<div class="ball-dot-pine" style="${bS} color:#ffffff; box-shadow:0 3px 8px rgba(15,76,58,0.2);">${String(num).padStart(2,'0')}</div>`;
-          } else {
-            ballsHtml += `<div style="${bS} background:#ffffff; color:#dc2626; border:2.5px solid #dc2626; box-shadow:0 2px 6px rgba(220,38,38,0.15);">${String(num).padStart(2,'0')}</div>`;
-          }
+          if (isLucky) { ballsHtml += `<div class="ball-dot-pine" style="${bS} color:#ffffff; box-shadow:0 3px 8px rgba(15,76,58,0.2);">${String(num).padStart(2,'0')}</div>`; }
+          else { ballsHtml += `<div style="${bS} background:#ffffff; color:#dc2626; border:2.5px solid #dc2626; box-shadow:0 2px 6px rgba(220,38,38,0.15);">${String(num).padStart(2,'0')}</div>`; }
         });
 
         let backtestBox = '';
         if (isLucky) {
-          const p1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1);
-          const p2 = ((item.hit2 / totalTestDraws) * 100).toFixed(1);
-          const p3 = ((item.hit3 / totalTestDraws) * 100).toFixed(1);
+          const p1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1); const p2 = ((item.hit2 / totalTestDraws) * 100).toFixed(1); const p3 = ((item.hit3 / totalTestDraws) * 100).toFixed(1);
           const winRate = (((item.hit1 + item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
           backtestBox = `<div class="backtest-box"><div class="backtest-box-header"><span>近 ${totalTestDraws} 期歷史實測</span><span style="color:#047857;">綜合命中率 ${winRate}%</span></div><div class="backtest-pills-row"><div class="backtest-pill"><span>中 1 碼</span><strong>${item.hit1}期 (${p1}%)</strong></div><div class="backtest-pill"><span>中 2 碼</span><strong style="color:#d97706;">${item.hit2}期 (${p2}%)</strong></div><div class="backtest-pill" style="border-color:#bbf7d0; background:#f0fdf4;"><span style="color:#166534;">3碼全中 🔥</span><strong style="color:#0f4c3a;">${item.hit3}期 (${p3}%)</strong></div></div></div>`;
         } else {
-          const avoidPct = ((item.hit0 / totalTestDraws) * 100).toFixed(1);
-          const leak1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1);
-          const leak2Plus = (((item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
+          const avoidPct = ((item.hit0 / totalTestDraws) * 100).toFixed(1); const leak1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1); const leak2Plus = (((item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
           backtestBox = `<div class="backtest-box"><div class="backtest-box-header"><span>近 ${totalTestDraws} 期避雷防禦實測</span><span style="color:#16a34a;">🛡️ 完全避雷率 ${avoidPct}%</span></div><div class="backtest-pills-row"><div class="backtest-pill" style="border-color:#bbf7d0; background:#f0fdf4;"><span style="color:#166534;">完全避開(0碼)</span><strong style="color:#15803d;">${item.hit0}期 (${avoidPct}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 1 碼</span><strong style="color:#d97706;">${item.hit1}期 (${leak1}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 2 碼+</span><strong style="color:#dc2626;">${item.hit2 + item.hit3}期 (${leak2Plus}%)</strong></div></div></div>`;
         }
 
         const cardCls = isLucky ? 'model-card lucky' : 'model-card unlucky';
-        const bookmarkBtnLabel = isLucky ? '⭐ 收藏本期推薦 (3碼)' : '🛡️️ 收藏避雷指標 (3碼)';
+        const bookmarkBtnLabel = isLucky ? '⭐ 收藏本期推薦 (3碼)' : '🛡 收藏避雷指標 (3碼)';
         let rankBadgeStyle = isLucky 
           ? (idx === 0 ? 'background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff;' : idx === 1 ? 'background:linear-gradient(135deg, #94a3b8, #64748b); color:#ffffff;' : idx === 2 ? 'background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff;' : 'background:#dcfce7; color:#15803d;') 
           : (idx === 0 ? 'background:linear-gradient(135deg, #dc2626, #991b1b); color:#ffffff;' : 'background:#fee2e2; color:#991b1b; border:1px solid #fca5a5;');
@@ -745,9 +607,7 @@
 
     function setTailScheme(n) {
       selectedTailCount = n;
-      document.querySelectorAll('#tail-scheme-group .range-btn').forEach(btn => {
-        btn.classList.toggle('active', parseInt(btn.getAttribute('data-tailcount'), 10) === selectedTailCount);
-      });
+      document.querySelectorAll('#tail-scheme-group .range-btn').forEach(btn => { btn.classList.toggle('active', parseInt(btn.getAttribute('data-tailcount'), 10) === selectedTailCount); });
       renderTailsAnalysis();
     }
 
@@ -757,30 +617,51 @@
       if (!data || data.length === 0 || !container) return;
 
       const tailsData = calculateTailsData(data, activeLottery, analysisRange, selectedTailCount);
-      const {
-        totalDraws, tailCounts, maxCount, tailOmission, sortedPairs,
-        hotTail, omTail, killTail, schemeTails, schemeBalls,
-        schemeHitTotal, schemeHit2Plus, bestPairTail, bestPairCount,
-        omRank, doubleTailMatches, tailPool
-      } = tailsData;
+      const { totalDraws, tailCounts, maxCount, tailOmission, sortedPairs, hotTail, omTail, killTail, schemeTails, schemeBalls, schemeHitTotal, schemeHit2Plus, bestPairTail, bestPairCount, omRank, doubleTailMatches, tailPool } = tailsData;
 
       let topPairsHtml = sortedPairs.slice(0, 3).map((p, idx) => `
         <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:${idx === 0 ? '#f0fdf4' : '#f8fafc'}; border:1px solid ${idx === 0 ? '#bbf7d0' : 'var(--border-card)'}; border-radius:10px; margin-bottom:8px;">
-          <div style="display:flex; align-items:center; gap:10px;">
-            <strong style="font-size:18px; color:var(--primary-pine);">${p.t1} 尾</strong>
-            <span style="font-size:14px; color:#94a3b8;">🤝</span>
-            <strong style="font-size:18px; color:var(--primary-pine);">${p.t2} 尾</strong>
-          </div>
-          <div style="text-align:right;">
-            <strong style="font-size:16px; color:var(--text-main); font-family:var(--font-mono);">${p.count} 次</strong>
-            <div style="font-size:12px; color:var(--text-muted); font-weight:700;">同開率 ${((p.count / totalDraws) * 100).toFixed(1)}%</div>
-          </div>
+          <div style="display:flex; align-items:center; gap:10px;"><strong style="font-size:18px; color:var(--primary-pine);">${p.t1} 尾</strong><span style="font-size:14px; color:#94a3b8;">🤝</span><strong style="font-size:18px; color:var(--primary-pine);">${p.t2} 尾</strong></div>
+          <div style="text-align:right;"><strong style="font-size:16px; color:var(--text-main); font-family:var(--font-mono);">${p.count} 次</strong><div style="font-size:12px; color:var(--text-muted); font-weight:700;">同開率 ${((p.count / totalDraws) * 100).toFixed(1)}%</div></div>
         </div>
       `).join('');
 
+      // 🌟 將尾數推薦區塊的按鈕換成專屬 LINE 按鈕
       container.innerHTML = `
-        <div class="tails-ai-rec"><div class="tail-badge-box hot"><div><div class="tail-badge-title">🔥 本期主推熱尾</div><div class="tail-badge-number">${hotTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">近 ${totalDraws} 期強開 ${tailCounts[hotTail]} 次</div><div class="tail-badge-balls">${tailPool(hotTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="copyTailNumbers([${tailPool(hotTail).join(',')}], '${hotTail}尾')">複製號碼</button></div><div class="tail-badge-box omission"><div><div class="tail-badge-title">⚡ 斷層極限回歸</div><div class="tail-badge-number">${omTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">${tailOmission[omTail] === 0 ? '上期開出' : `已連續 ${tailOmission[omTail]} 期未開`}</div><div class="tail-badge-balls">${tailPool(omTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="copyTailNumbers([${tailPool(omTail).join(',')}], '${omTail}尾')">複製號碼</button></div><div class="tail-badge-box kill"><div><div class="tail-badge-title">🛡️ 本期絕殺避雷</div><div class="tail-badge-number">${killTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">動能冰封 · 建議避開</div><div class="tail-badge-balls">${tailPool(killTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="copyTailNumbers([${tailPool(killTail).join(',')}], '${killTail}尾')">複製號碼</button></div></div>
-        <div style="background:#ffffff; border:1px solid var(--border-card); border-radius:16px; padding:24px; margin-bottom:32px; box-shadow:0 2px 8px rgba(0,0,0,0.03);"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;"><div><h3 style="font-size:22px; font-weight:900; color:var(--text-main); margin-bottom:6px;">🎯 依數據資料推薦組合方案</h3><p style="font-size:15px; color:var(--text-muted); font-weight:700;">結合出現頻率、遺漏回歸與雙開指數動態精算最佳尾數</p></div><div class="range-btn-group" id="tail-scheme-group"><button class="range-btn ${selectedTailCount === 3 ? 'active' : ''}" data-tailcount="3" onclick="setTailScheme(3)">精選 3 尾</button><button class="range-btn ${selectedTailCount === 4 ? 'active' : ''}" data-tailcount="4" onclick="setTailScheme(4)">精選 4 尾</button><button class="range-btn ${selectedTailCount === 5 ? 'active' : ''}" data-tailcount="5" onclick="setTailScheme(5)">精選 5 尾</button></div></div><div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;"><div><div style="font-size:15px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">精選尾數：${schemeTails.map(t => `<strong style="font-size:18px; color:var(--primary-pine); margin-right:8px;">${t}尾</strong>`).join('')}<span style="font-size:14px; color:var(--text-muted); font-weight:700;">(共 ${schemeBalls.length} 顆)</span></div><div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">${schemeBalls.map(n => `<span class="tail-ball-pill" style="background:#ffffff; border-color:#cbd5e1; font-size:16px;">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><div style="display:flex; gap:20px; align-items:center;"><div style="text-align:right;"><div style="font-size:14px; color:var(--text-muted); font-weight:800;">期均涵蓋球數</div><div style="font-size:24px; font-weight:900; font-family:var(--font-mono); color:var(--primary-pine);">${(schemeHitTotal / totalDraws).toFixed(2)} 顆</div></div><div style="text-align:right; border-left:1px solid #cbd5e1; padding-left:20px;"><div style="font-size:14px; color:var(--text-muted); font-weight:800;">2碼以上覆蓋率</div><div style="font-size:24px; font-weight:900; font-family:var(--font-mono); color:#d97706;">${((schemeHit2Plus / totalDraws) * 100).toFixed(1)}%</div></div><button class="btn-pine" style="padding:12px 20px; font-size:15px;" onclick="copyTailNumbers([${schemeBalls.join(',')}], '${selectedTailCount}個尾數方案')">一鍵複製</button></div></div></div>
+        <div class="tails-ai-rec">
+          <div class="tail-badge-box hot">
+            <div><div class="tail-badge-title">🔥 本期主推熱尾</div><div class="tail-badge-number">${hotTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">近 ${totalDraws} 期強開 ${tailCounts[hotTail]} 次</div><div class="tail-badge-balls">${tailPool(hotTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div>
+            <button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(hotTail).join(',')}], '🔥 本期主推熱尾：${hotTail} 尾')">🟢 傳 LINE</button>
+          </div>
+          <div class="tail-badge-box omission">
+            <div><div class="tail-badge-title">⚡ 斷層極限回歸</div><div class="tail-badge-number">${omTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">${tailOmission[omTail] === 0 ? '上期開出' : `已連續 ${tailOmission[omTail]} 期未開`}</div><div class="tail-badge-balls">${tailPool(omTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div>
+            <button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(omTail).join(',')}], '⚡ 斷層極限回歸：${omTail} 尾')">🟢 傳 LINE</button>
+          </div>
+          <div class="tail-badge-box kill">
+            <div><div class="tail-badge-title">🛡️ 本期絕殺避雷</div><div class="tail-badge-number">${killTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">動能冰封 · 建議避開</div><div class="tail-badge-balls">${tailPool(killTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div>
+            <button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(killTail).join(',')}], '🛡️ 本期絕殺避雷：${killTail} 尾')">🟢 傳 LINE</button>
+          </div>
+        </div>
+        <div style="background:#ffffff; border:1px solid var(--border-card); border-radius:16px; padding:24px; margin-bottom:32px; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
+            <div><h3 style="font-size:22px; font-weight:900; color:var(--text-main); margin-bottom:6px;">🎯 依數據資料推薦組合方案</h3><p style="font-size:15px; color:var(--text-muted); font-weight:700;">結合出現頻率、遺漏回歸與雙開指數動態精算最佳尾數</p></div>
+            <div class="range-btn-group" id="tail-scheme-group"><button class="range-btn ${selectedTailCount === 3 ? 'active' : ''}" data-tailcount="3" onclick="setTailScheme(3)">精選 3 尾</button><button class="range-btn ${selectedTailCount === 4 ? 'active' : ''}" data-tailcount="4" onclick="setTailScheme(4)">精選 4 尾</button><button class="range-btn ${selectedTailCount === 5 ? 'active' : ''}" data-tailcount="5" onclick="setTailScheme(5)">精選 5 尾</button></div>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+            <div>
+              <div style="font-size:15px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">精選尾數：${schemeTails.map(t => `<strong style="font-size:18px; color:var(--primary-pine); margin-right:8px;">${t}尾</strong>`).join('')}<span style="font-size:14px; color:var(--text-muted); font-weight:700;">(共 ${schemeBalls.length} 顆)</span></div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">${schemeBalls.map(n => `<span class="tail-ball-pill" style="background:#ffffff; border-color:#cbd5e1; font-size:16px;">${String(n).padStart(2,'0')}</span>`).join('')}</div>
+            </div>
+            <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+              <div style="text-align:right;"><div style="font-size:14px; color:var(--text-muted); font-weight:800;">期均涵蓋球數</div><div style="font-size:24px; font-weight:900; font-family:var(--font-mono); color:var(--primary-pine);">${(schemeHitTotal / totalDraws).toFixed(2)} 顆</div></div>
+              <div style="text-align:right; border-left:1px solid #cbd5e1; padding-left:20px;"><div style="font-size:14px; color:var(--text-muted); font-weight:800;">2碼以上覆蓋率</div><div style="font-size:24px; font-weight:900; font-family:var(--font-mono); color:#d97706;">${((schemeHit2Plus / totalDraws) * 100).toFixed(1)}%</div></div>
+              <div style="display:flex; gap:10px; width:100%; margin-top:10px; justify-content:flex-end;">
+                <button class="btn-pine" style="background:#06C755; border:none; padding:10px 16px; font-size:15px; box-shadow:0 2px 6px rgba(6, 199, 85, 0.3);" onclick="shareTailsToLine([${schemeBalls.join(',')}], '${selectedTailCount}個尾數方案')">🟢 傳LINE群組</button>
+                <button class="btn-pine" style="background:#ffffff; color:var(--primary-pine); border:1.5px solid var(--primary-pine); padding:10px 16px; font-size:15px;" onclick="copyTailNumbers([${schemeBalls.join(',')}], '${selectedTailCount}個尾數方案')">複製</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="tails-grid">
           <div class="tails-card">
             <h3>🌡️ 0~9 尾數冷熱溫度計 (近 ${totalDraws} 期)</h3>
@@ -799,18 +680,17 @@
               <div class="double-hit-circle"><span>${((doubleTailMatches / totalDraws) * 100).toFixed(1)}%</span><div style="font-size:13px; font-weight:800; color:var(--text-muted); margin-top:4px;">雙開機率</div></div>
               <div><h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin-bottom:6px;">同尾數雙開雷達</h4><p style="font-size:15px; color:var(--text-secondary); line-height:1.6; font-weight:600;">近 ${totalDraws} 期中有 <strong>${doubleTailMatches}</strong> 期出現同尾數成雙開出。${bestPairCount > 0 ? `<br>最常結伴的為 <strong style="color:var(--primary-pine); font-size:17px;">${bestPairTail} 尾</strong> (${bestPairCount} 次)` : ''}</p></div>
             </div>
-            
             <div class="tails-card">
               <h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin-bottom:6px;">🧲 雙尾共伴雷達 (最常一起開出)</h4>
               <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; font-weight:600; margin-bottom:16px;">近 ${totalDraws} 期內，這幾組尾數宛如磁鐵般最常在同一期結伴開出。</p>
               ${topPairsHtml}
             </div>
-
           </div>
         </div>
       `;
     }
 
+    // 🌟 原本的複製功能保留給電腦版或想純複製的使用者
     function copyTailNumbers(arr, label) {
       const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -821,77 +701,71 @@
     }
 
     function fallbackCopy(text, label) {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand('copy');
-        showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製分享內容！');
-      } catch (err) {
-        showToast(label ? `號碼：${text}` : '複製失敗，請手動複製。');
-      }
+      const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製內容！'); } 
+      catch (err) { showToast('複製失敗，請手動複製。'); }
       document.body.removeChild(ta);
     }
 
     function saveModelPrediction(modelId, modelName, type, numbers, period) {
-      savedList.unshift({
-        id: Date.now(),
-        lottery: activeLottery,
-        lotteryName: SHEETS_META[activeLottery].name,
-        modelName,
-        type,
-        period,
-        numbers,
-        date: new Date().toLocaleDateString('zh-TW')
-      });
-      localStorage.setItem('tt_saved', JSON.stringify(savedList));
-      renderSavedList();
+      savedList.unshift({ id: Date.now(), lottery: activeLottery, lotteryName: SHEETS_META[activeLottery].name, modelName, type, period, numbers, date: new Date().toLocaleDateString('zh-TW') });
+      localStorage.setItem('tt_saved', JSON.stringify(savedList)); renderSavedList();
       showToast(`已成功收藏 [${modelName}] 組合！`);
     }
 
-    // 🌟 新增：產生分享文案並呼叫手機原生分享 (或降級為複製) 的函式
+    // 🌟 新增：專門喚醒 LINE App 的核心轉傳引擎 (URL Scheme)
+    function shareToLine(text) {
+      // 透過 line.me 協議，手機會直接跳轉開啟 LINE 應用程式，並列出可傳送的好友與群組
+      const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text)}`;
+      window.open(lineUrl, '_blank');
+    }
+
+    // 🌟 新增：針對尾數小勳章的專屬 LINE 轉傳
+    function shareTailBadgeToLine(arr, typeLabel) {
+      const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
+      const shareText = `【天天樂 AI 尾數精算】\n${typeLabel}\n👉 推薦號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，免費大數據分析請上 天天樂！`;
+      shareToLine(shareText);
+    }
+
+    // 🌟 新增：針對尾數推薦方案的專屬 LINE 轉傳
+    function shareTailsToLine(arr, label) {
+      const text = arr.map(n => String(n).padStart(2, '0')).join(', ');
+      const shareText = `【天天樂 AI 尾數精算】\n🎯 推薦組合：${label}\n👉 本期鎖定號碼：[ ${text} ]\n\n✅ 找吉星避冥燈，免費大數據分析請上 天天樂！`;
+      shareToLine(shareText);
+    }
+
+    // 🌟 修改：模型收藏的 LINE 專屬轉傳
     function shareSavedItem(id) {
       const item = savedList.find(x => x.id === id);
       if (!item) return;
-
       const numStr = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
       const typeStr = item.type === 'lucky' ? '✨ 吉星富貴推薦' : '🛡️ 冥燈避雷絕殺';
       const periodStr = item.period ? `第 ${item.period} 期` : `${item.date}`;
-
-      // 精心排版的 Line 轉傳文案
+      
       const shareText = `【天天樂 AI 精算】${item.lotteryName} (${periodStr})\n${typeStr}：${item.modelName}\n👉 本期鎖定號碼：[ ${numStr} ]\n\n✅ 免費看更多大數據預測，請上 天天樂！`;
-
-      // 判斷瀏覽器是否支援原生 Web Share API (手機端通常支援，會跳出傳 Line、FB 的選單)
-      if (navigator.share) {
-        navigator.share({
-          title: '天天樂 AI 大數據精算',
-          text: shareText
-        }).catch((err) => {
-          // 若使用者取消分享，或發生錯誤，則降級為直接複製文字
-          if (err.name !== 'AbortError') {
-            fallbackCopy(shareText, null);
-          }
-        });
-      } else {
-        // 電腦版或舊版瀏覽器：直接複製到剪貼簿
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(shareText)
-            .then(() => showToast('🎉 已成功複製分享文案！快去貼給朋友吧！'))
-            .catch(() => fallbackCopy(shareText, null));
-        } else {
-          fallbackCopy(shareText, null);
-        }
-      }
+      shareToLine(shareText);
     }
 
-    // 🌟 修改：在「我的收藏」卡片中加入「分享按鈕」
+    // 🌟 新增：模型收藏的純複製功能 (滿足不想開 LINE 的使用者)
+    function copySavedItem(id) {
+      const item = savedList.find(x => x.id === id);
+      if (!item) return;
+      const numStr = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
+      const typeStr = item.type === 'lucky' ? '✨ 吉星富貴推薦' : '🛡️ 冥燈避雷絕殺';
+      const periodStr = item.period ? `第 ${item.period} 期` : `${item.date}`;
+      const shareText = `【天天樂 AI 精算】${item.lotteryName} (${periodStr})\n${typeStr}：${item.modelName}\n👉 本期鎖定號碼：[ ${numStr} ]\n\n✅ 免費看更多大數據預測，請上 天天樂！`;
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareText).then(() => showToast('🎉 已成功複製分享文案！')).catch(() => fallbackCopy(shareText, null));
+      } else { fallbackCopy(shareText, null); }
+    }
+
+    // 🌟 修改：在「我的收藏」卡片中加入明顯的 LINE 綠色按鈕 與 獨立的複製按鈕
     function renderSavedList() {
       const container = document.getElementById('saved-list-container');
       if (!container) return;
       if (savedList.length === 0) {
-        container.innerHTML = `<div style="font-size:15px; color:var(--text-muted); font-weight:600; padding:20px 0;">還沒有收藏，在上方模型卡片點選「收藏」即可保存。</div>`;
-        return;
+        container.innerHTML = `<div style="font-size:15px; color:var(--text-muted); font-weight:600; padding:20px 0;">還沒有收藏，在上方模型卡片點選「收藏」即可保存。</div>`; return;
       }
       container.innerHTML = savedList.map(item => {
         const isLucky = (item.type === 'lucky');
@@ -899,25 +773,16 @@
         let matchBadge = `<span style="font-size:13px; background:#fef3c7; color:#b45309; padding:4px 10px; border-radius:6px; font-weight:800;">⏳ 待開獎對獎</span>`;
         if (matchDraw) {
           const matchCount = item.numbers.filter(n => new Set(matchDraw.numbers).has(n)).length;
-          if (isLucky) {
-            matchBadge = matchCount > 0 
-              ? `<span style="font-size:13px; background:#dcfce7; color:#15803d; padding:4px 10px; border-radius:6px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` 
-              : `<span style="font-size:13px; background:#f1f5f9; color:#64748b; padding:4px 10px; border-radius:6px; font-weight:800;">未中 (0碼)</span>`;
-          } else {
-            matchBadge = matchCount === 0 
-              ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` 
-              : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`;
-          }
+          if (isLucky) { matchBadge = matchCount > 0 ? `<span style="font-size:13px; background:#dcfce7; color:#15803d; padding:4px 10px; border-radius:6px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` : `<span style="font-size:13px; background:#f1f5f9; color:#64748b; padding:4px 10px; border-radius:6px; font-weight:800;">未中 (0碼)</span>`; } 
+          else { matchBadge = matchCount === 0 ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`; }
         }
         
-        // 加入分享按鈕的 HTML 結構
         return `
           <div style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; margin-bottom:12px;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start;">
               <div>
                 <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                  <strong style="font-size:16px; color:var(--text-main); font-weight:900;">${item.lotteryName} · ${item.modelName}</strong>
-                  ${matchBadge}
+                  <strong style="font-size:16px; color:var(--text-main); font-weight:900;">${item.lotteryName} · ${item.modelName}</strong>${matchBadge}
                 </div>
                 <div style="font-size:14px; color:var(--text-muted); font-family:var(--font-mono); font-weight:600; margin-top:4px;">${item.period ? `期別 ${item.period}` : `日期 ${item.date}`}</div>
                 <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
@@ -927,8 +792,9 @@
               <button onclick="removeSavedItem(${item.id})" style="background:none; border:none; color:var(--text-light); cursor:pointer; font-size:22px; padding:0 0 4px 10px;">✕</button>
             </div>
             
-            <div style="margin-top:16px; border-top:1px dashed #cbd5e1; padding-top:12px;">
-              <button onclick="shareSavedItem(${item.id})" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid var(--primary-pine); background:#f0fdf4; color:var(--primary-pine); font-size:15px; font-weight:800; cursor:pointer; transition:all 0.2s ease; font-family:inherit;">📤 一鍵分享至 Line / 複製</button>
+            <div style="display:flex; gap:10px; margin-top:16px; border-top:1px dashed #cbd5e1; padding-top:12px;">
+              <button onclick="shareSavedItem(${item.id})" style="flex:1; padding:10px; border-radius:8px; border:none; background:#06C755; color:#ffffff; font-size:15px; font-weight:900; cursor:pointer; transition:all 0.2s ease; font-family:inherit; box-shadow:0 2px 6px rgba(6, 199, 85, 0.3);">🟢 LINE 轉傳</button>
+              <button onclick="copySavedItem(${item.id})" style="flex:1; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; background:#ffffff; color:var(--text-secondary); font-size:15px; font-weight:800; cursor:pointer; transition:all 0.2s ease; font-family:inherit;">📄 複製</button>
             </div>
           </div>
         `;
@@ -937,70 +803,32 @@
     
     function removeSavedItem(id) {
       savedList = savedList.filter(x => x.id !== id);
-      localStorage.setItem('tt_saved', JSON.stringify(savedList));
-      renderSavedList();
+      localStorage.setItem('tt_saved', JSON.stringify(savedList)); renderSavedList();
     }
 
-    function openSupportModal() {
-      const modal = document.getElementById('support-modal');
-      if (modal) modal.classList.add('active');
-    }
-
-    function closeSupportModal() {
-      const modal = document.getElementById('support-modal');
-      if (modal) modal.classList.remove('active');
-    }
+    function openSupportModal() { const modal = document.getElementById('support-modal'); if (modal) modal.classList.add('active'); }
+    function closeSupportModal() { const modal = document.getElementById('support-modal'); if (modal) modal.classList.remove('active'); }
     
     function selectAmt(amt, btn) { 
       selectedAmount = amt; 
-      
-      document.querySelectorAll('#support-modal .btn-pill').forEach(b => { 
-        b.style.borderColor = 'var(--border-card)'; 
-        b.style.background = '#ffffff'; 
-        b.style.color = 'var(--text-secondary)'; 
-      }); 
-      
-      btn.style.borderColor = 'var(--primary-pine)'; 
-      btn.style.background = '#f0fdf4'; 
-      btn.style.color = 'var(--primary-pine)'; 
-
+      document.querySelectorAll('#support-modal .btn-pill').forEach(b => { b.style.borderColor = 'var(--border-card)'; b.style.background = '#ffffff'; b.style.color = 'var(--text-secondary)'; }); 
+      btn.style.borderColor = 'var(--primary-pine)'; btn.style.background = '#f0fdf4'; btn.style.color = 'var(--primary-pine)'; 
       const qrImg = document.getElementById('jko-qr-img');
-      if (qrImg) {
-        qrImg.style.opacity = '0.5'; 
-        setTimeout(() => {
-          qrImg.src = QR_CODES[amt]; 
-          qrImg.style.opacity = '1';
-        }, 150);
-      }
+      if (qrImg) { qrImg.style.opacity = '0.5'; setTimeout(() => { qrImg.src = QR_CODES[amt]; qrImg.style.opacity = '1'; }, 150); }
     }
     
     async function confirmSponsor() {
       const name = document.getElementById('sponsor-name').value.trim() || '幸運彩友';
       const msg = document.getElementById('sponsor-msg').value.trim() || '無留言';
       const btn = document.getElementById('btn-submit-sponsor');
-
-      const originalText = btn.innerText;
-      btn.innerText = "通知發送中...";
-      btn.disabled = true;
-
+      const originalText = btn.innerText; btn.innerText = "通知發送中..."; btn.disabled = true;
       try {
         const result = await sendSponsorApi(name, selectedAmount, msg);
-        if (result.status === "success") {
-          closeSupportModal();
-          showToast(`感謝 ${name} 贊助 NT$ ${selectedAmount} 支持創作者！`);
-        } else {
-          console.error("後端錯誤:", result.message);
-          showToast("通知發送失敗，請稍後再試。");
-        }
-      } catch (error) {
-        console.error('網路異常', error);
-        showToast("網路異常，無法送出支持通知。");
-      } finally {
-        btn.innerText = originalText;
-        btn.disabled = false;
-      }
+        if (result.status === "success") { closeSupportModal(); showToast(`感謝 ${name} 贊助 NT$ ${selectedAmount} 支持創作者！`); } 
+        else { console.error("後端錯誤:", result.message); showToast("通知發送失敗，請稍後再試。"); }
+      } catch (error) { console.error('網路異常', error); showToast("網路異常，無法送出支持通知。"); } 
+      finally { btn.innerText = originalText; btn.disabled = false; }
     }
   </script>
 </body>
 </html>
-```eof
