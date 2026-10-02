@@ -83,20 +83,18 @@
     .ball-dot-pine { background: var(--primary-pine); }
     .pine-card-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255, 255, 255, 0.85); border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 16px; margin-top: 12px; }
     
-    /* 🌟 修改區塊：資料一覽卡片的精緻立體樣式 */
     .overview-card { background: #ffffff; border: 1px solid var(--border-card); border-radius: 16px; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
-    .overview-top .overview-tag { display: inline-block; font-size: 13px; color: var(--primary-pine); font-weight: 900; background: #ecfdf5; padding: 4px 10px; border-radius: 6px; border: 1px solid #a7f3d0; margin-bottom: 8px; letter-spacing: 0.05em; }
-    .overview-top h3 { font-size: 24px; font-weight: 900; color: var(--text-main); }
-    .overview-metrics { display: flex; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
-    .metric-item { flex: 1; min-width: 140px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .metric-item:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); background: #ffffff; border-color: #cbd5e1; }
-    .metric-item-icon { font-size: 36px; line-height: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
-    .metric-item-content { display: flex; flex-direction: column; }
-    .metric-item-content strong { font-size: 28px; font-weight: 900; color: var(--text-main); font-family: var(--font-mono); line-height: 1.1; letter-spacing: -0.5px; }
-    .metric-item-content span { font-size: 13px; color: var(--text-muted); font-weight: 800; margin-top: 4px; }
-    .overview-footer { font-size: 15px; color: var(--text-muted); font-weight: 700; line-height: 1.6; border-top: 1px dashed var(--border-card); padding-top: 16px; display: flex; align-items: center; gap: 8px; }
-    /* 🌟 修改區塊結束 */
-
+    .overview-top span { font-size: 14px; color: var(--text-muted); font-weight: 800; }
+    .overview-top h3 { font-size: 24px; font-weight: 900; color: var(--text-main); margin-top: 6px; }
+    
+    /* 🌟 修改的資料一覽數字區塊 UI */
+    .overview-metrics { display: flex; gap: 16px; margin: 20px 0; }
+    .metric-item { flex: 1; background: #f8fafc; border: 1px solid var(--border-card); border-radius: 12px; padding: 18px 20px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+    .metric-item strong { display: block; font-size: 32px; font-weight: 900; color: var(--primary-pine); font-family: var(--font-mono); line-height: 1.1; }
+    .metric-item span { font-size: 13px; color: var(--text-muted); font-weight: 800; margin-top: 6px; display: inline-block; }
+    
+    .overview-footer { font-size: 14px; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-card); padding-top: 16px; font-weight: 600; }
+    
     .section-wrap { margin-bottom: 48px; }
     .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .section-headline { font-size: 28px; font-weight: 900; color: var(--text-main); }
@@ -269,32 +267,16 @@
         </div>
       </div>
       
-      <!-- 🌟 修改完成：資料一覽的新版立體卡片 -->
+      <!-- 🌟 更新的資料一覽卡片 -->
       <div class="overview-card">
-        <div class="overview-top">
-          <span class="overview-tag">📡 即時數據倉儲</span>
-          <h3>數據會說話，版路不盲猜。</h3>
-        </div>
+        <div class="overview-top"><span>即時數據倉儲</span><h3>數據會說話，版路不瞎猜</h3></div>
         <div class="overview-metrics">
-          <div class="metric-item">
-            <div class="metric-item-icon">📦</div>
-            <div class="metric-item-content">
-              <strong id="metric-source-rows">-</strong>
-              <span>歷史大數據庫</span>
-            </div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-item-icon">🎯</div>
-            <div class="metric-item-content">
-              <strong id="metric-page-rows">-</strong>
-              <span>近期運算樣本</span>
-            </div>
-          </div>
+          <div class="metric-item"><strong id="metric-source-rows">-</strong><span>歷史大數據庫</span></div>
+          <div class="metric-item"><strong id="metric-page-rows">-</strong><span>近期運算樣本</span></div>
         </div>
-        <div class="overview-footer">
-          <span style="font-size: 18px;">✨</span> 科學的盡頭就是玄學
-        </div>
+        <div class="overview-footer">科學的盡頭就是玄學</div>
       </div>
+
     </div>
 
     <div class="section-wrap" id="insights">
@@ -350,7 +332,7 @@
             <p style="margin-bottom:12px;">長大後，我一面忙於事業，一面還要應付她每天的「逼牌」，老實說，有時真的覺得挺煩人的。</p>
             <p style="margin-bottom:12px;">直到她離開了，耳邊少了那些每天催促我看牌的聲音，我才恍然大悟——<strong style="color:var(--text-main);">原來那不僅僅是算牌，那是媽媽愛我的方式。</strong>她用這種方式參與我的生活，鼓勵我發揮所學，並與我分享生活中最單純的喜悅。</p>
             <p style="margin-bottom:12px;">現在，我將自己的畢生所學，結合媽媽傳授給我的私藏版路，傾注於這個網站中。本網站完全免費、不收會員，也絕不介入任何賭博行為。</p>
-            <p style="font-weight:800; color:var(--primary-pine);">這是我對她的思念，也是一份愛的延續。這個網站，獻給我在天上的媽媽。</p>
+            <p style="font-weight:800; color:var(--primary-pine);">這是我對她的思念，也是一份愛的延續，獻給我在天上的媽媽。</p>
           </div>
         </div>
 
@@ -761,12 +743,8 @@
                 ${omRank.map((t, idx) => `<div class="omission-item"><div style="display:flex; align-items:center; gap:12px;"><span style="font-size:16px; font-weight:900; color:var(--text-muted); font-family:var(--font-mono);">${idx+1}</span><strong style="color:var(--text-main); font-size:18px;">${t} 尾</strong><span style="font-size:14px; color:var(--text-muted); font-weight:600;">${tailPool(t).map(n => String(n).padStart(2,'0')).join(', ')}</span></div><strong>${tailOmission[t] === 0 ? '上期開出' : `連續 ${tailOmission[t]} 期`}</strong></div>`).join('')}
               </div>
             </div>
-            <div class="tails-card" style="display:flex; align-items:center; gap:24px;">
-              <div class="double-hit-circle"><span>${((doubleTailMatches / totalDraws) * 100).toFixed(1)}%</span><div style="font-size:13px; font-weight:800; color:var(--text-muted); margin-top:4px;">雙開機率</div></div>
-              <div><h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin-bottom:6px;">同尾數雙開雷達</h4><p style="font-size:15px; color:var(--text-secondary); line-height:1.6; font-weight:600;">近 ${totalDraws} 期中有 <strong>${doubleTailMatches}</strong> 期出現同尾數成雙開出。${bestPairCount > 0 ? `<br>最常結伴的為 <strong style="color:var(--primary-pine); font-size:17px;">${bestPairTail} 尾</strong> (${bestPairCount} 次)` : ''}</p></div>
-            </div>
             
-            <!-- 🌟 修改區塊：雙尾共伴雷達 (加上二哥的徽章) -->
+            <!-- 🌟 雙尾共伴雷達 (加上二哥的徽章) -->
             <div class="tails-card">
               <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
                 <h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin:0;">🧲 雙尾共伴雷達</h4>
@@ -775,8 +753,7 @@
               <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; font-weight:600; margin-bottom:16px;">近 ${totalDraws} 期內，這幾組尾數宛如磁鐵般最常在同一期結伴開出。</p>
               ${topPairsHtml}
             </div>
-            <!-- 🌟 修改區塊結束 -->
-
+            
           </div>
         </div>
       `;
