@@ -19,11 +19,27 @@ async function fetchWithRetry(url, maxRetries = 3) {
 
 async function fetchLatestData() {
   try {
+    // 🌟 SEO 與 UX 優化：先從本地快取讀取資料，瞬間渲染畫面
+    const cachedData = localStorage.getItem('tt_lottery_cache');
+    const cachedMeta = localStorage.getItem('tt_meta_cache');
+    if (cachedData && cachedMeta) {
+      LOTTERY_DATA = JSON.parse(cachedData);
+      SHEETS_META = JSON.parse(cachedMeta);
+      if (typeof renderAll === 'function') {
+        renderAll();
+      }
+    }
+
     const fetchUrl = `${API_URL}?limit=30&t=${Date.now()}`;
     const json = await fetchWithRetry(fetchUrl, 3);
     if (json.status === "success") {
       LOTTERY_DATA = json.data;
       SHEETS_META = json.meta;
+      
+      // 🌟 將最新資料寫入快取，供下次秒速載入使用
+      localStorage.setItem('tt_lottery_cache', JSON.stringify(json.data));
+      localStorage.setItem('tt_meta_cache', JSON.stringify(json.meta));
+
       if (typeof renderAll === 'function') {
         renderAll();
       }

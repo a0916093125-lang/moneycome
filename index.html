@@ -4,15 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- 🌟 SEO 核心優化標籤 -->
-  <title>天天樂｜今彩539、加州天天樂、六合彩 - AI預測與即時開獎統計</title>
-  <meta name="description" content="天天樂提供最即時的今彩539、加州天天樂與六合彩開獎號碼查詢。獨家純前端 AI 大數據模型，精算吉星富貴選號、冥燈避雷與尾數共伴分析，為您提供最精準的預測與統計輔助策略。">
-  <meta name="keywords" content="今彩539預測, 天天樂統計, 六合彩開獎號碼, 539走勢圖, AI選號, 尾數分析, 彩券大數據">
+  <!-- 🌟 SEO 核心優化標籤 (539 前置強化版) -->
+  <title>539、天天樂、六合彩｜AI預測與即時開獎統計 - 天天樂</title>
+  <meta name="description" content="提供最即時的539開獎號碼、加州天天樂與六合彩查詢。獨家純前端 AI 大數據模型，精算吉星富貴選號、冥燈避雷與尾數共伴分析，為您提供最精準的預測與統計輔助策略。">
+  <meta name="keywords" content="539, 539開獎, 539預測, 今彩539, 天天樂統計, 六合彩開獎號碼, 539走勢圖, AI選號, 尾數分析, 彩券大數據">
+  
+  <!-- 🌟 SEO 標準網址 (Canonical) -->
+  <link rel="canonical" href="https://539168.com.tw/" />
 
   <!-- 🌟 社群分享標籤 (Open Graph) -->
-  <meta property="og:title" content="天天樂｜AI 大數據預測與即時開獎統計">
-  <meta property="og:description" content="最即時的今彩539、天天樂、六合彩開獎號碼。獨家大數據模型精算吉星號碼、冥燈避雷與尾數分析。">
+  <meta property="og:title" content="539、天天樂、六合彩｜AI 大數據預測與即時開獎統計">
+  <meta property="og:description" content="最即時的539、天天樂、六合彩開獎號碼。獨家大數據模型精算吉星號碼、冥燈避雷與尾數分析。">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://539168.com.tw">
+
+  <!-- 🌟 結構化資料 JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "天天樂 - AI 大數據預測與即時開獎統計",
+    "url": "https://539168.com.tw",
+    "description": "提供最即時的539、加州天天樂與六合彩開獎號碼查詢，結合馬可夫鏈與蒙地卡羅演算法的 AI 預測工具。",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TWD"
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +52,6 @@
     body { background-color: var(--bg-page); color: var(--text-main); font-family: var(--font-base); line-height: 1.5; -webkit-font-smoothing: antialiased; font-size: 17px; }
     .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
     
-    /* 🌟 頂部 Header */
     header { background: #ffffff; border-bottom: 1px solid var(--border-card); position: sticky; top: 0; z-index: 100; }
     .header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
     .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -48,7 +69,6 @@
     .btn-pill { padding: 12px 24px; border-radius: 999px; font-size: 15px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; text-decoration: none; border: 1.5px solid var(--border-card); background: #ffffff; color: var(--text-secondary); font-family: inherit; }
     .btn-pill:hover { background: #f8fafc; border-color: #cbd5e1; }
     
-    /* 🌟 彩種切換按鈕卡片支援固定置頂 (Level 1) */
     .tabs-card {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
@@ -86,13 +106,10 @@
     .overview-card { background: #ffffff; border: 1px solid var(--border-card); border-radius: 16px; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
     .overview-top span { font-size: 14px; color: var(--text-muted); font-weight: 800; }
     .overview-top h3 { font-size: 24px; font-weight: 900; color: var(--text-main); margin-top: 6px; }
-    
-    /* 🌟 修改的資料一覽數字區塊 UI */
     .overview-metrics { display: flex; gap: 16px; margin: 20px 0; }
     .metric-item { flex: 1; background: #f8fafc; border: 1px solid var(--border-card); border-radius: 12px; padding: 18px 20px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
     .metric-item strong { display: block; font-size: 32px; font-weight: 900; color: var(--primary-pine); font-family: var(--font-mono); line-height: 1.1; }
     .metric-item span { font-size: 13px; color: var(--text-muted); font-weight: 800; margin-top: 6px; display: inline-block; }
-    
     .overview-footer { font-size: 14px; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-card); padding-top: 16px; font-weight: 600; }
     
     .section-wrap { margin-bottom: 48px; }
@@ -196,7 +213,6 @@
     .text-search-input:focus { border-color: var(--primary-pine); box-shadow: 0 0 0 3px rgba(15, 76, 58, 0.12); }
     .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1e293b; color: #ffffff; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 700; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: none; }
 
-    /* 🌟 手機版專屬優化與三級吸附 (Sticky) 直列滿版版型 */
     @media (max-width: 860px) {
       .dashboard-grid, .bottom-grid, .tails-ai-rec { grid-template-columns: 1fr; }
       .tabs-card { top: 70px; padding: 4px; gap: 4px; height: 60px; margin-bottom: 20px; }
@@ -234,10 +250,13 @@
 
   <main class="container">
     <div class="intro-header" id="draws">
-      <div><div class="tracker-tag">YOUR DAILY NUMBERS</div><h1 class="main-heading">三個彩種的開獎紀錄與統計參考，都在天天樂。</h1></div>
+      <div>
+        <div class="tracker-tag">YOUR DAILY NUMBERS</div>
+        <!-- 🌟 SEO 優化：H1 前置 539 關鍵字，迎合台灣人搜尋習慣 -->
+        <h1 class="main-heading">539、加州天天樂與六合彩：即時開獎與統計</h1>
+      </div>
     </div>
 
-    <!-- 🌟 Level 1: 彩種切換按鈕 (固定置頂) -->
     <div class="tabs-card" id="main-tabs-card">
       <button class="tab-btn active" data-lottery="lottery_539">
         <span class="tab-title-text">今彩539</span>
@@ -267,7 +286,6 @@
         </div>
       </div>
       
-      <!-- 🌟 更新的資料一覽卡片 -->
       <div class="overview-card">
         <div class="overview-top"><span>即時數據倉儲</span><h3>數據會說話，版路不瞎猜</h3></div>
         <div class="overview-metrics">
@@ -276,11 +294,9 @@
         </div>
         <div class="overview-footer">科學的盡頭就是玄學</div>
       </div>
-
     </div>
 
     <div class="section-wrap" id="insights">
-      <!-- 🌟 下一期號碼參考 與 Level 2: 期數選擇列 -->
       <div class="section-header-row">
         <div><div class="tracker-tag">NUMBER INSIGHTS</div><h2 class="section-headline">下一期號碼參考</h2></div>
         <div class="range-control-wrap" id="range-control-wrap">
@@ -293,10 +309,9 @@
         </div>
       </div>
 
-      <!-- 🌟 Level 3: 模型分類導覽 (直列堆疊) -->
       <div class="model-nav-pills" id="model-nav-pills">
         <button class="model-nav-btn active lucky" id="tab-model-lucky" onclick="switchModelCategory('lucky')">✨ 吉星富貴選號 (TOP 6)</button>
-        <button class="model-nav-btn unlucky" id="tab-model-unlucky" onclick="switchModelCategory('unlucky')">🛡️ 冥燈不出牌 (TOP 6)</button>
+        <button class="model-nav-btn unlucky" id="tab-model-unlucky" onclick="switchModelCategory('unlucky')">🛡️️ 冥燈不出牌 (TOP 6)</button>
         <button class="model-nav-btn tails-btn" id="tab-model-tails" onclick="switchModelCategory('tails')">🎯 尾數精準分析 (0~9尾)</button>
       </div>
 
@@ -310,9 +325,7 @@
       <div id="tails-wrapper" style="display:none;"></div>
     </div>
 
-    <!-- 🌟 底部：我的收藏 + 作者的話與雙重互動卡片 -->
     <div class="bottom-grid" id="support">
-      <!-- 左側：我的收藏 -->
       <div class="space-card" style="align-self: start;">
         <div class="tracker-tag">MY SPACE</div><h3 style="font-size:24px; font-weight:900; margin-bottom:8px;">我的收藏</h3>
         <p style="font-size:15px; color:var(--text-secondary); font-weight:600; margin-bottom:6px;">保存感興趣的模型與尾數組合，開獎後自動比對命中成績。</p>
@@ -320,10 +333,7 @@
         <div id="saved-list-container" style="min-height: 80px;"></div>
       </div>
       
-      <!-- 右側：作者的話 + 沾喜氣分享卡片 -->
       <div style="display: flex; flex-direction: column; gap: 24px;">
-        
-        <!-- 🌟 作者的話卡片 -->
         <div class="space-card" style="background:#ffffff; border:1px solid var(--border-card); border-radius:16px; padding:28px 30px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
           <div class="tracker-tag">A LETTER FROM CREATOR</div>
           <h3 style="font-size:22px; font-weight:900; margin-bottom:16px; color:var(--text-main);">寫在天天樂背後的故事</h3>
@@ -336,7 +346,6 @@
           </div>
         </div>
 
-        <!-- 🌟 紅包沾喜氣 & 募集獨門版路 雙重互動卡片 -->
         <div class="space-card" style="background: linear-gradient(to bottom right, #ffffff, #fff1f2); border: 1px solid #fecdd3; border-radius: 16px; padding: 28px 30px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05);">
           <div class="tracker-tag" style="color: #e11d48;">SHARE THE LUCK & STRATEGY</div>
           <h3 style="font-size:24px; font-weight:900; margin-bottom:12px; color:#be123c;">沾沾喜氣，分享幸運 🧧</h3>
@@ -352,20 +361,18 @@
             <span style="font-size:14px; color:var(--text-muted); font-weight:600;">隨喜分享 · 感謝支持</span>
           </div>
         </div>
-        
       </div>
     </div>
 
-    <!-- 🌟 SEO 網站介紹區塊 (放置於 Footer 上方) -->
     <div class="section-wrap" style="margin-bottom: 48px;">
       <div class="space-card" style="padding: 40px; line-height: 1.8;">
         <div class="tracker-tag">ABOUT OUR ALGORITHM</div>
         <h2 class="section-headline" style="font-size: 24px; margin-bottom: 20px;">關於天天樂：大數據與 AI 演算法的完美結合</h2>
         <div style="font-size: 15px; color: var(--text-muted); font-weight: 600; text-align: justify;">
-          <p style="margin-bottom: 16px;">歡迎來到「天天樂」，這是一個專為彩迷打造的無伺服器 (Serverless) 大數據平台，提供最即時的<strong>今彩539預測</strong>、<strong>天天樂統計</strong>與<strong>六合彩開獎號碼</strong>分析。我們深知在隨機機率的遊戲中，單憑直覺往往難以掌握長期趨勢。因此，本站自主研發了一套純前端邊緣運算的 AI 統計引擎，底層結合了馬可夫鏈 (Markov Chain) 的狀態轉移機率預測，以及蒙地卡羅 (Monte Carlo) 數值模擬技術，將數千筆歷史開獎紀錄轉化為具備極高實戰價值的選號參考。</p>
+          <p style="margin-bottom: 16px;">歡迎來到「天天樂」，這是一個專為彩迷打造的無伺服器 (Serverless) 大數據平台，提供最即時的<strong>539預測</strong>、<strong>天天樂統計</strong>與<strong>六合彩開獎號碼</strong>分析。我們深知在隨機機率的遊戲中，單憑直覺往往難以掌握長期趨勢。因此，本站自主研發了一套純前端邊緣運算的 AI 統計引擎，底層結合了馬可夫鏈 (Markov Chain) 的狀態轉移機率預測，以及蒙地卡羅 (Monte Carlo) 數值模擬技術，將數千筆歷史開獎紀錄轉化為具備極高實戰價值的選號參考。</p>
           <p style="margin-bottom: 16px;">本站的核心預測功能分為三大版塊。首先是「✨ 吉星富貴選號」，系統會透過雲端熱門聚變、質數黃金矩陣、費氏數列共振等 8 種不同的數學與機率模型，針對歷史軌跡進行多維度回測，精選出綜合命中率最高的 TOP 6 黃金組合。這絕對不是隨機盲猜，而是立基於大數據均值回歸與趨勢動能的科學化精算。</p>
           <p style="margin-bottom: 16px;">其次，我們首創了「🛡 冥燈不出牌」避雷系統。在彩券統計中，「不買什麼」往往比「買什麼」更為關鍵。系統會嚴格篩選出陷入極寒冰封區、心電死線，或與近期強勢號碼產生極端相位排斥的冷門號。這套獨家避雷模型在長期回測中展現了卓越的防禦率，幫助彩友有效避開動能徹底死絕的號碼，將資源精準集中在更具爆發潛力的標的。</p>
-          <p style="margin-bottom: 0;">最後，「🎯 尾數精準分析」則是利用降維打擊策略，將龐大的選號池極限收斂至 0~9 尾數。我們綜合了冷熱溫度計、極限遺漏警戒以及同尾數雙開雷達，為您動態精算最佳尾數方案。無論您是在追蹤最新的<strong>六合彩開獎號碼</strong>，還是需要高精準度的<strong>今彩539預測</strong>與<strong>天天樂統計</strong>，天天樂的數據倉儲都會在官方攪珠結束後極速同步，為您提供最客觀、最透明的策略輔助。</p>
+          <p style="margin-bottom: 0;">最後，「🎯 尾數精準分析」則是利用降維打擊策略，將龐大的選號池極限收斂至 0~9 尾數。我們綜合了冷熱溫度計、極限遺漏警戒以及同尾數雙開雷達，為您動態精算最佳尾數方案。無論您是在追蹤最新的<strong>六合彩開獎號碼</strong>，還是需要高精準度的<strong>539預測</strong>與<strong>天天樂統計</strong>，天天樂的數據倉儲都會在官方攪珠結束後極速同步，為您提供最客觀、最透明的策略輔助。</p>
         </div>
       </div>
     </div>
@@ -378,7 +385,6 @@
     </div>
   </footer>
 
-  <!-- 🌟 隨喜紅包與版路分享收銀台 (彈出視窗) -->
   <div class="modal-backdrop" id="support-modal">
     <div class="modal-box">
       <button class="modal-close-btn" onclick="closeSupportModal()">✕</button>
@@ -424,11 +430,9 @@
   </div>
   <div class="toast-box" id="toast-box"></div>
 
-  <!-- 🌟 引入外部模組 -->
   <script src="api.js"></script>
   <script src="logic.js"></script>
 
-  <!-- 🌟 UI 控制與事件處理 -->
   <script>
     const SHARE_URL = "https://539168.com.tw";
 
@@ -536,6 +540,18 @@
           tabs.forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
           activeLottery = tab.getAttribute('data-lottery');
+          
+          // 🌟 SEO 優化：動態寫入 URL 參數與更改 title (前置大流量關鍵字)
+          const newUrl = `/?lottery=${activeLottery.replace('lottery_', '')}`;
+          window.history.pushState({ path: newUrl }, '', newUrl);
+          
+          const titles = {
+            lottery_539: "539開獎號碼與 AI 預測統計 - 天天樂",
+            lottery_f5: "天天樂開獎與統計分析 - 天天樂",
+            lottery_marksix: "六合彩開獎號碼與大數據分析 - 天天樂"
+          };
+          document.title = titles[activeLottery] || "539、天天樂、六合彩｜AI預測與即時開獎統計 - 天天樂";
+
           renderAll(); window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
@@ -659,7 +675,7 @@
           backtestBox = `<div class="backtest-box"><div class="backtest-box-header"><span>近 ${totalTestDraws} 期歷史實測</span><span style="color:#047857;">綜合命中率 ${winRate}%</span></div><div class="backtest-pills-row"><div class="backtest-pill"><span>中 1 碼</span><strong>${item.hit1}期 (${p1}%)</strong></div><div class="backtest-pill"><span>中 2 碼</span><strong style="color:#d97706;">${item.hit2}期 (${p2}%)</strong></div><div class="backtest-pill" style="border-color:#bbf7d0; background:#f0fdf4;"><span style="color:#166534;">3碼全中 🔥</span><strong style="color:#0f4c3a;">${item.hit3}期 (${p3}%)</strong></div></div></div>`;
         } else {
           const avoidPct = ((item.hit0 / totalTestDraws) * 100).toFixed(1); const leak1 = ((item.hit1 / totalTestDraws) * 100).toFixed(1); const leak2Plus = (((item.hit2 + item.hit3) / totalTestDraws) * 100).toFixed(1);
-          backtestBox = `<div class="backtest-box"><div class="backtest-box-header"><span>近 ${totalTestDraws} 期避雷防禦實測</span><span style="color:#16a34a;">🛡️ 完全避雷率 ${avoidPct}%</span></div><div class="backtest-pills-row"><div class="backtest-pill" style="border-color:#bbf7d0; background:#f0fdf4;"><span style="color:#166534;">完全避開(0碼)</span><strong style="color:#15803d;">${item.hit0}期 (${avoidPct}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 1 碼</span><strong style="color:#d97706;">${item.hit1}期 (${leak1}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 2 碼+</span><strong style="color:#dc2626;">${item.hit2 + item.hit3}期 (${leak2Plus}%)</strong></div></div></div>`;
+          backtestBox = `<div class="backtest-box"><div class="backtest-box-header"><span>近 ${totalTestDraws} 期避雷防禦實測</span><span style="color:#16a34a;">🛡 完全避雷率 ${avoidPct}%</span></div><div class="backtest-pills-row"><div class="backtest-pill" style="border-color:#bbf7d0; background:#f0fdf4;"><span style="color:#166534;">完全避開(0碼)</span><strong style="color:#15803d;">${item.hit0}期 (${avoidPct}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 1 碼</span><strong style="color:#d97706;">${item.hit1}期 (${leak1}%)</strong></div><div class="backtest-pill"><span style="color:#64748b;">破防 2 碼+</span><strong style="color:#dc2626;">${item.hit2 + item.hit3}期 (${leak2Plus}%)</strong></div></div></div>`;
         }
 
         const cardCls = isLucky ? 'model-card lucky' : 'model-card unlucky';
@@ -744,7 +760,6 @@
               </div>
             </div>
             
-            <!-- 🌟 雙尾共伴雷達 (加上二哥的徽章) -->
             <div class="tails-card">
               <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
                 <h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin:0;">🧲 雙尾共伴雷達</h4>

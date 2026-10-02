@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 首頁預設 (綜合/今彩539) -->
   <url>
-    <loc>https://www.539168.com.tw/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>hourly</changefreq>
+    <loc>https://539168.com.tw/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <!-- 今彩539 獨立網址 -->
+  <url>
+    <loc>https://539168.com.tw/?lottery=539</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 加州天天樂 獨立網址 -->
+  <url>
+    <loc>https://539168.com.tw/?lottery=f5</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 六合彩 獨立網址 -->
+  <url>
+    <loc>https://539168.com.tw/?lottery=marksix</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
