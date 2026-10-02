@@ -82,14 +82,21 @@
     .ball-dot { width: 42px; height: 42px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 900; font-size: 17px; color: #ffffff; flex-shrink: 0; }
     .ball-dot-pine { background: var(--primary-pine); }
     .pine-card-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255, 255, 255, 0.85); border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 16px; margin-top: 12px; }
-    .overview-card { background: #ffffff; border: 1px solid var(--border-card); border-radius: 16px; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
-    .overview-top span { font-size: 14px; color: var(--text-muted); font-weight: 800; }
-    .overview-top h3 { font-size: 24px; font-weight: 900; color: var(--text-main); margin-top: 6px; }
-    .overview-metrics { display: flex; gap: 36px; margin: 20px 0; }
-    .metric-item strong { display: block; font-size: 32px; font-weight: 900; color: var(--text-main); font-family: var(--font-mono); line-height: 1.1; }
-    .metric-item span { font-size: 14px; color: var(--text-muted); font-weight: 700; margin-top: 4px; display: inline-block; }
-    .overview-footer { font-size: 14px; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-card); padding-top: 16px; }
     
+    /* 🌟 修改區塊：資料一覽卡片的精緻立體樣式 */
+    .overview-card { background: #ffffff; border: 1px solid var(--border-card); border-radius: 16px; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+    .overview-top .overview-tag { display: inline-block; font-size: 13px; color: var(--primary-pine); font-weight: 900; background: #ecfdf5; padding: 4px 10px; border-radius: 6px; border: 1px solid #a7f3d0; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .overview-top h3 { font-size: 24px; font-weight: 900; color: var(--text-main); }
+    .overview-metrics { display: flex; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+    .metric-item { flex: 1; min-width: 140px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .metric-item:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); background: #ffffff; border-color: #cbd5e1; }
+    .metric-item-icon { font-size: 36px; line-height: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+    .metric-item-content { display: flex; flex-direction: column; }
+    .metric-item-content strong { font-size: 28px; font-weight: 900; color: var(--text-main); font-family: var(--font-mono); line-height: 1.1; letter-spacing: -0.5px; }
+    .metric-item-content span { font-size: 13px; color: var(--text-muted); font-weight: 800; margin-top: 4px; }
+    .overview-footer { font-size: 15px; color: var(--text-muted); font-weight: 700; line-height: 1.6; border-top: 1px dashed var(--border-card); padding-top: 16px; display: flex; align-items: center; gap: 8px; }
+    /* 🌟 修改區塊結束 */
+
     .section-wrap { margin-bottom: 48px; }
     .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .section-headline { font-size: 28px; font-weight: 900; color: var(--text-main); }
@@ -261,13 +268,32 @@
           <span id="hero-local-date">當地日期 · 載入中...</span>
         </div>
       </div>
+      
+      <!-- 🌟 修改完成：資料一覽的新版立體卡片 -->
       <div class="overview-card">
-        <div class="overview-top"><span>資料一覽</span><h3>看清資料，再看號碼。</h3></div>
-        <div class="overview-metrics">
-          <div class="metric-item"><strong id="metric-source-rows">-</strong><span>來源歷史筆數</span></div>
-          <div class="metric-item"><strong id="metric-page-rows">-</strong><span>本頁收錄期數</span></div>
+        <div class="overview-top">
+          <span class="overview-tag">📡 即時數據倉儲</span>
+          <h3>數據會說話，版路不盲猜。</h3>
         </div>
-        <div class="overview-footer">開啟頁面時自動載入，官方攪珠結束後約10~15分鐘完成號碼核驗入庫。</div>
+        <div class="overview-metrics">
+          <div class="metric-item">
+            <div class="metric-item-icon">📦</div>
+            <div class="metric-item-content">
+              <strong id="metric-source-rows">-</strong>
+              <span>歷史大數據庫</span>
+            </div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-item-icon">🎯</div>
+            <div class="metric-item-content">
+              <strong id="metric-page-rows">-</strong>
+              <span>近期運算樣本</span>
+            </div>
+          </div>
+        </div>
+        <div class="overview-footer">
+          <span style="font-size: 18px;">✨</span> 科學的盡頭就是玄學
+        </div>
       </div>
     </div>
 
@@ -436,7 +462,7 @@
       } else if (type === 'unlucky') {
         return [
           `🚨 【天天樂 避雷警告】${data.lotteryName} (${data.periodStr})\n☠ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${data.nums} ]\n---\n🛡 查查你的號碼安不安全：\n${SHARE_URL}`,
-          `🛑 衰神退散！${data.lotteryName} (${data.periodStr})\n⚠️️ 天天樂 AI 提醒，這幾支號碼今天超冷！\n🧊 建議避開：【 ${data.nums} 】\n保住本金就是贏！💪\n---\n🛡️ 買牌前先來測測吉凶：\n${SHARE_URL}`,
+          `🛑 衰神退散！${data.lotteryName} (${data.periodStr})\n⚠ 天天樂 AI 提醒，這幾支號碼今天超冷！\n🧊 建議避開：【 ${data.nums} 】\n保住本金就是贏！💪\n---\n🛡️ 買牌前先來測測吉凶：\n${SHARE_URL}`,
           `😱 【天天樂 警告】${data.lotteryName} (${data.periodStr})\n🛑 系統算出這 3 支今天千萬不能碰：\n👉 [ ${data.nums} ]\n---\n你買的號碼安全嗎？免費幫你算：\n${SHARE_URL}`,
           `🛑 【天天樂 避雷針】${data.lotteryName} (${data.periodStr})\n⚠️ AI 偵測動能冰封，這幾支超冷千萬別碰！\n🧊 激推五不中/不出牌：[ ${data.nums} ]\n---\n🛡️ 查更多不出牌避雷版路：\n${SHARE_URL}`
         ][rand];
@@ -735,6 +761,10 @@
                 ${omRank.map((t, idx) => `<div class="omission-item"><div style="display:flex; align-items:center; gap:12px;"><span style="font-size:16px; font-weight:900; color:var(--text-muted); font-family:var(--font-mono);">${idx+1}</span><strong style="color:var(--text-main); font-size:18px;">${t} 尾</strong><span style="font-size:14px; color:var(--text-muted); font-weight:600;">${tailPool(t).map(n => String(n).padStart(2,'0')).join(', ')}</span></div><strong>${tailOmission[t] === 0 ? '上期開出' : `連續 ${tailOmission[t]} 期`}</strong></div>`).join('')}
               </div>
             </div>
+            <div class="tails-card" style="display:flex; align-items:center; gap:24px;">
+              <div class="double-hit-circle"><span>${((doubleTailMatches / totalDraws) * 100).toFixed(1)}%</span><div style="font-size:13px; font-weight:800; color:var(--text-muted); margin-top:4px;">雙開機率</div></div>
+              <div><h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin-bottom:6px;">同尾數雙開雷達</h4><p style="font-size:15px; color:var(--text-secondary); line-height:1.6; font-weight:600;">近 ${totalDraws} 期中有 <strong>${doubleTailMatches}</strong> 期出現同尾數成雙開出。${bestPairCount > 0 ? `<br>最常結伴的為 <strong style="color:var(--primary-pine); font-size:17px;">${bestPairTail} 尾</strong> (${bestPairCount} 次)` : ''}</p></div>
+            </div>
             
             <!-- 🌟 修改區塊：雙尾共伴雷達 (加上二哥的徽章) -->
             <div class="tails-card">
@@ -764,7 +794,7 @@
     function fallbackCopy(text, label) {
       const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
       try { document.execCommand('copy'); showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製內容！'); } 
-      catch (err) { showToast('複製失敗，請手手動複製。'); }
+      catch (err) { showToast('複製失敗，請手動複製。'); }
       document.body.removeChild(ta);
     }
 
@@ -822,7 +852,7 @@
         if (matchDraw) {
           const matchCount = item.numbers.filter(n => new Set(matchDraw.numbers).has(n)).length;
           if (isLucky) { matchBadge = matchCount > 0 ? `<span style="font-size:13px; background:#dcfce7; color:#15803d; padding:4px 10px; border-radius:6px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` : `<span style="font-size:13px; background:#f1f5f9; color:#64748b; padding:4px 10px; border-radius:6px; font-weight:800;">未中 (0碼)</span>`; } 
-          else { matchBadge = matchCount === 0 ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️️ 破防 ${matchCount} 碼</span>`; }
+          else { matchBadge = matchCount === 0 ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`; }
         }
         
         return `
