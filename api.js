@@ -67,3 +67,25 @@ async function sendSponsorApi(name, amount, message) {
   });
   return await response.json();
 }
+
+// 🌟 智慧高頻輪詢 (Smart Polling)
+function startSmartPolling() {
+  setInterval(async () => {
+    const now = new Date();
+    const h = now.getHours();
+    const m = now.getMinutes();
+    
+    // 判斷是否為各彩種開獎熱區 (開獎當下前後 15 分鐘)
+    const is539Time = (h === 20 && m >= 30 && m <= 45); 
+    const isMarkSixTime = (h === 21 && m >= 30 && m <= 45); 
+    const isF5Time = (h === 9 && m >= 30 && m <= 45) || (h === 10 && m >= 30 && m <= 45);
+
+    if (is539Time || isMarkSixTime || isF5Time) {
+      console.log("進入開獎熱區，啟動高頻輪詢...");
+      await fetchLatestData();
+    }
+  }, 15000); // 處於熱區時，每 15 秒向後端拉取一次最新號碼
+}
+
+// 啟動輪詢機制
+startSmartPolling();
