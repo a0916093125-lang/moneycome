@@ -4,21 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- 🌟 SEO 核心優化標籤 (539 前置強化版) -->
+  <!-- 🌟 SEO 核心優化標籤 -->
   <title>539、天天樂、六合彩｜AI預測與即時開獎統計 - 天天樂</title>
   <meta name="description" content="提供最即時的539開獎號碼、加州天天樂與六合彩查詢。獨家純前端 AI 大數據模型，精算吉星富貴選號、冥燈避雷與尾數共伴分析，為您提供最精準的預測與統計輔助策略。">
   <meta name="keywords" content="539, 539開獎, 539預測, 今彩539, 天天樂統計, 六合彩開獎號碼, 539走勢圖, AI選號, 尾數分析, 彩券大數據">
   
+  <!-- 🌟 SEO 網站小圖示 (免上傳圖片，使用 SVG 直接渲染漂亮的「天」字 Logo) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f4c3a%22/><text x=%2250%22 y=%2270%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-weight=%22bold%22 font-family=%22sans-serif%22>天</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f4c3a%22/><text x=%2250%22 y=%2270%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-weight=%22bold%22 font-family=%22sans-serif%22>天</text></svg>">
+
   <!-- 🌟 SEO 標準網址 (Canonical) -->
   <link rel="canonical" href="https://539168.com.tw/" />
 
-  <!-- 🌟 社群分享標籤 (Open Graph) -->
+  <!-- 🌟 社群分享標籤 (Open Graph) 與 LINE 分享大圖設定 -->
   <meta property="og:title" content="539、天天樂、六合彩｜AI 大數據預測與即時開獎統計">
   <meta property="og:description" content="最即時的539、天天樂、六合彩開獎號碼。獨家大數據模型精算吉星號碼、冥燈避雷與尾數分析。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://539168.com.tw">
+  <meta property="og:image" content="https://539168.com.tw/share-banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-  <!-- 🌟 結構化資料 JSON-LD -->
+  <!-- 🌟 結構化資料 JSON-LD (網站本體) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,6 +70,14 @@
     .header-nav a:hover { color: var(--primary-pine); }
     
     main { padding: 36px 0 80px; }
+    
+    /* 🌟 SEO 麵包屑導覽樣式 */
+    .breadcrumb-nav { font-size: 14px; margin-bottom: 20px; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb-nav a { color: var(--primary-pine); text-decoration: none; transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 4px; }
+    .breadcrumb-nav a:hover { opacity: 0.8; }
+    .breadcrumb-nav .separator { color: #cbd5e1; font-size: 12px; }
+    .breadcrumb-current { color: var(--text-secondary); font-weight: 800; }
+
     .intro-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .tracker-tag { font-size: 13px; font-weight: 900; color: var(--primary-pine); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
     .main-heading { font-size: 34px; font-weight: 900; color: var(--text-main); letter-spacing: -0.5px; margin-bottom: 8px; }
@@ -249,10 +264,25 @@
   </header>
 
   <main class="container">
+    
+    <!-- 🌟 SEO 麵包屑導覽 (透過 Microdata 讓 Google 爬蟲看懂階層) -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="https://539168.com.tw/"><span itemprop="name">天天樂首頁</span></a>
+        <meta itemprop="position" content="1" />
+      </span>
+      <span class="separator">/</span>
+      <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="https://539168.com.tw/?lottery=539" id="bc-current-link" aria-current="page">
+          <span itemprop="name" id="bc-current-name" class="breadcrumb-current">今彩539</span>
+        </a>
+        <meta itemprop="position" content="2" />
+      </span>
+    </nav>
+
     <div class="intro-header" id="draws">
       <div>
         <div class="tracker-tag">YOUR DAILY NUMBERS</div>
-        <!-- 🌟 SEO 優化：H1 前置 539 關鍵字，迎合台灣人搜尋習慣 -->
         <h1 class="main-heading">539、加州天天樂與六合彩：即時開獎與統計</h1>
       </div>
     </div>
@@ -311,7 +341,7 @@
 
       <div class="model-nav-pills" id="model-nav-pills">
         <button class="model-nav-btn active lucky" id="tab-model-lucky" onclick="switchModelCategory('lucky')">✨ 吉星富貴選號 (TOP 6)</button>
-        <button class="model-nav-btn unlucky" id="tab-model-unlucky" onclick="switchModelCategory('unlucky')">🛡️️ 冥燈不出牌 (TOP 6)</button>
+        <button class="model-nav-btn unlucky" id="tab-model-unlucky" onclick="switchModelCategory('unlucky')">🛡 冥燈不出牌 (TOP 6)</button>
         <button class="model-nav-btn tails-btn" id="tab-model-tails" onclick="switchModelCategory('tails')">🎯 尾數精準分析 (0~9尾)</button>
       </div>
 
@@ -541,7 +571,7 @@
           tab.classList.add('active');
           activeLottery = tab.getAttribute('data-lottery');
           
-          // 🌟 SEO 優化：動態寫入 URL 參數與更改 title (前置大流量關鍵字)
+          // 🌟 SEO 優化：動態寫入 URL 參數與更改 title
           const newUrl = `/?lottery=${activeLottery.replace('lottery_', '')}`;
           window.history.pushState({ path: newUrl }, '', newUrl);
           
@@ -551,6 +581,19 @@
             lottery_marksix: "六合彩開獎號碼與大數據分析 - 天天樂"
           };
           document.title = titles[activeLottery] || "539、天天樂、六合彩｜AI預測與即時開獎統計 - 天天樂";
+
+          // 🌟 SEO 優化：動態更新麵包屑導覽結構
+          const bcName = document.getElementById('bc-current-name');
+          const bcLink = document.getElementById('bc-current-link');
+          if (bcName && bcLink) {
+            const bcTitles = {
+              lottery_539: "今彩539",
+              lottery_f5: "加州天天樂",
+              lottery_marksix: "六合彩"
+            };
+            bcName.innerText = bcTitles[activeLottery];
+            bcLink.setAttribute('href', newUrl);
+          }
 
           renderAll(); window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -747,7 +790,7 @@
         </div>
         <div class="tails-grid">
           <div class="tails-card">
-            <h3>🌡️ 0~9 尾數冷熱溫度計 (近 ${totalDraws} 期)</h3>
+            <h3>🌡️️ 0~9 尾數冷熱溫度計 (近 ${totalDraws} 期)</h3>
             <div style="margin-top:20px;">
               ${Array.from({length: 10}, (_, t) => { const count = tailCounts[t], pct = Math.round((count / maxCount) * 100); return `<div class="temp-row"><span class="temp-label">${t} 尾</span><div class="temp-bar-bg"><div class="temp-bar-fill ${pct >= 75 ? 'bg-heat-hot' : pct >= 45 ? 'bg-heat-warm' : 'bg-heat-cool'}" style="width:${pct}%;"></div></div><span class="temp-val">${count} 次</span></div>`; }).join('')}
             </div>
