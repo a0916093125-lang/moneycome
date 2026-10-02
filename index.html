@@ -733,7 +733,7 @@
         }
 
         const cardCls = isLucky ? 'model-card lucky' : 'model-card unlucky';
-        const bookmarkBtnLabel = isLucky ? '⭐ 收藏本期推薦 (3碼)' : '🛡️ 收藏避雷指標 (3碼)';
+        const bookmarkBtnLabel = isLucky ? '⭐ 收藏本期推薦 (3碼)' : '🛡️️ 收藏避雷指標 (3碼)';
         let rankBadgeStyle = isLucky 
           ? (idx === 0 ? 'background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff;' : idx === 1 ? 'background:linear-gradient(135deg, #94a3b8, #64748b); color:#ffffff;' : idx === 2 ? 'background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff;' : 'background:#dcfce7; color:#15803d;') 
           : (idx === 0 ? 'background:linear-gradient(135deg, #dc2626, #991b1b); color:#ffffff;' : 'background:#fee2e2; color:#991b1b; border:1px solid #fca5a5;');
@@ -827,9 +827,9 @@
       ta.select();
       try {
         document.execCommand('copy');
-        showToast(`已複製 [${label}] 號碼：${text}`);
+        showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製分享內容！');
       } catch (err) {
-        showToast(`號碼：${text}`);
+        showToast(label ? `號碼：${text}` : '複製失敗，請手動複製。');
       }
       document.body.removeChild(ta);
     }
@@ -850,6 +850,42 @@
       showToast(`已成功收藏 [${modelName}] 組合！`);
     }
 
+    // 🌟 新增：產生分享文案並呼叫手機原生分享 (或降級為複製) 的函式
+    function shareSavedItem(id) {
+      const item = savedList.find(x => x.id === id);
+      if (!item) return;
+
+      const numStr = item.numbers.map(n => String(n).padStart(2, '0')).join(', ');
+      const typeStr = item.type === 'lucky' ? '✨ 吉星富貴推薦' : '🛡️ 冥燈避雷絕殺';
+      const periodStr = item.period ? `第 ${item.period} 期` : `${item.date}`;
+
+      // 精心排版的 Line 轉傳文案
+      const shareText = `【天天樂 AI 精算】${item.lotteryName} (${periodStr})\n${typeStr}：${item.modelName}\n👉 本期鎖定號碼：[ ${numStr} ]\n\n✅ 免費看更多大數據預測，請上 天天樂！`;
+
+      // 判斷瀏覽器是否支援原生 Web Share API (手機端通常支援，會跳出傳 Line、FB 的選單)
+      if (navigator.share) {
+        navigator.share({
+          title: '天天樂 AI 大數據精算',
+          text: shareText
+        }).catch((err) => {
+          // 若使用者取消分享，或發生錯誤，則降級為直接複製文字
+          if (err.name !== 'AbortError') {
+            fallbackCopy(shareText, null);
+          }
+        });
+      } else {
+        // 電腦版或舊版瀏覽器：直接複製到剪貼簿
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(shareText)
+            .then(() => showToast('🎉 已成功複製分享文案！快去貼給朋友吧！'))
+            .catch(() => fallbackCopy(shareText, null));
+        } else {
+          fallbackCopy(shareText, null);
+        }
+      }
+    }
+
+    // 🌟 修改：在「我的收藏」卡片中加入「分享按鈕」
     function renderSavedList() {
       const container = document.getElementById('saved-list-container');
       if (!container) return;
@@ -873,7 +909,29 @@
               : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`;
           }
         }
-        return `<div style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;"><div><div style="display:flex; align-items:center; gap:10px;"><strong style="font-size:16px; color:var(--text-main); font-weight:900;">${item.lotteryName} · ${item.modelName}</strong>${matchBadge}</div><div style="font-size:14px; color:var(--text-muted); font-family:var(--font-mono); font-weight:600; margin-top:4px;">${item.period ? `期別 ${item.period}` : `日期 ${item.date}`}</div><div style="display:flex; gap:8px; margin-top:10px;">${item.numbers.map(n => `<div class="ball-dot-pine" style="width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#ffffff; font-size:14px; font-weight:800; font-family:var(--font-mono);">${String(n).padStart(2,'0')}</div>`).join('')}</div></div><button onclick="removeSavedItem(${item.id})" style="background:none; border:none; color:var(--text-light); cursor:pointer; font-size:22px; padding:6px;">✕</button></div>`;
+        
+        // 加入分享按鈕的 HTML 結構
+        return `
+          <div style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                  <strong style="font-size:16px; color:var(--text-main); font-weight:900;">${item.lotteryName} · ${item.modelName}</strong>
+                  ${matchBadge}
+                </div>
+                <div style="font-size:14px; color:var(--text-muted); font-family:var(--font-mono); font-weight:600; margin-top:4px;">${item.period ? `期別 ${item.period}` : `日期 ${item.date}`}</div>
+                <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+                  ${item.numbers.map(n => `<div class="ball-dot-pine" style="width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#ffffff; font-size:14px; font-weight:800; font-family:var(--font-mono);">${String(n).padStart(2,'0')}</div>`).join('')}
+                </div>
+              </div>
+              <button onclick="removeSavedItem(${item.id})" style="background:none; border:none; color:var(--text-light); cursor:pointer; font-size:22px; padding:0 0 4px 10px;">✕</button>
+            </div>
+            
+            <div style="margin-top:16px; border-top:1px dashed #cbd5e1; padding-top:12px;">
+              <button onclick="shareSavedItem(${item.id})" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid var(--primary-pine); background:#f0fdf4; color:var(--primary-pine); font-size:15px; font-weight:800; cursor:pointer; transition:all 0.2s ease; font-family:inherit;">📤 一鍵分享至 Line / 複製</button>
+            </div>
+          </div>
+        `;
       }).join('');
     }
     
