@@ -48,7 +48,7 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-  <!-- 🌟 結構化資料：WebApplication 網站本體 -->
+  <!-- JSON-LD 結構化資料保留區塊 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -66,7 +66,6 @@
   }
   </script>
 
-  <!-- 🌟 結構化資料：VideoObject 直播串流 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -85,7 +84,6 @@
   }
   </script>
 
-  <!-- 🌟 結構化資料：FAQPage 常見問答 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -173,7 +171,7 @@
       </div>
     </div>
 
-    <!-- 電腦版依然保留的 Tab，手機版會透過 CSS 隱藏 -->
+    <!-- 🌟 在手機版將被 CSS 隱藏，由底部的 Bottom Dock 接管切換功能 -->
     <div class="tabs-card" id="main-tabs-card">
       <button class="tab-btn active" data-lottery="lottery_539">
         <span class="tab-title-text">今彩539</span>
@@ -355,7 +353,6 @@
           <div style="font-weight:900; color:#df1441; margin-bottom:10px; font-size:16px; display:flex; align-items:center; justify-content:center; gap:8px;">
             <div style="width:20px; height:20px; background:#df1441; color:#fff; border-radius:4px; font-size:12px; display:flex; align-items:center; justify-content:center;">街</div> 街口支付
           </div>
-          <!-- 🌟 SEO 強化：新增 loading="lazy" 圖片延遲載入，加速首頁載入秒數 -->
           <img id="jko-qr-img" src="" alt="街口支付 收款條碼" loading="lazy" style="width:100%; border-radius:10px; border:2px solid #cbd5e1; padding:4px; background:#fff; transition: opacity 0.2s ease;">
           <div style="margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:8px;">
             <span>帳號：<span style="font-family: var(--font-mono); color: var(--text-secondary);"> (396) 904667745</span></span>
@@ -380,6 +377,7 @@
       <button class="btn-pine" id="btn-submit-sponsor" style="width:100%; padding:14px; font-size:16px; background:linear-gradient(135deg, #be123c 0%, #e11d48 100%); box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);" onclick="confirmSponsor()">發送紅包通知 / 提交版路 🚀</button>
     </div>
   </div>
+  
   <div class="toast-box" id="toast-box"></div>
 
   <!-- 🌟 新增：行動版底部拇指操作列 (Bottom Dock) -->
