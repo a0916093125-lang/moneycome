@@ -1,8 +1,9 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbx9m5XcTshUv_oeMdQkNV4RB64wgbe1kMrUOB4HP6HhM114H7iGjohZySBh9KWsEEmW/exec"; 
+const API_URL = "https://script.google.com/macros/s/AKfycbzKEejUwDBid5P9fmM1MmAvlSn4QDM0f7OatIRRhwaiEqe5kkvxsgOwTGxYGZ9sLgs/exec"; 
 
 let LOTTERY_DATA = {};
 let SHEETS_META = {};
 
+// 具備自動重試機制的 Fetch 封裝
 async function fetchWithRetry(url, maxRetries = 3) {
   for (let i = 0; i < maxRetries; i++) {
     try {
@@ -17,36 +18,37 @@ async function fetchWithRetry(url, maxRetries = 3) {
   }
 }
 
+// 自動抓取並處理快取，避免畫面閃爍 (Layout Shift)
 async function fetchLatestData() {
   try {
-    // 🌟 SEO 與 UX 優化：先從本地快取讀取資料，瞬間渲染畫面
-    const cachedData = localStorage.getItem('tt_lottery_cache');
-    const cachedMeta = localStorage.getItem('tt_meta_cache');
-    if (cachedData && cachedMeta) {
-      LOTTERY_DATA = JSON.parse(cachedData);
-      SHEETS_META = JSON.parse(cachedMeta);
-      if (typeof renderAll === 'function') {
-        renderAll();
-      }
+    const cachedDataStr = localStorage.getItem('tt_lottery_cache');
+    const cachedMetaStr = localStorage.getItem('tt_meta_cache');
+    
+    // 步驟一：瞬間載入本地快取渲染畫面，達成秒開體驗
+    if (cachedDataStr && cachedMetaStr) {
+      LOTTERY_DATA = JSON.parse(cachedDataStr);
+      SHEETS_META = JSON.parse(cachedMetaStr);
+      if (typeof renderAll === 'function') renderAll();
     }
 
+    // 步驟二：背景發送非同步請求，加上時間戳避免瀏覽器強快取
     const fetchUrl = `${API_URL}?limit=30&t=${Date.now()}`;
     const json = await fetchWithRetry(fetchUrl, 3);
+    
     if (json.status === "success") {
-      LOTTERY_DATA = json.data;
-      SHEETS_META = json.meta;
+      const newDataStr = JSON.stringify(json.data);
+      const newMetaStr = JSON.stringify(json.meta);
       
-      // 🌟 將最新資料寫入快取，供下次秒速載入使用
-      localStorage.setItem('tt_lottery_cache', JSON.stringify(json.data));
-      localStorage.setItem('tt_meta_cache', JSON.stringify(json.meta));
-
-      if (typeof renderAll === 'function') {
-        renderAll();
+      // 步驟三：比對新舊資料，只有發現最新開獎時才觸發重繪更新
+      if (newDataStr !== cachedDataStr || newMetaStr !== cachedMetaStr) {
+        LOTTERY_DATA = json.data;
+        SHEETS_META = json.meta;
+        localStorage.setItem('tt_lottery_cache', newDataStr);
+        localStorage.setItem('tt_meta_cache', newMetaStr);
+        if (typeof renderAll === 'function') renderAll();
       }
     } else {
-      if (typeof showErrorUI === 'function') {
-        showErrorUI(json.message);
-      }
+      if (typeof showErrorUI === 'function') showErrorUI(json.message);
     }
   } catch (error) {
     if (typeof showErrorUI === 'function') {
@@ -55,9 +57,11 @@ async function fetchLatestData() {
   }
 }
 
+// 發送 POST 贊助表單，處理 CORS
 async function sendSponsorApi(name, amount, message) {
   const response = await fetch(API_URL, {
     method: 'POST',
+    // 避免觸發複雜的 OPTIONS 預檢請求，統一改用 text/plain 發送 JSON 字串
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify({ action: 'sponsor', name: name, amount: amount, message: message })
   });
