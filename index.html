@@ -179,7 +179,6 @@
     .btn-pine:hover { opacity: 0.9; }
     .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
     .space-card { background: #ffffff; border: 1px solid var(--border-card); border-radius: 16px; padding: 28px 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
-    .support-card { background: var(--accent-mint); border: 1px solid var(--accent-mint-border); border-radius: 16px; padding: 28px 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
     footer { border-top: 1px solid var(--border-card); background: #ffffff; padding: 40px 0; font-size: 14px; color: var(--text-muted); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
     
@@ -303,20 +302,49 @@
       <div id="tails-wrapper" style="display:none;"></div>
     </div>
 
+    <!-- 🌟 底部：我的收藏 + 作者的話與雙重互動卡片 -->
     <div class="bottom-grid" id="support">
-      <div class="space-card">
+      <!-- 左側：我的收藏 -->
+      <div class="space-card" style="align-self: start;">
         <div class="tracker-tag">MY SPACE</div><h3 style="font-size:24px; font-weight:900; margin-bottom:8px;">我的收藏</h3>
         <p style="font-size:15px; color:var(--text-secondary); font-weight:600; margin-bottom:6px;">保存感興趣的模型與尾數組合，開獎後自動比對命中成績。</p>
         <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">收藏資料保存在當前瀏覽器中。</p>
         <div id="saved-list-container" style="min-height: 80px;"></div>
       </div>
-      <div class="support-card">
-        <div class="tracker-tag">SUPPORT THE CREATOR</div><h3 style="font-size:24px; font-weight:900; margin-bottom:8px; color:var(--primary-pine);">喜歡天天樂？</h3>
-        <p style="font-size:18px; font-weight:900; color:var(--text-main); margin-bottom:8px;">支持創作者持續更新。</p>
-        <p style="font-size:15px; color:var(--text-secondary); line-height:1.6; font-weight:600; margin-bottom:24px;">感謝您的支持！開獎資訊與 AI 統計功能完全免費瀏覽，您的鼓勵是持續維護數據庫的最大動力。</p>
-        <div style="display:flex; align-items:center; gap:16px;">
-          <button class="btn-pine" onclick="openSupportModal()">支持創作者 ↗</button><span style="font-size:14px; color:var(--text-muted); font-weight:600;">小額贊助 · 感謝支持</span>
+      
+      <!-- 右側：作者的話 + 沾喜氣分享卡片 -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        
+        <!-- 🌟 作者的話卡片 -->
+        <div class="space-card" style="background:#ffffff; border:1px solid var(--border-card); border-radius:16px; padding:28px 30px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+          <div class="tracker-tag">A LETTER FROM CREATOR</div>
+          <h3 style="font-size:22px; font-weight:900; margin-bottom:16px; color:var(--text-main);">寫在天天樂背後的故事</h3>
+          <div style="font-size:15px; color:var(--text-secondary); line-height:1.7; text-align:justify;">
+            <p style="margin-bottom:12px;">我的母親是個不折不扣的彩迷。從小，她就常拉著我，要我用電腦幫她「算牌」。每次只要我把算好的號碼交給她，她總是滿心歡喜。幸運中獎時，她會開心地包個紅包給我沾沾喜氣；就算沒中，她也從不失落，總是笑笑地說：「沒關係，下次還有機會。」</p>
+            <p style="margin-bottom:12px;">長大後，我一面忙於事業，一面還要應付她每天的「逼牌」，老實說，有時真的覺得挺煩人的。</p>
+            <p style="margin-bottom:12px;">直到她離開了，耳邊少了那些每天催促我看牌的聲音，我才恍然大悟——<strong style="color:var(--text-main);">原來那不僅僅是算牌，那是媽媽愛我的方式。</strong>她用這種方式參與我的生活，鼓勵我發揮所學，並與我分享生活中最單純的喜悅。</p>
+            <p style="margin-bottom:12px;">現在，我將自己的畢生所學，結合媽媽傳授給我的私藏版路，傾注於這個網站中。本網站完全免費、不收會員，也絕不介入任何賭博行為。</p>
+            <p style="font-weight:800; color:var(--primary-pine);">這是我對她的思念，也是一份愛的延續。這個網站，獻給我在天上的媽媽。</p>
+          </div>
         </div>
+
+        <!-- 🌟 紅包沾喜氣 & 募集獨門版路 雙重互動卡片 -->
+        <div class="space-card" style="background: linear-gradient(to bottom right, #ffffff, #fff1f2); border: 1px solid #fecdd3; border-radius: 16px; padding: 28px 30px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05);">
+          <div class="tracker-tag" style="color: #e11d48;">SHARE THE LUCK & STRATEGY</div>
+          <h3 style="font-size:24px; font-weight:900; margin-bottom:12px; color:#be123c;">沾沾喜氣，分享幸運 🧧</h3>
+          <p style="font-size:15px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px; text-align:justify;">如果天天樂的數據今天剛好幫您順利「摘星」或避開了地雷，歡迎像我母親當年一樣，隨喜包個小紅包給站長沾沾喜氣。您的每一份支持，都會成為維持網站伺服器運作的動力。</p>
+          
+          <div style="background: rgba(255,255,255,0.7); border-radius: 10px; padding: 16px; margin-bottom: 24px; border: 1px dashed #fda4af;">
+            <div style="font-size: 15px; font-weight: 900; color: #be123c; margin-bottom: 6px;">💡 英雄帖：徵求獨家版路！</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">如果您有更好的選號邏輯或私藏版路，歡迎與我分享！若經實測效果優異，我將為它寫成專屬模型上架，並<strong style="color: #e11d48;">永久掛上您的專屬大名</strong>，讓全網彩友跟著您一起發財！</p>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:16px;">
+            <button class="btn-pine" style="background: #e11d48; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);" onclick="openSupportModal()">🧧 隨喜紅包 / 提供版路</button>
+            <span style="font-size:14px; color:var(--text-muted); font-weight:600;">隨喜分享 · 感謝支持</span>
+          </div>
+        </div>
+        
       </div>
     </div>
 
@@ -342,19 +370,21 @@
     </div>
   </footer>
 
-  <!-- 🌟 金流收銀台 -->
+  <!-- 🌟 隨喜紅包與版路分享收銀台 (彈出視窗) -->
   <div class="modal-backdrop" id="support-modal">
     <div class="modal-box">
       <button class="modal-close-btn" onclick="closeSupportModal()">✕</button>
-      <h3 style="font-size:20px; font-weight:900; color:var(--primary-pine); margin-bottom:4px;">支持天天樂創作者</h3>
-      <p style="font-size:13px; color:var(--text-muted); font-weight:600; margin-bottom:16px;">贊助全憑個人喜好，您的鼓勵是我們維護伺服器的最大動力！</p>
-      <div style="background:#f8fafc; padding:12px; border-radius:10px; border:1px solid #e2e8f0; margin-bottom:16px; font-size:13px;">
-        <div style="font-weight:800; color:var(--text-main); margin-bottom:6px;">💡 街口支付贊助指南：</div>
-        <ul style="color:var(--text-muted); padding-left:20px; line-height:1.5; margin-bottom:0;">
+      <h3 style="font-size:22px; font-weight:900; color:#be123c; margin-bottom:4px;">隨喜紅包與版路分享 🧧</h3>
+      <p style="font-size:13px; color:var(--text-muted); font-weight:600; margin-bottom:16px;">贊助全憑個人喜好！或是您有超強版路想提供，都歡迎在這裡留言給我！</p>
+      
+      <div style="background:#fff1f2; padding:12px; border-radius:10px; border:1px solid #fecdd3; margin-bottom:16px; font-size:13px;">
+        <div style="font-weight:800; color:#9f1239; margin-bottom:6px;">💡 街口支付贊助指南：</div>
+        <ul style="color:var(--text-secondary); padding-left:20px; line-height:1.5; margin-bottom:0;">
           <li><strong>有街口支付：</strong>掃描條碼或複製帳號至 App 內轉帳。<br><span style="font-size:12px; opacity:0.8;">(手機用戶可先截圖，再開啟街口 App 掃描)</span></li>
           <li style="margin-top:4px;"><strong>無街口支付：</strong>可請有街口支付的朋友代為掃碼喔！</li>
         </ul>
       </div>
+      
       <div style="display:flex; gap:16px; margin-bottom:16px; justify-content:center;">
         <div style="text-align:center; background:#ffffff; padding:16px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:inset 0 2px 4px rgba(0,0,0,0.02); width:100%; max-width: 220px;">
           <div style="font-weight:900; color:#df1441; margin-bottom:10px; font-size:16px; display:flex; align-items:center; justify-content:center; gap:8px;">
@@ -367,18 +397,21 @@
           </div>
         </div>
       </div>
-      <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">1. 選擇贊助金額</div>
+      
+      <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">1. 選擇沾喜氣金額 (若僅留言請略過)</div>
       <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-bottom:16px;">
         <button class="btn-pill" style="justify-content:center; padding:10px; font-weight:800;" onclick="selectAmt(88, this)">NT$ 88</button>
-        <button class="btn-pill active-amt-btn" style="justify-content:center; padding:10px; font-weight:800; border-color:var(--primary-pine); background:#f0fdf4; color:var(--primary-pine);" onclick="selectAmt(168, this)">NT$ 168</button>
+        <button class="btn-pill active-amt-btn" style="justify-content:center; padding:10px; font-weight:800; border-color:#e11d48; background:#fff1f2; color:#e11d48;" onclick="selectAmt(168, this)">NT$ 168</button>
         <button class="btn-pill" style="justify-content:center; padding:10px; font-weight:800;" onclick="selectAmt(888, this)">NT$ 888</button>
       </div>
-      <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">2. 完成後，歡迎發送通知給我們！</div>
+      
+      <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">2. 留下您的專屬版路或加油打氣！</div>
       <div style="margin-bottom:16px;">
         <input type="text" class="text-search-input" id="sponsor-name" placeholder="您的暱稱 (選填)" style="width:100%; margin-bottom:8px; padding:10px; font-size:14px;">
-        <textarea class="text-search-input" id="sponsor-msg" placeholder="給創作者的加油留言..." rows="2" style="width:100%; padding:10px; font-size:14px; resize:none;"></textarea>
+        <textarea class="text-search-input" id="sponsor-msg" placeholder="在此寫下您的獨門版路邏輯，或是給創作者的加油留言..." rows="3" style="width:100%; padding:10px; font-size:14px; resize:none;"></textarea>
       </div>
-      <button class="btn-pine" id="btn-submit-sponsor" style="width:100%; padding:14px; font-size:16px; background:linear-gradient(135deg, #0f4c3a 0%, #16654e 100%);" onclick="confirmSponsor()">發送支持通知 🚀</button>
+      
+      <button class="btn-pine" id="btn-submit-sponsor" style="width:100%; padding:14px; font-size:16px; background:linear-gradient(135deg, #be123c 0%, #e11d48 100%); box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);" onclick="confirmSponsor()">發送紅包通知 / 提交版路 🚀</button>
     </div>
   </div>
   <div class="toast-box" id="toast-box"></div>
@@ -389,12 +422,10 @@
 
   <!-- 🌟 UI 控制與事件處理 -->
   <script>
-    // 🌟 在這裡設定你想要在 LINE 分享中顯示的網址 (未來若要改行銷網，改這一行即可)
     const SHARE_URL = "https://539168.com.tw";
 
-    // 🌟 隨機文案產生器 (結合 A、B、C、D 四種風格)
     function getRandomShareText(type, data) {
-      const rand = Math.floor(Math.random() * 4); // 產生 0, 1, 2, 3
+      const rand = Math.floor(Math.random() * 4); 
       if (type === 'lucky') {
         return [
           `📊 【天天樂 AI 報牌】${data.lotteryName} (${data.periodStr})\n🤖 模型：${data.modelName} (吉星推薦)\n🎯 鎖定號碼：[ ${data.nums} ]\n---\n👇 免費看更多 AI 大數據精算：\n${SHARE_URL}`,
@@ -404,8 +435,8 @@
         ][rand];
       } else if (type === 'unlucky') {
         return [
-          `🚨 【天天樂 避雷警告】${data.lotteryName} (${data.periodStr})\n☠️ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${data.nums} ]\n---\n🛡️ 查查你的號碼安不安全：\n${SHARE_URL}`,
-          `🛑 衰神退散！${data.lotteryName} (${data.periodStr})\n⚠️ 天天樂 AI 提醒，這幾支號碼今天超冷！\n🧊 建議避開：【 ${data.nums} 】\n保住本金就是贏！💪\n---\n🛡️ 買牌前先來測測吉凶：\n${SHARE_URL}`,
+          `🚨 【天天樂 避雷警告】${data.lotteryName} (${data.periodStr})\n☠ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${data.nums} ]\n---\n🛡 查查你的號碼安不安全：\n${SHARE_URL}`,
+          `🛑 衰神退散！${data.lotteryName} (${data.periodStr})\n⚠️️ 天天樂 AI 提醒，這幾支號碼今天超冷！\n🧊 建議避開：【 ${data.nums} 】\n保住本金就是贏！💪\n---\n🛡️ 買牌前先來測測吉凶：\n${SHARE_URL}`,
           `😱 【天天樂 警告】${data.lotteryName} (${data.periodStr})\n🛑 系統算出這 3 支今天千萬不能碰：\n👉 [ ${data.nums} ]\n---\n你買的號碼安全嗎？免費幫你算：\n${SHARE_URL}`,
           `🛑 【天天樂 避雷針】${data.lotteryName} (${data.periodStr})\n⚠️ AI 偵測動能冰封，這幾支超冷千萬別碰！\n🧊 激推五不中/不出牌：[ ${data.nums} ]\n---\n🛡️ 查更多不出牌避雷版路：\n${SHARE_URL}`
         ][rand];
@@ -704,15 +735,18 @@
                 ${omRank.map((t, idx) => `<div class="omission-item"><div style="display:flex; align-items:center; gap:12px;"><span style="font-size:16px; font-weight:900; color:var(--text-muted); font-family:var(--font-mono);">${idx+1}</span><strong style="color:var(--text-main); font-size:18px;">${t} 尾</strong><span style="font-size:14px; color:var(--text-muted); font-weight:600;">${tailPool(t).map(n => String(n).padStart(2,'0')).join(', ')}</span></div><strong>${tailOmission[t] === 0 ? '上期開出' : `連續 ${tailOmission[t]} 期`}</strong></div>`).join('')}
               </div>
             </div>
-            <div class="tails-card" style="display:flex; align-items:center; gap:24px;">
-              <div class="double-hit-circle"><span>${((doubleTailMatches / totalDraws) * 100).toFixed(1)}%</span><div style="font-size:13px; font-weight:800; color:var(--text-muted); margin-top:4px;">雙開機率</div></div>
-              <div><h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin-bottom:6px;">同尾數雙開雷達</h4><p style="font-size:15px; color:var(--text-secondary); line-height:1.6; font-weight:600;">近 ${totalDraws} 期中有 <strong>${doubleTailMatches}</strong> 期出現同尾數成雙開出。${bestPairCount > 0 ? `<br>最常結伴的為 <strong style="color:var(--primary-pine); font-size:17px;">${bestPairTail} 尾</strong> (${bestPairCount} 次)` : ''}</p></div>
-            </div>
+            
+            <!-- 🌟 修改區塊：雙尾共伴雷達 (加上二哥的徽章) -->
             <div class="tails-card">
-              <h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin-bottom:6px;">🧲 雙尾共伴雷達 (最常一起開出)</h4>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
+                <h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin:0;">🧲 雙尾共伴雷達</h4>
+                <span style="font-size:12px; font-weight:900; background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff; padding:4px 10px; border-radius:6px; box-shadow:0 2px 4px rgba(217,119,6,0.2);">👑 彩友「二哥」獨家提供</span>
+              </div>
               <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; font-weight:600; margin-bottom:16px;">近 ${totalDraws} 期內，這幾組尾數宛如磁鐵般最常在同一期結伴開出。</p>
               ${topPairsHtml}
             </div>
+            <!-- 🌟 修改區塊結束 -->
+
           </div>
         </div>
       `;
@@ -730,7 +764,7 @@
     function fallbackCopy(text, label) {
       const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
       try { document.execCommand('copy'); showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製內容！'); } 
-      catch (err) { showToast('複製失敗，請手動複製。'); }
+      catch (err) { showToast('複製失敗，請手手動複製。'); }
       document.body.removeChild(ta);
     }
 
@@ -740,25 +774,21 @@
       showToast(`已成功收藏 [${modelName}] 組合！`);
     }
 
-    // 🌟 LINE 核心呼叫引擎
     function shareToLine(text) {
       const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text)}`;
       window.open(lineUrl, '_blank');
     }
 
-    // 🌟 尾數小勳章的 LINE 轉傳
     function shareTailBadgeToLine(arr, typeLabel) {
       const nums = arr.map(n => String(n).padStart(2, '0')).join(', ');
       shareToLine(getRandomShareText('tail', { label: typeLabel, nums }));
     }
 
-    // 🌟 尾數推薦方案的 LINE 轉傳
     function shareTailsToLine(arr, label) {
       const nums = arr.map(n => String(n).padStart(2, '0')).join(', ');
       shareToLine(getRandomShareText('tail', { label: label, nums }));
     }
 
-    // 🌟 模型收藏的 LINE 專屬隨機轉傳
     function shareSavedItem(id) {
       const item = savedList.find(x => x.id === id);
       if (!item) return;
@@ -767,7 +797,6 @@
       shareToLine(getRandomShareText(item.type, { lotteryName: item.lotteryName, periodStr, modelName: item.modelName, nums }));
     }
 
-    // 🌟 模型收藏的純複製功能 (套用隨機文案引擎)
     function copySavedItem(id) {
       const item = savedList.find(x => x.id === id);
       if (!item) return;
@@ -793,7 +822,7 @@
         if (matchDraw) {
           const matchCount = item.numbers.filter(n => new Set(matchDraw.numbers).has(n)).length;
           if (isLucky) { matchBadge = matchCount > 0 ? `<span style="font-size:13px; background:#dcfce7; color:#15803d; padding:4px 10px; border-radius:6px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` : `<span style="font-size:13px; background:#f1f5f9; color:#64748b; padding:4px 10px; border-radius:6px; font-weight:800;">未中 (0碼)</span>`; } 
-          else { matchBadge = matchCount === 0 ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`; }
+          else { matchBadge = matchCount === 0 ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️️ 破防 ${matchCount} 碼</span>`; }
         }
         
         return `
@@ -831,7 +860,7 @@
     function selectAmt(amt, btn) { 
       selectedAmount = amt; 
       document.querySelectorAll('#support-modal .btn-pill').forEach(b => { b.style.borderColor = 'var(--border-card)'; b.style.background = '#ffffff'; b.style.color = 'var(--text-secondary)'; }); 
-      btn.style.borderColor = 'var(--primary-pine)'; btn.style.background = '#f0fdf4'; btn.style.color = 'var(--primary-pine)'; 
+      btn.style.borderColor = '#e11d48'; btn.style.background = '#fff1f2'; btn.style.color = '#e11d48'; 
       const qrImg = document.getElementById('jko-qr-img');
       if (qrImg) { qrImg.style.opacity = '0.5'; setTimeout(() => { qrImg.src = QR_CODES[amt]; qrImg.style.opacity = '1'; }, 150); }
     }
@@ -843,9 +872,9 @@
       const originalText = btn.innerText; btn.innerText = "通知發送中..."; btn.disabled = true;
       try {
         const result = await sendSponsorApi(name, selectedAmount, msg);
-        if (result.status === "success") { closeSupportModal(); showToast(`感謝 ${name} 贊助 NT$ ${selectedAmount} 支持創作者！`); } 
+        if (result.status === "success") { closeSupportModal(); showToast(`感謝 ${name} 贊助 NT$ ${selectedAmount} 或是提供的版路資訊！`); } 
         else { console.error("後端錯誤:", result.message); showToast("通知發送失敗，請稍後再試。"); }
-      } catch (error) { console.error('網路異常', error); showToast("網路異常，無法送出支持通知。"); } 
+      } catch (error) { console.error('網路異常', error); showToast("網路異常，無法送出通知。"); } 
       finally { btn.innerText = originalText; btn.disabled = false; }
     }
   </script>
