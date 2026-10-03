@@ -27,7 +27,7 @@ function getRandomShareText(type, data) {
       `🚨 【天天樂 避雷警告】${data.lotteryName} (${data.periodStr})\n☠ 這些號碼動能冰封，建議閃避！\n🛑 冥燈不出牌：[ ${data.nums} ]\n---\n🛡 查查你的號碼安不安全：\n${SHARE_URL}`,
       `🛑 衰神退散！${data.lotteryName} (${data.periodStr})\n⚠ 天天樂 AI 提醒，這幾支號碼今天超冷！\n🧊 建議避開：【 ${data.nums} 】\n保住本金就是贏！💪\n---\n🛡 買牌前先來測測吉凶：\n${SHARE_URL}`,
       `😱 【天天樂 警告】${data.lotteryName} (${data.periodStr})\n🛑 系統算出這 3 支今天千萬不能碰：\n👉 [ ${data.nums} ]\n---\n你買的號碼安全嗎？免費幫你算：\n${SHARE_URL}`,
-      `🛑 【天天樂 避雷針】${data.lotteryName} (${data.periodStr})\n⚠️ AI 偵測動能冰封，這幾支超冷千萬別碰！\n🧊 激推五不中/不出牌：[ ${data.nums} ]\n---\n🛡 查更多不出牌避雷版路：\n${SHARE_URL}`
+      `🛑 【天天樂 避雷針】${data.lotteryName} (${data.periodStr})\n⚠️️ AI 偵測動能冰封，這幾支超冷千萬別碰！\n🧊 激推五不中/不出牌：[ ${data.nums} ]\n---\n🛡 查更多不出牌避雷版路：\n${SHARE_URL}`
     ][rand];
   } else if (type === 'tail') {
     return [
@@ -65,13 +65,13 @@ function updateLiveStatus() {
 
   if (activeLottery === 'lottery_539' && day !== 0 && h === 20 && m >= 25 && m <= 45) {
     isLive = true;
-    streamHtml = `<div style="background: #1e293b; border-radius: 16px; padding: 20px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.2);"><div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;"><div style="display: flex; align-items: center; gap: 10px;"><span style="display:inline-block; width:12px; height:12px; background:#ef4444; border-radius:50%; animation: pulseLive 1.5s infinite;"></span><h3 style="margin:0; font-size: 18px; font-weight: 900;">57彩券王 即時轉播中</h3></div><span style="font-size: 14px; font-weight: 700; color: #94a3b8;">系統高頻偵測中，開出後將自動刷新下方數據</span></div><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/live_stream?channel=UCR3asjvr_WAaxwFZDPpa-Bg&autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div>`;
+    streamHtml = `<div style="background: #1e293b; border-radius: 16px; padding: 24px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.2);"><div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="display:inline-block; width:16px; height:16px; background:#ef4444; border-radius:50%; animation: pulseLive 1.5s infinite;"></span><h3 style="margin:0; font-size: 22px; font-weight: 900;">57彩券王 即時轉播中</h3></div><span style="font-size: 16px; font-weight: 700; color: #94a3b8;">系統高頻偵測中，開出後將自動刷新下方數據</span></div><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/live_stream?channel=UCR3asjvr_WAaxwFZDPpa-Bg&autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div>`;
   } else if (activeLottery === 'lottery_marksix' && h === 21 && m >= 25 && m <= 45) {
     isLive = true;
-    streamHtml = `<div style="background: #1e293b; border-radius: 16px; padding: 20px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.2);"><div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;"><span style="display:inline-block; width:12px; height:12px; background:#ef4444; border-radius:50%; animation: pulseLive 1.5s infinite;"></span><h3 style="margin:0; font-size: 18px; font-weight: 900;">香港六合彩 攪珠進行中</h3></div><div style="text-align: center; padding: 40px 20px; background: rgba(0,0,0,0.3); border-radius: 12px;"><div style="font-size: 40px; margin-bottom: 16px; animation: spinBall 3s linear infinite;">🎰</div><h4 style="font-size: 18px; font-weight: 800; color: #fde047; margin-bottom: 8px;">官方攪珠進行中</h4><p style="font-size: 14px; color: #cbd5e1;">系統已切換為高頻輪詢模式，最新號碼即將同步顯示</p></div></div>`;
+    streamHtml = `<div style="background: #1e293b; border-radius: 16px; padding: 24px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.2);"><div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;"><span style="display:inline-block; width:16px; height:16px; background:#ef4444; border-radius:50%; animation: pulseLive 1.5s infinite;"></span><h3 style="margin:0; font-size: 22px; font-weight: 900;">香港六合彩 攪珠進行中</h3></div><div style="text-align: center; padding: 40px 20px; background: rgba(0,0,0,0.3); border-radius: 12px;"><div style="font-size: 46px; margin-bottom: 16px; animation: spinBall 3s linear infinite;">🎰</div><h4 style="font-size: 22px; font-weight: 800; color: #fde047; margin-bottom: 10px;">官方攪珠進行中</h4><p style="font-size: 16px; color: #cbd5e1;">系統已切換為高頻輪詢模式，最新號碼即將同步顯示</p></div></div>`;
   } else if (activeLottery === 'lottery_f5' && ((h === 9 && m >= 25) || (h === 10 && m <= 45))) {
     isLive = true;
-    streamHtml = `<div style="background: #1e293b; border-radius: 16px; padding: 20px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.2);"><div style="display: flex; align-items: center; gap: 10px;"><span style="display:inline-block; width:12px; height:12px; background:#10b981; border-radius:50%; animation: pulseLive 1.5s infinite;"></span><h3 style="margin:0; font-size: 18px; font-weight: 900;">加州天天樂 號碼開出中</h3></div><p style="font-size: 14px; color: #94a3b8; margin-top: 8px; margin-bottom: 0;">系統已切換為高頻輪詢模式，將自動抓取並顯示最新開出之號碼。</p></div>`;
+    streamHtml = `<div style="background: #1e293b; border-radius: 16px; padding: 24px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.2);"><div style="display: flex; align-items: center; gap: 12px;"><span style="display:inline-block; width:16px; height:16px; background:#10b981; border-radius:50%; animation: pulseLive 1.5s infinite;"></span><h3 style="margin:0; font-size: 22px; font-weight: 900;">加州天天樂 號碼開出中</h3></div><p style="font-size: 16px; color: #94a3b8; margin-top: 10px; margin-bottom: 0;">系統已切換為高頻輪詢模式，將自動抓取並顯示最新開出之號碼。</p></div>`;
   }
 
   if (isLive) { if (container.innerHTML !== streamHtml) container.innerHTML = streamHtml; container.style.display = 'block'; } 
@@ -100,7 +100,7 @@ function copyJkoAccount(acc) {
 function showErrorUI(msg) {
   if (typeof LOTTERY_DATA !== 'undefined' && Object.keys(LOTTERY_DATA).length === 0) {
     const container = document.getElementById('hero-main-display');
-    if (container) container.innerHTML = `<h2 style="font-size:22px; font-weight:900; color:#dc2626;">${msg}</h2>`;
+    if (container) container.innerHTML = `<h2 style="font-size:26px; font-weight:900; color:#dc2626;">${msg}</h2>`;
   }
 }
 
@@ -115,8 +115,7 @@ function smoothScrollTo(elementId) {
   triggerVibration();
   const target = document.getElementById(elementId);
   if (!target) return;
-  // 🌟 調整偏移量：扣除手機版 Navbar 與彩種卡片的高度，避免滑動後被遮擋
-  const headerOffset = window.innerWidth <= 860 ? 150 : 70;
+  const headerOffset = window.innerWidth <= 860 ? 160 : 80;
   const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
   const elementPosition = target.getBoundingClientRect().top + currentScrollY;
   window.scrollTo({ top: Math.max(0, elementPosition - headerOffset - 20), behavior: 'smooth' });
@@ -184,7 +183,7 @@ function renderHero() {
   const container = document.getElementById('hero-main-display'); if (!data || data.length === 0) { if (container) container.innerHTML = `<h2>尚未取得資料</h2>`; return; }
 
   const latest = data[0]; const localDateEl = document.getElementById('hero-local-date');
-  if (localDateEl) localDateEl.innerHTML = `<span>當地日期 · ${latest.date}</span><span style="opacity:0.9; font-weight:700;">⏰ 開獎時間：${sched.fullSchedule}</span>`;
+  if (localDateEl) localDateEl.innerHTML = `<span>當地日期 · ${latest.date}</span><span style="opacity:0.9; font-weight:800;">⏰ 開獎時間：${sched.fullSchedule}</span>`;
   
   const now = new Date(); const h = now.getHours(); const m = now.getMinutes(); const day = now.getDay();
   let isRolling = false;
@@ -197,7 +196,7 @@ function renderHero() {
   if (isRolling) { for(let i=0; i<5; i++) { ballsHtml += `<div class="white-ball" style="animation: spinBall 0.5s linear infinite;">?</div>`; } } 
   else {
     latest.numbers.forEach(num => { ballsHtml += `<div class="white-ball">${String(num).padStart(2,'0')}</div>`; });
-    if (activeLottery === 'lottery_marksix' && latest.special !== null) { ballsHtml += `<span style="font-size:26px; font-weight:900; color:#fde047;">+</span><div class="white-ball special-ball">${String(latest.special).padStart(2,'0')}</div>`; }
+    if (activeLottery === 'lottery_marksix' && latest.special !== null) { ballsHtml += `<span style="font-size:30px; font-weight:900; color:#fde047;">+</span><div class="white-ball special-ball">${String(latest.special).padStart(2,'0')}</div>`; }
   }
   ballsHtml += '</div>';
 
@@ -206,8 +205,8 @@ function renderHero() {
 
   const periodHtml = latest.period ? `期別 ${latest.period}` : `最新開獎`;
   if (container) {
-    if (isRolling) { container.innerHTML = `<div style="font-size:16px; opacity:0.9; font-family:var(--font-mono); font-weight:800; margin-bottom:4px; color:#fde047;">開獎連線中，號碼滾動更新中...</div>${ballsHtml}`; } 
-    else { container.innerHTML = `<div style="font-size:16px; opacity:0.9; font-family:var(--font-mono); font-weight:800; margin-bottom:4px;">${periodHtml}</div>${ballsHtml}<div style="display:flex; gap:16px; font-size:15px; color:rgba(255,255,255,0.9); font-family:var(--font-mono); font-weight:800;"><span>和值: ${sum}</span><span>大小: ${big}大${small}小</span><span>奇偶: ${odd}奇${even}偶</span></div>`; }
+    if (isRolling) { container.innerHTML = `<div style="font-size:18px; opacity:0.9; font-family:var(--font-mono); font-weight:900; margin-bottom:8px; color:#fde047;">開獎連線中，號碼滾動更新中...</div>${ballsHtml}`; } 
+    else { container.innerHTML = `<div style="font-size:18px; opacity:0.9; font-family:var(--font-mono); font-weight:900; margin-bottom:8px;">${periodHtml}</div>${ballsHtml}<div style="display:flex; gap:16px; font-size:18px; color:rgba(255,255,255,0.95); font-family:var(--font-mono); font-weight:900;"><span>和值: ${sum}</span><span>大小: ${big}大${small}小</span><span>奇偶: ${odd}奇${even}偶</span></div>`; }
   }
 }
 
@@ -252,9 +251,9 @@ function renderModels() {
   evaluatedModels.slice(0, 6).forEach((item, idx) => {
     const {model: m, pred} = item; let ballsHtml = '';
     pred.forEach(num => {
-      const bS = 'width:42px; height:42px; font-size:18px; font-weight:900; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono);';
+      const bS = 'width:52px; height:52px; font-size:22px; font-weight:900; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono);';
       if (isLucky) { ballsHtml += `<div class="ball-dot-pine" style="${bS} color:#ffffff; box-shadow:0 3px 8px rgba(15,76,58,0.2);">${String(num).padStart(2,'0')}</div>`; }
-      else { ballsHtml += `<div style="${bS} background:#ffffff; color:#dc2626; border:2.5px solid #dc2626; box-shadow:0 2px 6px rgba(220,38,38,0.15);">${String(num).padStart(2,'0')}</div>`; }
+      else { ballsHtml += `<div style="${bS} background:#ffffff; color:#dc2626; border:3px solid #dc2626; box-shadow:0 2px 6px rgba(220,38,38,0.15);">${String(num).padStart(2,'0')}</div>`; }
     });
 
     let backtestBox = '';
@@ -267,7 +266,7 @@ function renderModels() {
     }
     const cardCls = isLucky ? 'model-card lucky' : 'model-card unlucky'; const bookmarkBtnLabel = isLucky ? '⭐ 收藏本期推薦 (3碼)' : '🛡 收藏避雷指標 (3碼)';
     let rankBadgeStyle = isLucky ? (idx === 0 ? 'background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff;' : idx === 1 ? 'background:linear-gradient(135deg, #94a3b8, #64748b); color:#ffffff;' : idx === 2 ? 'background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff;' : 'background:#dcfce7; color:#15803d;') : (idx === 0 ? 'background:linear-gradient(135deg, #dc2626, #991b1b); color:#ffffff;' : 'background:#fee2e2; color:#991b1b; border:1px solid #fca5a5;');
-    html += `<div class="${cardCls}"><div><div class="model-header-row"><div><div class="model-name"><span style="display:inline-block; font-size:13px; padding:4px 10px; border-radius:6px; font-weight:900; margin-right:8px; ${rankBadgeStyle}">TOP ${idx+1}</span> ${m.name}</div><div style="font-size:14px; font-weight:800; color:var(--text-muted); margin-top:6px;">${m.subtitle}</div></div><span class="model-tag">${isLucky ? '預測 3 碼' : '避雷 3 碼'}</span></div><div class="model-desc-text">${m.logic}</div><div class="model-balls-stage">${ballsHtml}</div>${backtestBox}</div><button class="btn-save-model" onclick='saveModelPrediction("${m.id}", "${m.name}", "${isLucky ? "lucky" : "unlucky"}", ${JSON.stringify(pred)}, "${targetPeriod}")'>${bookmarkBtnLabel}</button></div>`;
+    html += `<div class="${cardCls}"><div><div class="model-header-row"><div><div class="model-name"><span style="display:inline-block; font-size:16px; padding:6px 12px; border-radius:8px; font-weight:900; margin-right:10px; ${rankBadgeStyle}">TOP ${idx+1}</span> ${m.name}</div><div style="font-size:16px; font-weight:800; color:var(--text-muted); margin-top:8px;">${m.subtitle}</div></div><span class="model-tag">${isLucky ? '預測 3 碼' : '避雷 3 碼'}</span></div><div class="model-desc-text">${m.logic}</div><div class="model-balls-stage">${ballsHtml}</div>${backtestBox}</div><button class="btn-save-model" onclick='saveModelPrediction("${m.id}", "${m.name}", "${isLucky ? "lucky" : "unlucky"}", ${JSON.stringify(pred)}, "${targetPeriod}")'>${bookmarkBtnLabel}</button></div>`;
   });
   container.innerHTML = html;
 }
@@ -283,39 +282,39 @@ function renderTailsAnalysis() {
   const tailsData = calculateTailsData(data, activeLottery, analysisRange, selectedTailCount);
   const { totalDraws, tailCounts, maxCount, tailOmission, sortedPairs, hotTail, omTail, killTail, schemeTails, schemeBalls, schemeHitTotal, schemeHit2Plus, bestPairTail, bestPairCount, omRank, doubleTailMatches, tailPool } = tailsData;
 
-  let topPairsHtml = sortedPairs.slice(0, 3).map((p, idx) => `<div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:${idx === 0 ? '#f0fdf4' : '#f8fafc'}; border:1px solid ${idx === 0 ? '#bbf7d0' : 'var(--border-card)'}; border-radius:10px; margin-bottom:8px;"><div style="display:flex; align-items:center; gap:10px;"><strong style="font-size:18px; color:var(--primary-pine);">${p.t1} 尾</strong><span style="font-size:14px; color:#94a3b8;">🤝</span><strong style="font-size:18px; color:var(--primary-pine);">${p.t2} 尾</strong></div><div style="text-align:right;"><strong style="font-size:16px; color:var(--text-main); font-family:var(--font-mono);">${p.count} 次</strong><div style="font-size:12px; color:var(--text-muted); font-weight:700;">同開率 ${((p.count / totalDraws) * 100).toFixed(1)}%</div></div></div>`).join('');
+  let topPairsHtml = sortedPairs.slice(0, 3).map((p, idx) => `<div style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; background:${idx === 0 ? '#f0fdf4' : '#f8fafc'}; border:1.5px solid ${idx === 0 ? '#bbf7d0' : 'var(--border-card)'}; border-radius:12px; margin-bottom:10px;"><div style="display:flex; align-items:center; gap:12px;"><strong style="font-size:22px; color:var(--primary-pine);">${p.t1} 尾</strong><span style="font-size:18px; color:#94a3b8;">🤝</span><strong style="font-size:22px; color:var(--primary-pine);">${p.t2} 尾</strong></div><div style="text-align:right;"><strong style="font-size:20px; color:var(--text-main); font-family:var(--font-mono);">${p.count} 次</strong><div style="font-size:16px; color:var(--text-muted); font-weight:800;">同開率 ${((p.count / totalDraws) * 100).toFixed(1)}%</div></div></div>`).join('');
 
   container.innerHTML = `
     <div class="tails-ai-rec">
-      <div class="tail-badge-box hot"><div><div class="tail-badge-title">🔥 本期主推熱尾</div><div class="tail-badge-number">${hotTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">近 ${totalDraws} 期強開 ${tailCounts[hotTail]} 次</div><div class="tail-badge-balls">${tailPool(hotTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(hotTail).join(',')}], '🔥 本期主推熱尾：${hotTail} 尾')">🟢 傳 LINE</button></div>
-      <div class="tail-badge-box omission"><div><div class="tail-badge-title">⚡ 斷層極限回歸</div><div class="tail-badge-number">${omTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">${tailOmission[omTail] === 0 ? '上期開出' : `已連續 ${tailOmission[omTail]} 期未開`}</div><div class="tail-badge-balls">${tailPool(omTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(omTail).join(',')}], '⚡ 斷層極限回歸：${omTail} 尾')">🟢 傳 LINE</button></div>
-      <div class="tail-badge-box kill"><div><div class="tail-badge-title">🛡 本期絕殺避雷</div><div class="tail-badge-number">${killTail} 尾</div><div style="font-size:14px; font-weight:800; opacity:0.9;">動能冰封 · 建議避開</div><div class="tail-badge-balls">${tailPool(killTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(killTail).join(',')}], '🛡️ 本期絕殺避雷：${killTail} 尾')">🟢 傳 LINE</button></div>
+      <div class="tail-badge-box hot"><div><div class="tail-badge-title">🔥 本期主推熱尾</div><div class="tail-badge-number">${hotTail} 尾</div><div style="font-size:16px; font-weight:800; opacity:0.9;">近 ${totalDraws} 期強開 ${tailCounts[hotTail]} 次</div><div class="tail-badge-balls">${tailPool(hotTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(hotTail).join(',')}], '🔥 本期主推熱尾：${hotTail} 尾')">🟢 傳 LINE</button></div>
+      <div class="tail-badge-box omission"><div><div class="tail-badge-title">⚡ 斷層極限回歸</div><div class="tail-badge-number">${omTail} 尾</div><div style="font-size:16px; font-weight:800; opacity:0.9;">${tailOmission[omTail] === 0 ? '上期開出' : `已連續 ${tailOmission[omTail]} 期未開`}</div><div class="tail-badge-balls">${tailPool(omTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(omTail).join(',')}], '⚡ 斷層極限回歸：${omTail} 尾')">🟢 傳 LINE</button></div>
+      <div class="tail-badge-box kill"><div><div class="tail-badge-title">🛡 本期絕殺避雷</div><div class="tail-badge-number">${killTail} 尾</div><div style="font-size:16px; font-weight:800; opacity:0.9;">動能冰封 · 建議避開</div><div class="tail-badge-balls">${tailPool(killTail).map(n => `<span class="tail-ball-pill">${String(n).padStart(2,'0')}</span>`).join('')}</div></div><button class="btn-copy-tail" onclick="shareTailBadgeToLine([${tailPool(killTail).join(',')}], '🛡️ 本期絕殺避雷：${killTail} 尾')">🟢 傳 LINE</button></div>
     </div>
-    <div style="background:#ffffff; border:1px solid var(--border-card); border-radius:16px; padding:24px; margin-bottom:32px; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
-        <div><h3 style="font-size:22px; font-weight:900; color:var(--text-main); margin-bottom:6px;">🎯 依數據資料推薦組合方案</h3><p style="font-size:15px; color:var(--text-muted); font-weight:700;">結合出現頻率、遺漏回歸與雙開指數動態精算最佳尾數</p></div>
+    <div style="background:#ffffff; border:2px solid var(--border-card); border-radius:20px; padding:32px; margin-bottom:40px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:16px;">
+        <div><h3 style="font-size:26px; font-weight:900; color:var(--text-main); margin-bottom:8px;">🎯 依數據資料推薦組合方案</h3><p style="font-size:18px; color:var(--text-muted); font-weight:800;">結合出現頻率、遺漏回歸與雙開指數動態精算最佳尾數</p></div>
         <div class="range-btn-group" id="tail-scheme-group"><button class="range-btn ${selectedTailCount === 3 ? 'active' : ''}" data-tailcount="3" onclick="setTailScheme(3)">精選 3 尾</button><button class="range-btn ${selectedTailCount === 4 ? 'active' : ''}" data-tailcount="4" onclick="setTailScheme(4)">精選 4 尾</button><button class="range-btn ${selectedTailCount === 5 ? 'active' : ''}" data-tailcount="5" onclick="setTailScheme(5)">精選 5 尾</button></div>
       </div>
-      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div style="background:#f8fafc; border:2px solid #e2e8f0; border-radius:16px; padding:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
         <div>
-          <div style="font-size:15px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">精選尾數：${schemeTails.map(t => `<strong style="font-size:18px; color:var(--primary-pine); margin-right:8px;">${t}尾</strong>`).join('')}<span style="font-size:14px; color:var(--text-muted); font-weight:700;">(共 ${schemeBalls.length} 顆)</span></div>
-          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">${schemeBalls.map(n => `<span class="tail-ball-pill" style="background:#ffffff; border-color:#cbd5e1; font-size:16px;">${String(n).padStart(2,'0')}</span>`).join('')}</div>
+          <div style="font-size:18px; font-weight:900; color:var(--text-secondary); margin-bottom:12px;">精選尾數：${schemeTails.map(t => `<strong style="font-size:22px; color:var(--primary-pine); margin-right:10px;">${t}尾</strong>`).join('')}<span style="font-size:18px; color:var(--text-muted); font-weight:800;">(共 ${schemeBalls.length} 顆)</span></div>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;">${schemeBalls.map(n => `<span class="tail-ball-pill" style="background:#ffffff; border-color:#cbd5e1; font-size:20px;">${String(n).padStart(2,'0')}</span>`).join('')}</div>
         </div>
-        <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
-          <div style="text-align:right;"><div style="font-size:14px; color:var(--text-muted); font-weight:800;">期均涵蓋球數</div><div style="font-size:24px; font-weight:900; font-family:var(--font-mono); color:var(--primary-pine);">${(schemeHitTotal / totalDraws).toFixed(2)} 顆</div></div>
-          <div style="text-align:right; border-left:1px solid #cbd5e1; padding-left:20px;"><div style="font-size:14px; color:var(--text-muted); font-weight:800;">2碼以上覆蓋率</div><div style="font-size:24px; font-weight:900; font-family:var(--font-mono); color:#d97706;">${((schemeHit2Plus / totalDraws) * 100).toFixed(1)}%</div></div>
-          <div style="display:flex; gap:10px; width:100%; margin-top:10px; justify-content:flex-end;">
-            <button class="btn-pine" style="background:#06C755; border:none; padding:10px 16px; font-size:15px; box-shadow:0 2px 6px rgba(6, 199, 85, 0.3);" onclick="shareTailsToLine([${schemeBalls.join(',')}], '${selectedTailCount}個尾數方案')">🟢 傳LINE群組</button>
-            <button class="btn-pine" style="background:#ffffff; color:var(--primary-pine); border:1.5px solid var(--primary-pine); padding:10px 16px; font-size:15px;" onclick="copyTailNumbers([${schemeBalls.join(',')}], '${selectedTailCount}個尾數方案')">複製</button>
+        <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+          <div style="text-align:right;"><div style="font-size:16px; color:var(--text-muted); font-weight:900;">期均涵蓋球數</div><div style="font-size:28px; font-weight:900; font-family:var(--font-mono); color:var(--primary-pine);">${(schemeHitTotal / totalDraws).toFixed(2)} 顆</div></div>
+          <div style="text-align:right; border-left:2px solid #cbd5e1; padding-left:24px;"><div style="font-size:16px; color:var(--text-muted); font-weight:900;">2碼以上覆蓋率</div><div style="font-size:28px; font-weight:900; font-family:var(--font-mono); color:#d97706;">${((schemeHit2Plus / totalDraws) * 100).toFixed(1)}%</div></div>
+          <div style="display:flex; gap:14px; width:100%; margin-top:16px; justify-content:flex-end;">
+            <button class="btn-pine" style="background:#06C755; border:none; padding:14px 20px; font-size:18px; box-shadow:0 3px 8px rgba(6, 199, 85, 0.3);" onclick="shareTailsToLine([${schemeBalls.join(',')}], '${selectedTailCount}個尾數方案')">🟢 傳LINE群組</button>
+            <button class="btn-pine" style="background:#ffffff; color:var(--primary-pine); border:2px solid var(--primary-pine); padding:14px 20px; font-size:18px;" onclick="copyTailNumbers([${schemeBalls.join(',')}], '${selectedTailCount}個尾數方案')">複製</button>
           </div>
         </div>
       </div>
     </div>
     <div class="tails-grid">
-      <div class="tails-card"><h3>🌡 0~9 尾數冷熱溫度計 (近 ${totalDraws} 期)</h3><div style="margin-top:20px;">${Array.from({length: 10}, (_, t) => { const count = tailCounts[t], pct = Math.round((count / maxCount) * 100); return `<div class="temp-row"><span class="temp-label">${t} 尾</span><div class="temp-bar-bg"><div class="temp-bar-fill ${pct >= 75 ? 'bg-heat-hot' : pct >= 45 ? 'bg-heat-warm' : 'bg-heat-cool'}" style="width:${pct}%;"></div></div><span class="temp-val">${count} 次</span></div>`; }).join('')}</div></div>
-      <div style="display:flex; flex-direction:column; gap:24px;">
-        <div class="tails-card"><h3>🚨 尾數極限遺漏警戒 (連續未開出)</h3><div class="omission-list" style="margin-top:16px;">${omRank.map((t, idx) => `<div class="omission-item"><div style="display:flex; align-items:center; gap:12px;"><span style="font-size:16px; font-weight:900; color:var(--text-muted); font-family:var(--font-mono);">${idx+1}</span><strong style="color:var(--text-main); font-size:18px;">${t} 尾</strong><span style="font-size:14px; color:var(--text-muted); font-weight:600;">${tailPool(t).map(n => String(n).padStart(2,'0')).join(', ')}</span></div><strong>${tailOmission[t] === 0 ? '上期開出' : `連續 ${tailOmission[t]} 期`}</strong></div>`).join('')}</div></div>
-        <div class="tails-card"><div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; flex-wrap:wrap; gap:8px;"><h4 style="font-size:18px; font-weight:900; color:var(--text-main); margin:0;">🧲 雙尾共伴雷達</h4><span style="font-size:12px; font-weight:900; background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff; padding:4px 10px; border-radius:6px; box-shadow:0 2px 4px rgba(217,119,6,0.2);">👑 彩友「二哥」獨家提供</span></div><p style="font-size:14px; color:var(--text-secondary); line-height:1.6; font-weight:600; margin-bottom:16px;">近 ${totalDraws} 期內，這幾組尾數宛如磁鐵般最常在同一期結伴開出。</p>${topPairsHtml}</div>
+      <div class="tails-card"><h3>🌡 0~9 尾數冷熱溫度計 (近 ${totalDraws} 期)</h3><div style="margin-top:24px;">${Array.from({length: 10}, (_, t) => { const count = tailCounts[t], pct = Math.round((count / maxCount) * 100); return `<div class="temp-row"><span class="temp-label">${t} 尾</span><div class="temp-bar-bg"><div class="temp-bar-fill ${pct >= 75 ? 'bg-heat-hot' : pct >= 45 ? 'bg-heat-warm' : 'bg-heat-cool'}" style="width:${pct}%;"></div></div><span class="temp-val">${count} 次</span></div>`; }).join('')}</div></div>
+      <div style="display:flex; flex-direction:column; gap:28px;">
+        <div class="tails-card"><h3>🚨 尾數極限遺漏警戒 (連續未開出)</h3><div class="omission-list" style="margin-top:20px;">${omRank.map((t, idx) => `<div class="omission-item"><div style="display:flex; align-items:center; gap:16px;"><span style="font-size:20px; font-weight:900; color:var(--text-muted); font-family:var(--font-mono);">${idx+1}</span><strong style="color:var(--text-main); font-size:22px;">${t} 尾</strong><span style="font-size:18px; color:var(--text-muted); font-weight:800;">${tailPool(t).map(n => String(n).padStart(2,'0')).join(', ')}</span></div><strong>${tailOmission[t] === 0 ? '上期開出' : `連續 ${tailOmission[t]} 期`}</strong></div>`).join('')}</div></div>
+        <div class="tails-card"><div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-wrap:wrap; gap:12px;"><h4 style="font-size:22px; font-weight:900; color:var(--text-main); margin:0;">🧲 雙尾共伴雷達</h4><span style="font-size:15px; font-weight:900; background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff; padding:6px 14px; border-radius:8px; box-shadow:0 3px 6px rgba(217,119,6,0.25);">👑 彩友「二哥」獨家提供</span></div><p style="font-size:16px; color:var(--text-secondary); line-height:1.7; font-weight:800; margin-bottom:20px;">近 ${totalDraws} 期內，這幾組尾數宛如磁鐵般最常在同一期結伴開出。</p>${topPairsHtml}</div>
       </div>
     </div>
   `;
@@ -330,7 +329,7 @@ function copyTailNumbers(arr, label) {
 
 function fallbackCopy(text, label) {
   const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
-  try { document.execCommand('copy'); showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製內容！'); } catch (err) { showToast('複製失敗，請手手動複製。'); }
+  try { document.execCommand('copy'); showToast(label ? `已複製 [${label}] 號碼：${text}` : '已成功複製內容！'); } catch (err) { showToast('複製失敗，請手動複製。'); }
   document.body.removeChild(ta);
 }
 
@@ -370,17 +369,17 @@ function copySavedItem(id) {
 
 function renderSavedList() {
   const container = document.getElementById('saved-list-container'); if (!container) return;
-  if (savedList.length === 0) { container.innerHTML = `<div style="font-size:15px; color:var(--text-muted); font-weight:600; padding:20px 0;">還沒有收藏，在上方模型卡片點選「收藏」即可保存。</div>`; return; }
+  if (savedList.length === 0) { container.innerHTML = `<div style="font-size:18px; color:var(--text-muted); font-weight:800; padding:24px 0;">還沒有收藏，在上方模型卡片點選「收藏」即可保存。</div>`; return; }
   container.innerHTML = savedList.map(item => {
     const isLucky = (item.type === 'lucky');
     const matchDraw = (typeof LOTTERY_DATA !== 'undefined' && LOTTERY_DATA[item.lottery]) ? LOTTERY_DATA[item.lottery].find(d => (d.period === item.period || d.date === item.period)) : null;
-    let matchBadge = `<span style="font-size:13px; background:#fef3c7; color:#b45309; padding:4px 10px; border-radius:6px; font-weight:800;">⏳ 待開獎對獎</span>`;
+    let matchBadge = `<span style="font-size:16px; background:#fef3c7; color:#b45309; padding:6px 14px; border-radius:8px; font-weight:900;">⏳ 待開獎對獎</span>`;
     if (matchDraw) {
       const matchCount = item.numbers.filter(n => new Set(matchDraw.numbers).has(n)).length;
-      if (isLucky) { matchBadge = matchCount > 0 ? `<span style="font-size:13px; background:#dcfce7; color:#15803d; padding:4px 10px; border-radius:6px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` : `<span style="font-size:13px; background:#f1f5f9; color:#64748b; padding:4px 10px; border-radius:6px; font-weight:800;">未中 (0碼)</span>`; } 
-      else { matchBadge = matchCount === 0 ? `<span style="font-size:13px; background:#dbeafe; color:#1e40af; padding:4px 10px; border-radius:6px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:13px; background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`; }
+      if (isLucky) { matchBadge = matchCount > 0 ? `<span style="font-size:16px; background:#dcfce7; color:#15803d; padding:6px 14px; border-radius:8px; font-weight:900;">🔥 命中 ${matchCount} 碼</span>` : `<span style="font-size:16px; background:#f1f5f9; color:#64748b; padding:6px 14px; border-radius:8px; font-weight:900;">未中 (0碼)</span>`; } 
+      else { matchBadge = matchCount === 0 ? `<span style="font-size:16px; background:#dbeafe; color:#1e40af; padding:6px 14px; border-radius:8px; font-weight:900;">🛡️ 完美避雷</span>` : `<span style="font-size:16px; background:#fee2e2; color:#b91c1c; padding:6px 14px; border-radius:8px; font-weight:900;">⚠️ 破防 ${matchCount} 碼</span>`; }
     }
-    return `<div style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; margin-bottom:12px;"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><strong style="font-size:16px; color:var(--text-main); font-weight:900;">${item.lotteryName} · ${item.modelName}</strong>${matchBadge}</div><div style="font-size:14px; color:var(--text-muted); font-family:var(--font-mono); font-weight:600; margin-top:4px;">${item.period ? `期別 ${item.period}` : `日期 ${item.date}`}</div><div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">${item.numbers.map(n => `<div class="ball-dot-pine" style="width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#ffffff; font-size:14px; font-weight:800; font-family:var(--font-mono);">${String(n).padStart(2,'0')}</div>`).join('')}</div></div><button onclick="removeSavedItem(${item.id})" style="background:none; border:none; color:var(--text-light); cursor:pointer; font-size:22px; padding:0 0 4px 10px;">✕</button></div><div style="display:flex; gap:10px; margin-top:16px; border-top:1px dashed #cbd5e1; padding-top:12px;"><button onclick="shareSavedItem(${item.id})" style="flex:1; padding:10px; border-radius:8px; border:none; background:#06C755; color:#ffffff; font-size:15px; font-weight:900; cursor:pointer; transition:all 0.2s ease; font-family:inherit; box-shadow:0 2px 6px rgba(6, 199, 85, 0.3);">🟢 分享</button><button onclick="copySavedItem(${item.id})" style="flex:1; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; background:#ffffff; color:var(--text-secondary); font-size:15px; font-weight:800; cursor:pointer; transition:all 0.2s ease; font-family:inherit;">📄 複製</button></div></div>`;
+    return `<div style="background:#f8fafc; border:2px solid var(--border-card); border-radius:16px; padding:24px; margin-bottom:16px;"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div><div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;"><strong style="font-size:22px; color:var(--text-main); font-weight:900;">${item.lotteryName} · ${item.modelName}</strong>${matchBadge}</div><div style="font-size:18px; color:var(--text-muted); font-family:var(--font-mono); font-weight:800; margin-top:8px;">${item.period ? `期別 ${item.period}` : `日期 ${item.date}`}</div><div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">${item.numbers.map(n => `<div class="ball-dot-pine" style="width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#ffffff; font-size:18px; font-weight:900; font-family:var(--font-mono);">${String(n).padStart(2,'0')}</div>`).join('')}</div></div><button onclick="removeSavedItem(${item.id})" style="background:none; border:none; color:var(--text-light); cursor:pointer; font-size:26px; padding:0 0 4px 10px;">✕</button></div><div style="display:flex; gap:14px; margin-top:20px; border-top:2px dashed #cbd5e1; padding-top:16px;"><button onclick="shareSavedItem(${item.id})" style="flex:1; padding:14px; border-radius:10px; border:none; background:#06C755; color:#ffffff; font-size:18px; font-weight:900; cursor:pointer; transition:all 0.2s ease; font-family:inherit; box-shadow:0 3px 8px rgba(6, 199, 85, 0.3);">🟢 分享</button><button onclick="copySavedItem(${item.id})" style="flex:1; padding:14px; border-radius:10px; border:2px solid #cbd5e1; background:#ffffff; color:var(--text-secondary); font-size:18px; font-weight:900; cursor:pointer; transition:all 0.2s ease; font-family:inherit;">📄 複製</button></div></div>`;
   }).join('');
 }
 

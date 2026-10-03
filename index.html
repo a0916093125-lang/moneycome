@@ -37,7 +37,6 @@
   <meta name="twitter:description" id="tw-desc" content="內建即時開獎直播與高頻滾球動畫。最即時的539、天天樂、六合彩開獎號碼與 AI 大數據避雷選號。">
   <meta name="twitter:image" content="https://539168.com.tw/share-image.jpg">
 
-  <!-- Google tag (gtag.js) 流量追蹤 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -46,7 +45,6 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-  <!-- JSON-LD 結構化資料保留區塊 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -133,14 +131,13 @@
 
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- 🌟 抽離後的獨立 CSS 樣式表 -->
   <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
   
   <noscript>
-    <div style="padding: 20px; background: #fffbeB; color: #b45309; text-align: center;">
+    <div style="padding: 24px; background: #fffbeB; color: #b45309; text-align: center; font-size: 18px;">
       本網站提供最即時的今彩539官方開獎直播、加州天天樂與六合彩開獎號碼與 AI 大數據預測。請啟用 JavaScript 以獲得完整的圖表與版路統計功能。
     </div>
   </noscript>
@@ -184,22 +181,22 @@
       </button>
     </div>
 
-    <div id="live-stream-container" style="display: none; margin-bottom: 24px;"></div>
+    <div id="live-stream-container" style="display: none; margin-bottom: 30px;"></div>
 
     <div class="dashboard-grid">
       <div class="hero-pine-card">
         <div>
           <div class="pine-card-top">
-            <span style="font-size: 15px; font-weight: 800; color: rgba(255,255,255,0.85);">最新收錄開獎</span>
+            <span style="font-size: 18px; font-weight: 800; color: rgba(255,255,255,0.85);">最新收錄開獎</span>
             <span class="pine-card-badge" id="hero-badge-name">今彩539 ｜ ⏰ 20:30 開獎</span>
           </div>
           <div id="hero-main-display">
-            <h2 style="font-size:22px; font-weight:900; margin-bottom:8px;">即時開獎號碼同步中...</h2>
-            <p style="font-size:14px; opacity:0.85;">天天樂數據倉儲正為您連線官方即時開獎資料庫，支援今彩539、加州天天樂與六合彩極速開獎。</p>
+            <h2 style="font-size:26px; font-weight:900; margin-bottom:12px;">即時開獎號碼同步中...</h2>
+            <p style="font-size:16px; opacity:0.85; line-height: 1.6;">天天樂數據倉儲正為您連線官方即時開獎資料庫，支援今彩539、加州天天樂與六合彩極速開獎。</p>
           </div>
         </div>
         <div class="pine-card-bottom">
-          <span id="hero-local-date">當地日期 · 載入中...</span>
+          <span id="hero-local-date" style="font-size: 16px;">當地日期 · 載入中...</span>
         </div>
       </div>
       
@@ -209,7 +206,7 @@
           <div class="metric-item"><strong id="metric-source-rows">-</strong><span>歷史大數據庫</span></div>
           <div class="metric-item"><strong id="metric-page-rows">-</strong><span>近期運算樣本</span></div>
         </div>
-        <div class="overview-footer">科學的盡頭 শাস্ত্র是玄學</div>
+        <div class="overview-footer">科學的盡頭是玄學</div>
       </div>
     </div>
 
@@ -217,7 +214,7 @@
       <div class="section-header-row">
         <div><div class="tracker-tag">NUMBER INSIGHTS</div><h2 class="section-headline">下一期號碼參考</h2></div>
         <div class="range-control-wrap" id="range-control-wrap">
-          <span style="font-size:16px; font-weight:900; color:var(--text-secondary);" class="range-title-text">TOP 6 最佳模型</span>
+          <span style="font-size:18px; font-weight:900; color:var(--text-secondary);" class="range-title-text">TOP 6 最佳模型</span>
           <div class="range-btn-group" id="range-btn-group">
             <button class="range-btn" data-range="5" onclick="setAnalysisRange(5)">近 5 期</button>
             <button class="range-btn" data-range="10" onclick="setAnalysisRange(10)">近 10 期</button>
@@ -232,7 +229,7 @@
         <button class="model-nav-btn tails-btn" id="tab-model-tails" onclick="switchModelCategory('tails')">🎯 尾數精準分析 (0~9尾)</button>
       </div>
 
-      <div id="scroll-anchor" style="position:relative; top:-20px;"></div>
+      <div id="scroll-anchor" style="position:relative; top:-30px;"></div>
 
       <div class="model-ranking-title" id="ranking-title-bar">
         <span>🏆 歷史回測表現最佳 TOP 6 模型</span><span class="badge" id="ranking-metric-badge">依綜合命中分數排行</span>
@@ -244,77 +241,77 @@
 
     <div class="bottom-grid" id="support">
       <div class="space-card" style="align-self: start;">
-        <div class="tracker-tag">MY SPACE</div><h3 style="font-size:24px; font-weight:900; margin-bottom:8px;">我的收藏</h3>
-        <p style="font-size:15px; color:var(--text-secondary); font-weight:600; margin-bottom:6px;">保存感興趣的模型與尾數組合，開獎後自動比對命中成績。</p>
-        <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">收藏資料保存在當前瀏覽器中。</p>
-        <div id="saved-list-container" style="min-height: 80px;"></div>
+        <div class="tracker-tag">MY SPACE</div><h3 style="font-size:28px; font-weight:900; margin-bottom:12px;">我的收藏</h3>
+        <p style="font-size:18px; color:var(--text-secondary); font-weight:600; margin-bottom:8px;">保存感興趣的模型與尾數組合，開獎後自動比對命中成績。</p>
+        <p style="font-size:16px; color:var(--text-muted); margin-bottom:24px;">收藏資料保存在當前瀏覽器中。</p>
+        <div id="saved-list-container" style="min-height: 100px;"></div>
       </div>
       
-      <div style="display: flex; flex-direction: column; gap: 24px;">
-        <div class="space-card" style="background:#ffffff; border:1px solid var(--border-card); border-radius:16px; padding:28px 30px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-direction: column; gap: 30px;">
+        <div class="space-card" style="background:#ffffff; border:1px solid var(--border-card); border-radius:16px; padding:32px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
           <div class="tracker-tag">A LETTER FROM CREATOR</div>
-          <h3 style="font-size:22px; font-weight:900; margin-bottom:16px; color:var(--text-main);">寫在天天樂背後的故事</h3>
-          <div style="font-size:15px; color:var(--text-secondary); line-height:1.7; text-align:justify;">
-            <p style="margin-bottom:12px;">我的母親是個不折不扣的彩迷。從小，她就常拉著我，要我用電腦幫她「算牌」。每次只要我把算好的號碼交給她，她總是滿心歡喜。幸運中獎時，她會開心地包個紅包給我沾沾喜氣；就算沒中，她也從不失落，總是笑笑地說：「沒關係，下次還有機會。」</p>
-            <p style="margin-bottom:12px;">長大後，我一面忙於事業，一面還要應付她每天的「逼牌」，老實說，有時真的覺得挺煩人的。</p>
-            <p style="margin-bottom:12px;">直到她離開了，耳邊少了那些每天催促我看牌的聲音，我才恍然大悟——<strong style="color:var(--text-main);">原來那不僅僅是算牌，那是媽媽愛我的方式。</strong>她用這種方式參與我的生活，鼓勵我發揮所學，並與我分享生活中最單純的喜悅。</p>
-            <p style="margin-bottom:12px;">現在，我將自己的畢生所學，結合媽媽傳授給我的私藏版路，傾注於這個網站中。本網站完全免費、不收會員，也絕不介入任何賭博行為。</p>
+          <h3 style="font-size:26px; font-weight:900; margin-bottom:20px; color:var(--text-main);">寫在天天樂背後的故事</h3>
+          <div style="font-size:18px; color:var(--text-secondary); line-height:1.8; text-align:justify;">
+            <p style="margin-bottom:16px;">我的母親是個不折不扣的彩迷。從小，她就常拉著我，要我用電腦幫她「算牌」。每次只要我把算好的號碼交給她，她總是滿心歡喜。幸運中獎時，她會開心地包個紅包給我沾沾喜氣；就算沒中，她也從不失落，總是笑笑地說：「沒關係，下次還有機會。」</p>
+            <p style="margin-bottom:16px;">長大後，我一面忙於事業，一面還要應付她每天的「逼牌」，老實說，有時真的覺得挺煩人的。</p>
+            <p style="margin-bottom:16px;">直到她離開了，耳邊少了那些每天催促我看牌的聲音，我才恍然大悟——<strong style="color:var(--text-main);">原來那不僅僅是算牌，那是媽媽愛我的方式。</strong>她用這種方式參與我的生活，鼓勵我發揮所學，並與我分享生活中最單純的喜悅。</p>
+            <p style="margin-bottom:16px;">現在，我將自己的畢生所學，結合媽媽傳授給我的私藏版路，傾注於這個網站中。本網站完全免費、不收會員，也絕不介入任何賭博行為。</p>
             <p style="font-weight:800; color:var(--primary-pine);">這是我對她的思念，也是一份愛的延續，獻給我在天上的媽媽。</p>
           </div>
         </div>
 
-        <div class="space-card" style="background: linear-gradient(to bottom right, #ffffff, #fff1f2); border: 1px solid #fecdd3; border-radius: 16px; padding: 28px 30px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05);">
+        <div class="space-card" style="background: linear-gradient(to bottom right, #ffffff, #fff1f2); border: 1px solid #fecdd3; border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05);">
           <div class="tracker-tag" style="color: #e11d48;">SHARE THE LUCK & STRATEGY</div>
-          <h3 style="font-size:24px; font-weight:900; margin-bottom:12px; color:#be123c;">沾沾喜氣，分享幸運 🧧</h3>
-          <p style="font-size:15px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px; text-align:justify;">如果天天樂的數據今天剛好幫您順利「摘星」或避開了地雷，歡迎像我母親當年一樣，隨喜包個小紅包給站長沾沾喜氣。您的每一份支持，都會成為維持網站伺服器運作的動力。</p>
+          <h3 style="font-size:26px; font-weight:900; margin-bottom:16px; color:#be123c;">沾沾喜氣，分享幸運 🧧</h3>
+          <p style="font-size:18px; color:var(--text-secondary); line-height:1.7; margin-bottom:20px; text-align:justify;">如果天天樂的數據今天剛好幫您順利「摘星」或避開了地雷，歡迎像我母親當年一樣，隨喜包個小紅包給站長沾沾喜氣。您的每一份支持，都會成為維持網站伺服器運作的動力。</p>
           
-          <div style="background: rgba(255,255,255,0.7); border-radius: 10px; padding: 16px; margin-bottom: 24px; border: 1px dashed #fda4af;">
-            <div style="font-size: 15px; font-weight: 900; color: #be123c; margin-bottom: 6px;">💡 英雄帖：徵求獨家版路！</div>
-            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">如果您有更好的選號邏輯或私藏版路，歡迎與我分享！若經實測效果優異，我將為它寫成專屬模型上架，並<strong style="color: #e11d48;">永久掛上您的專屬大名</strong>，讓全網彩友跟著您一起發財！</p>
+          <div style="background: rgba(255,255,255,0.7); border-radius: 12px; padding: 20px; margin-bottom: 24px; border: 2px dashed #fda4af;">
+            <div style="font-size: 18px; font-weight: 900; color: #be123c; margin-bottom: 10px;">💡 英雄帖：徵求獨家版路！</div>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">如果您有更好的選號邏輯或私藏版路，歡迎與我分享！若經實測效果優異，我將為它寫成專屬模型上架，並<strong style="color: #e11d48;">永久掛上您的專屬大名</strong>，讓全網彩友跟著您一起發財！</p>
           </div>
 
-          <div style="display:flex; align-items:center; gap:16px;">
-            <button class="btn-pine" style="background: #e11d48; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);" onclick="openSupportModal()">🧧 隨喜紅包 / 提供版路</button>
-            <span style="font-size:14px; color:var(--text-muted); font-weight:600;">隨喜分享 · 感謝支持</span>
+          <div style="display:flex; align-items:center; gap:20px;">
+            <button class="btn-pine" style="background: #e11d48; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25); padding: 16px 24px; font-size: 18px;" onclick="openSupportModal()">🧧 隨喜紅包 / 提供版路</button>
+            <span style="font-size:16px; color:var(--text-muted); font-weight:700;">隨喜分享 · 感謝支持</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="section-wrap" style="margin-bottom: 48px;">
+    <div class="section-wrap" style="margin-bottom: 56px;">
       <div class="space-card" style="padding: 40px;">
         <div class="tracker-tag">FAQ</div>
-        <h2 class="section-headline" style="font-size: 24px; margin-bottom: 24px;">常見問題與開獎資訊</h2>
-        <div style="display:flex; flex-direction:column; gap:16px;">
-          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; cursor:pointer; transition: all 0.2s ease;">
-            <summary style="font-size:18px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:8px;">📌 哪裡可以看今彩539開獎直播？</summary>
-            <p style="margin-top:12px; font-size:15px; color:var(--text-secondary); line-height:1.6;">本站提供即時的今彩539官方開獎直播。每週一至週六晚間 20:25～20:45，首頁將自動展開 57彩券王 YouTube 轉播視窗，並以 15 秒極速輪詢同步最新開獎號碼。</p>
+        <h2 class="section-headline" style="font-size: 28px; margin-bottom: 24px;">常見問題與開獎資訊</h2>
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:20px 24px; cursor:pointer; transition: all 0.2s ease;">
+            <summary style="font-size:22px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:10px;">📌 哪裡可以看今彩539開獎直播？</summary>
+            <p style="margin-top:16px; font-size:18px; color:var(--text-secondary); line-height:1.7;">本站提供即時的今彩539官方開獎直播。每週一至週六晚間 20:25～20:45，首頁將自動展開 57彩券王 YouTube 轉播視窗，並以 15 秒極速輪詢同步最新開獎號碼。</p>
           </details>
-          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; cursor:pointer; transition: all 0.2s ease;">
-            <summary style="font-size:18px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:8px;">📌 今彩539幾點開獎？</summary>
-            <p style="margin-top:12px; font-size:15px; color:var(--text-secondary); line-height:1.6;">今彩539的開獎時間為<strong>每週一至週六晚間 20:30</strong>。天天樂預測中心會在官方攪珠結束後，極速同步最新開獎號碼與 AI 大數據統計。</p>
+          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:20px 24px; cursor:pointer; transition: all 0.2s ease;">
+            <summary style="font-size:22px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:10px;">📌 今彩539幾點開獎？</summary>
+            <p style="margin-top:16px; font-size:18px; color:var(--text-secondary); line-height:1.7;">今彩539的開獎時間為<strong>每週一至週六晚間 20:30</strong>。天天樂預測中心會在官方攪珠結束後，極速同步最新開獎號碼與 AI 大數據統計。</p>
           </details>
-          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; cursor:pointer; transition: all 0.2s ease;">
-            <summary style="font-size:18px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:8px;">📌 加州天天樂開獎時間為何？</summary>
-            <p style="margin-top:12px; font-size:15px; color:var(--text-secondary); line-height:1.6;">加州天天樂（Fantasy 5）在台灣時間<strong>每日上午 09:30</strong>（夏令時間）或 10:30（冬令時間）開獎。本站每日會即時更新天天樂開獎單與尾數分析。</p>
+          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:20px 24px; cursor:pointer; transition: all 0.2s ease;">
+            <summary style="font-size:22px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:10px;">📌 加州天天樂開獎時間為何？</summary>
+            <p style="margin-top:16px; font-size:18px; color:var(--text-secondary); line-height:1.7;">加州天天樂（Fantasy 5）在台灣時間<strong>每日上午 09:30</strong>（夏令時間）或 10:30（冬令時間）開獎。本站每日會即時更新天天樂開獎單與尾數分析。</p>
           </details>
-          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; cursor:pointer; transition: all 0.2s ease;">
-            <summary style="font-size:18px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:8px;">📌 六合彩開獎日期與時間是哪幾天？</summary>
-            <p style="margin-top:12px; font-size:15px; color:var(--text-secondary); line-height:1.6;">香港六合彩通常於<strong>每週二、四、六（或日）晚間 21:30</strong> 舉行攪珠。天天樂會即時收錄最新六合彩開獎號碼並進行熱門號碼預測。</p>
+          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:20px 24px; cursor:pointer; transition: all 0.2s ease;">
+            <summary style="font-size:22px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:10px;">📌 六合彩開獎日期與時間是哪幾天？</summary>
+            <p style="margin-top:16px; font-size:18px; color:var(--text-secondary); line-height:1.7;">香港六合彩通常於<strong>每週二、四、六（或日）晚間 21:30</strong> 舉行攪珠。天天樂會即時收錄最新六合彩開獎號碼並進行熱門號碼預測。</p>
           </details>
-          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:16px 20px; cursor:pointer; transition: all 0.2s ease;">
-            <summary style="font-size:18px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:8px;">📌 天天樂的 AI 預測模型準確嗎？</summary>
-            <p style="margin-top:12px; font-size:15px; color:var(--text-secondary); line-height:1.6;">本站採用馬可夫鏈與蒙地卡羅演算法，依據數千筆歷史大數據推算均值回歸與冷熱趨勢，具備極高的實戰參考價值。但彩券仍為隨機機率遊戲，請理性參與、量力而為。</p>
+          <details style="background:#f8fafc; border:1px solid var(--border-card); border-radius:12px; padding:20px 24px; cursor:pointer; transition: all 0.2s ease;">
+            <summary style="font-size:22px; font-weight:900; color:var(--text-main); outline:none; display:flex; align-items:center; gap:10px;">📌 天天樂的 AI 預測模型準確嗎？</summary>
+            <p style="margin-top:16px; font-size:18px; color:var(--text-secondary); line-height:1.7;">本站採用馬可夫鏈與蒙地卡羅演算法，依據數千筆歷史大數據推算均值回歸與冷熱趨勢，具備極高的實戰參考價值。但彩券仍為隨機機率遊戲，請理性參與、量力而為。</p>
           </details>
         </div>
       </div>
     </div>
 
-    <div class="section-wrap" style="margin-bottom: 48px;">
+    <div class="section-wrap" style="margin-bottom: 56px;">
       <div class="space-card" style="padding: 40px; line-height: 1.8;">
         <div class="tracker-tag">ABOUT OUR ALGORITHM</div>
-        <h2 class="section-headline" style="font-size: 24px; margin-bottom: 20px;">關於天天樂：大數據與 AI 演算法的完美結合</h2>
-        <div style="font-size: 15px; color: var(--text-muted); font-weight: 600; text-align: justify;">
+        <h2 class="section-headline" style="font-size: 28px; margin-bottom: 24px;">關於天天樂：大數據與 AI 演算法的完美結合</h2>
+        <div style="font-size: 18px; color: var(--text-muted); font-weight: 600; text-align: justify;">
           <p style="margin-bottom: 16px;">歡迎來到「天天樂」，這是一個專為彩迷打造的無伺服器 (Serverless) 大數據平台，提供最即時的<strong>539預測與開獎直播</strong>、<strong>天天樂統計</strong>與<strong>六合彩開獎號碼</strong>分析。我們深知在隨機機率的遊戲中，單憑直覺往往難以掌握長期趨勢。因此，本站自主研發了一套純前端邊緣運算的 AI 統計引擎，底層結合了馬可夫鏈 (Markov Chain) 的狀態轉移機率預測，以及蒙地卡羅 (Monte Carlo) 數值模擬技術，將數千筆歷史開獎紀錄轉化為具備極高實戰價值的選號參考。</p>
           <p style="margin-bottom: 16px;">本站的核心預測功能分為三大版塊。首先是「✨ 吉星富貴選號」，系統會透過雲端熱門聚變、質數黃金矩陣、費氏數列共振等 8 種不同的數學與機率模型，針對歷史軌跡進行多維度回測，精選出綜合命中率最高的 TOP 6 黃金組合。這絕對不是隨機盲猜，而是立基於大數據均值回歸與趨勢動能的科學化精算。</p>
           <p style="margin-bottom: 16px;">其次，我們首創了「🛡 冥燈不出牌」避雷系統。在彩券統計中，「不買什麼」往往比「買什麼」更為關鍵。系統會嚴格篩選出陷入極寒冰封區、心電死線，或與近期強勢號碼產生極端相位排斥的冷門號。這套獨家避雷模型在長期回測中展現了卓越的防禦率，幫助彩友有效避開動能徹底死絕的號碼，將資源精準集中在更具爆發潛力的標的。</p>
@@ -326,58 +323,57 @@
 
   <footer>
     <div class="container footer-inner">
-      <div style="max-width: 680px;"><strong style="color:var(--text-main); font-size:17px; font-weight:900;">天天樂</strong><p style="font-size:14px; color:var(--text-muted); font-weight:600; margin-top:6px; line-height:1.6;">獨立彩券資訊統計工具，與彩券發行機構無任何隸屬關係。中獎獎號以各官方機構正式公布為準。<br>未滿18歲不得購買或兌領彩券，請理性參與，量力而為。</p></div>
-      <div><span style="font-size:14px; color:var(--text-muted); font-weight:600;">資料管理：<strong style="color:var(--text-secondary);">即時數據倉儲</strong></span></div>
+      <div style="max-width: 680px;"><strong style="color:var(--text-main); font-size:22px; font-weight:900;">天天樂</strong><p style="font-size:16px; color:var(--text-muted); font-weight:600; margin-top:8px; line-height:1.7;">獨立彩券資訊統計工具，與彩券發行機構無任何隸屬關係。中獎獎號以各官方機構正式公布為準。<br>未滿18歲不得購買或兌領彩券，請理性參與，量力而為。</p></div>
+      <div><span style="font-size:16px; color:var(--text-muted); font-weight:700;">資料管理：<strong style="color:var(--text-secondary);">即時數據倉儲</strong></span></div>
     </div>
   </footer>
 
   <div class="modal-backdrop" id="support-modal">
     <div class="modal-box">
       <button class="modal-close-btn" onclick="closeSupportModal()">✕</button>
-      <h3 style="font-size:22px; font-weight:900; color:#be123c; margin-bottom:4px;">隨喜紅包與版路分享 🧧</h3>
-      <p style="font-size:13px; color:var(--text-muted); font-weight:600; margin-bottom:16px;">贊助全憑個人喜好！或是您有超強版路想提供，都歡迎在這裡留言給我！</p>
+      <h3 style="font-size:26px; font-weight:900; color:#be123c; margin-bottom:8px;">隨喜紅包與版路分享 🧧</h3>
+      <p style="font-size:16px; color:var(--text-muted); font-weight:700; margin-bottom:20px;">贊助全憑個人喜好！或是您有超強版路想提供，都歡迎在這裡留言給我！</p>
       
-      <div style="background:#fff1f2; padding:12px; border-radius:10px; border:1px solid #fecdd3; margin-bottom:16px; font-size:13px;">
-        <div style="font-weight:800; color:#9f1239; margin-bottom:6px;">💡 街口支付贊助指南：</div>
-        <ul style="color:var(--text-secondary); padding-left:20px; line-height:1.5; margin-bottom:0;">
-          <li><strong>有街口支付：</strong>掃描條碼或複製帳號至 App 內轉帳。<br><span style="font-size:12px; opacity:0.8;">(手機用戶可先截圖，再開啟街口 App 掃描)</span></li>
-          <li style="margin-top:4px;"><strong>無街口支付：</strong>可請有街口支付的朋友代為掃碼喔！</li>
+      <div style="background:#fff1f2; padding:16px; border-radius:12px; border:1px solid #fecdd3; margin-bottom:20px; font-size:16px;">
+        <div style="font-weight:900; color:#9f1239; margin-bottom:8px;">💡 街口支付贊助指南：</div>
+        <ul style="color:var(--text-secondary); padding-left:24px; line-height:1.6; margin-bottom:0;">
+          <li><strong>有街口支付：</strong>掃描條碼或複製帳號至 App 內轉帳。<br><span style="font-size:14px; opacity:0.8;">(手機用戶可先截圖，再開啟街口 App 掃描)</span></li>
+          <li style="margin-top:6px;"><strong>無街口支付：</strong>可請有街口支付的朋友代為掃碼喔！</li>
         </ul>
       </div>
       
-      <div style="display:flex; gap:16px; margin-bottom:16px; justify-content:center;">
-        <div style="text-align:center; background:#ffffff; padding:16px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:inset 0 2px 4px rgba(0,0,0,0.02); width:100%; max-width: 220px;">
-          <div style="font-weight:900; color:#df1441; margin-bottom:10px; font-size:16px; display:flex; align-items:center; justify-content:center; gap:8px;">
-            <div style="width:20px; height:20px; background:#df1441; color:#fff; border-radius:4px; font-size:12px; display:flex; align-items:center; justify-content:center;">街</div> 街口支付
+      <div style="display:flex; gap:16px; margin-bottom:24px; justify-content:center;">
+        <div style="text-align:center; background:#ffffff; padding:20px; border-radius:14px; border:2px solid #e2e8f0; box-shadow:inset 0 2px 4px rgba(0,0,0,0.02); width:100%; max-width: 260px;">
+          <div style="font-weight:900; color:#df1441; margin-bottom:12px; font-size:18px; display:flex; align-items:center; justify-content:center; gap:8px;">
+            <div style="width:24px; height:24px; background:#df1441; color:#fff; border-radius:6px; font-size:14px; display:flex; align-items:center; justify-content:center;">街</div> 街口支付
           </div>
-          <img id="jko-qr-img" src="" alt="街口支付 收款條碼" loading="lazy" style="width:100%; border-radius:10px; border:2px solid #cbd5e1; padding:4px; background:#fff; transition: opacity 0.2s ease;">
-          <div style="margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:8px;">
-            <span>帳號：<span style="font-family: var(--font-mono); color: var(--text-secondary);"> (396) 904667745</span></span>
-            <button onclick="copyJkoAccount('904667745')" style="width:100%; padding:6px; font-size:12px; font-weight:800; border-radius:6px; border:1px solid #cbd5e1; background:#ffffff; color:var(--text-secondary); cursor:pointer; transition:all 0.2s ease; box-shadow:0 1px 2px rgba(0,0,0,0.05);">一鍵複製街口帳號</button>
+          <img id="jko-qr-img" src="" alt="街口支付 收款條碼" loading="lazy" style="width:100%; border-radius:12px; border:2px solid #cbd5e1; padding:6px; background:#fff; transition: opacity 0.2s ease;">
+          <div style="margin-top: 14px; font-size: 15px; font-weight: 800; color: var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:10px;">
+            <span>帳號：<span style="font-family: var(--font-mono); color: var(--text-secondary); font-size:16px;"> (396) 904667745</span></span>
+            <button onclick="copyJkoAccount('904667745')" style="width:100%; padding:10px; font-size:16px; font-weight:900; border-radius:8px; border:2px solid #cbd5e1; background:#ffffff; color:var(--text-secondary); cursor:pointer; transition:all 0.2s ease; box-shadow:0 2px 4px rgba(0,0,0,0.05);">一鍵複製街口帳號</button>
           </div>
         </div>
       </div>
       
-      <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">1. 選擇沾喜氣金額 (若僅留言請略過)</div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-bottom:16px;">
-        <button class="btn-pill" style="justify-content:center; padding:10px; font-weight:800;" onclick="selectAmt(88, this)">NT$ 88</button>
-        <button class="btn-pill active-amt-btn" style="justify-content:center; padding:10px; font-weight:800; border-color:#e11d48; background:#fff1f2; color:#e11d48;" onclick="selectAmt(168, this)">NT$ 168</button>
-        <button class="btn-pill" style="justify-content:center; padding:10px; font-weight:800;" onclick="selectAmt(888, this)">NT$ 888</button>
+      <div style="font-size:16px; font-weight:900; color:var(--text-secondary); margin-bottom:10px;">1. 選擇沾喜氣金額 (若僅留言請略過)</div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:24px;">
+        <button class="btn-pill" style="justify-content:center; padding:16px 10px; font-weight:900; font-size:18px;" onclick="selectAmt(88, this)">NT$ 88</button>
+        <button class="btn-pill active-amt-btn" style="justify-content:center; padding:16px 10px; font-weight:900; font-size:18px; border-color:#e11d48; background:#fff1f2; color:#e11d48;" onclick="selectAmt(168, this)">NT$ 168</button>
+        <button class="btn-pill" style="justify-content:center; padding:16px 10px; font-weight:900; font-size:18px;" onclick="selectAmt(888, this)">NT$ 888</button>
       </div>
       
-      <div style="font-size:13px; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">2. 留下您的專屬版路或加油打氣！</div>
-      <div style="margin-bottom:16px;">
-        <input type="text" class="text-search-input" id="sponsor-name" placeholder="您的暱稱 (選填)" style="width:100%; margin-bottom:8px; padding:10px; font-size:14px;">
-        <textarea class="text-search-input" id="sponsor-msg" placeholder="在此寫下您的獨門版路邏輯，或是給創作者的加油留言..." rows="3" style="width:100%; padding:10px; font-size:14px; resize:none;"></textarea>
+      <div style="font-size:16px; font-weight:900; color:var(--text-secondary); margin-bottom:10px;">2. 留下您的專屬版路或加油打氣！</div>
+      <div style="margin-bottom:24px;">
+        <input type="text" class="text-search-input" id="sponsor-name" placeholder="您的暱稱 (選填)" style="width:100%; margin-bottom:12px; padding:16px; font-size:18px;">
+        <textarea class="text-search-input" id="sponsor-msg" placeholder="在此寫下您的獨門版路邏輯，或是給創作者的加油留言..." rows="4" style="width:100%; padding:16px; font-size:18px; resize:none;"></textarea>
       </div>
       
-      <button class="btn-pine" id="btn-submit-sponsor" style="width:100%; padding:14px; font-size:16px; background:linear-gradient(135deg, #be123c 0%, #e11d48 100%); box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);" onclick="confirmSponsor()">發送紅包通知 / 提交版路 🚀</button>
+      <button class="btn-pine" id="btn-submit-sponsor" style="width:100%; padding:18px; font-size:20px; font-weight:900; background:linear-gradient(135deg, #be123c 0%, #e11d48 100%); box-shadow: 0 6px 16px rgba(225, 29, 72, 0.25);" onclick="confirmSponsor()">發送紅包通知 / 提交版路 🚀</button>
     </div>
   </div>
   
   <div class="toast-box" id="toast-box"></div>
 
-  <!-- 🌟 純淨的檔案引入區塊 -->
   <script src="api.js"></script>
   <script src="logic.js"></script>
   <script src="main.js"></script>
