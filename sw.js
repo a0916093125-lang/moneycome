@@ -5,8 +5,8 @@
  * ========================================================
  */
 
-// 🌟 更新至 v6，強迫使用者手機抓取沒有 sticky 效果的最新版！
-const CACHE_VERSION = 'tt-pwa-cache-v6';
+// 🌟 更新至 v7，強迫使用者手機抓取沒有 sticky 效果的最新版！
+const CACHE_VERSION = 'tt-pwa-cache-v7';
 
 // 核心靜態資源清單
 const CORE_ASSETS = [
